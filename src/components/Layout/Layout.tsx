@@ -19,17 +19,25 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
     <div className="min-h-screen">
       <header className="flex justify-center items-center bg-teal-500 p-4 py-4">
         <div className="flex text-white font-semibold text-xl container">
-          <button className="mr-2" onClick={handleOpenMenu}>
+          <button className="mr-4" onClick={handleOpenMenu}>
             <AiOutlineMenu />
           </button>
           <h1>
-            <Link href="/">iToolkit</Link>
+            <Link href="/">
+              <a>iToolkit</a>
+            </Link>
           </h1>
         </div>
       </header>
 
       <Drawer open={openMenu} onClose={handleCloseMenu}>
-        drawer content
+        <Link href="/tools/url-encode-decode">
+          <a>
+            <div className="p-4 border-b hover:bg-gray-100 transition">
+              URL Encode/Decode
+            </div>
+          </a>
+        </Link>
       </Drawer>
 
       <main className="flex justify-center p-4">

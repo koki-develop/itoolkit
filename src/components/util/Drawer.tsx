@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { memo } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { AiOutlineClose } from "react-icons/ai";
 
 export type DrawerProps = {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ export type DrawerProps = {
   onClose: () => void;
 };
 
-const Drawer: React.FC<DrawerProps> = (props) => {
+const Drawer: React.FC<DrawerProps> = memo((props) => {
   const { children, open, onClose } = props;
 
   return (
@@ -26,17 +26,24 @@ const Drawer: React.FC<DrawerProps> = (props) => {
       />
       <div
         className={classNames(
-          "top-0 left-0 min-w-[240px] w-[100vw] sm:w-[24vw] p-6 bg-white fixed h-full z-50 ease-in-out duration-300",
+          "top-0 left-0 sm:min-w-[240px] w-[100vw] sm:w-[24vw] bg-white fixed h-full z-50 ease-in-out duration-300",
           {
             "-translate-x-0": open,
             "-translate-x-full": !open,
           }
         )}
       >
-        {children}
+        <div className="border-b p-3 flex items-center">
+          <button className="p-1 mr-1" onClick={onClose}>
+            <AiOutlineClose />
+          </button>
+        </div>
+        <div>{children}</div>
       </div>
     </>
   );
-};
+});
+
+Drawer.displayName = "Drawer";
 
 export default Drawer;
