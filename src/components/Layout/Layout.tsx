@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <header className="flex justify-center items-center bg-teal-500 p-4 py-4">
         <div className="flex text-white font-semibold text-xl container">
           <button className="mr-4" onClick={handleOpenMenu}>
@@ -40,8 +40,8 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
         </Link>
       </Drawer>
 
-      <main className="flex justify-center p-4">
-        <div className="container">{children}</div>
+      <main className="flex justify-center px-4 py-2 flex-grow">
+        <div className="container flex flex-col">{children}</div>
       </main>
     </div>
   );
