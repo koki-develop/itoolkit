@@ -10,7 +10,7 @@ const Page: React.FC<PageProps> = memo((props) => {
   const { children, title } = props;
 
   return (
-    <Layout>
+    <Layout title={title}>
       <h2 className="text-2xl mb-2">{title}</h2>
       {children}
     </Layout>
