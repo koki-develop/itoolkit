@@ -1,13 +1,25 @@
 import React, { memo, useCallback, useState } from "react";
 import TextArea from "./TextArea";
 
+type BaseProps = {
+  title: string;
+  disabled?: boolean;
+};
+
 export type TextAreasProps = {
-  leftToRightFunc: (left: string) => Promise<string>;
-  rightToLeftFunc: (right: string) => Promise<string>;
+  left: BaseProps & {
+    toRightFunc?: (left: string) => Promise<string>;
+  };
+  right: BaseProps & {
+    toLeftFunc?: (right: string) => Promise<string>;
+  };
 };
 
 const TextAreas: React.FC<TextAreasProps> = memo((props) => {
-  const { leftToRightFunc, rightToLeftFunc } = props;
+  const { left: leftProps, right: rightProps } = props;
+
+  const { toRightFunc } = leftProps;
+  const { toLeftFunc } = rightProps;
 
   const [left, setLeft] = useState<string>("");
   const [leftError, setLeftError] = useState<string | null>(null);
@@ -17,7 +29,7 @@ const TextAreas: React.FC<TextAreasProps> = memo((props) => {
   const handleChangeLeft = useCallback(
     (value: string) => {
       setLeft(value);
-      leftToRightFunc(value)
+      toRightFunc?.(value)
         .then((right) => {
           setRight(right);
           setRightError(null);
@@ -27,13 +39,13 @@ const TextAreas: React.FC<TextAreasProps> = memo((props) => {
           setLeftError(error.message);
         });
     },
-    [leftToRightFunc]
+    [toRightFunc]
   );
 
   const handleChangeRight = useCallback(
     (value: string) => {
       setRight(value);
-      rightToLeftFunc(value)
+      toLeftFunc?.(value)
         .then((right) => {
           setLeft(right);
           setLeftError(null);
@@ -43,19 +55,19 @@ const TextAreas: React.FC<TextAreasProps> = memo((props) => {
           setRightError(error.message);
         });
     },
-    [rightToLeftFunc]
+    [toLeftFunc]
   );
 
   return (
     <div className="flex flex-grow grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
       <TextArea
-        title="Encoded"
+        title={leftProps.title}
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
       />
       <TextArea
-        title="Decoded"
+        title={rightProps.title}
         value={right}
         error={rightError}
         onChange={handleChangeRight}
