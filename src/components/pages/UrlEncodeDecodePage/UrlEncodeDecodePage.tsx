@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import React, { useCallback, useState } from "react";
 import Layout from "../../Layout";
+import Page from "../../util/Page";
 import TextArea from "../../util/TextArea";
 
 const UrlEncodeDecodePage: NextPage = () => {
@@ -50,8 +51,7 @@ const UrlEncodeDecodePage: NextPage = () => {
   );
 
   return (
-    <Layout>
-      <h2 className="text-2xl mb-2">URL Encode/Decode</h2>
+    <Page title="URL Encode/Decode">
       <div className="flex flex-grow grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
         <TextArea
           title="Encoded"
@@ -66,7 +66,7 @@ const UrlEncodeDecodePage: NextPage = () => {
           onChange={handleChangeRight}
         />
       </div>
-    </Layout>
+    </Page>
   );
 };
 
