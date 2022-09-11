@@ -16,9 +16,9 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
   return (
-    <div>
-      <header className="flex items-center bg-teal-500 px-6 py-4">
-        <div className="flex text-white font-semibold text-xl">
+    <div className="min-h-screen">
+      <header className="flex justify-center items-center bg-teal-500 p-4 py-4">
+        <div className="flex text-white font-semibold text-xl container">
           <button className="mr-2" onClick={handleOpenMenu}>
             <AiOutlineMenu />
           </button>
@@ -32,7 +32,9 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
         drawer content
       </Drawer>
 
-      <main>{children}</main>
+      <main className="flex justify-center p-4">
+        <div className="container">{children}</div>
+      </main>
     </div>
   );
 });
