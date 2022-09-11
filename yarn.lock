@@ -171,6 +171,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/js-beautify@^1.13.3":
+  version "1.13.3"
+  resolved "https://registry.yarnpkg.com/@types/js-beautify/-/js-beautify-1.13.3.tgz#53839bb5b766d0fb45e87386100bb3bcbb7dca9d"
+  integrity sha512-ucIPw5gmNyvRKi6mpeojlqp+T+6ZBJeU+kqMDnIEDlijEU4QhLTon90sZ3cz9HZr+QTwXILjNsMZImzA7+zuJA==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
