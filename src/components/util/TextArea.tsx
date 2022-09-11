@@ -8,10 +8,12 @@ export type TextAreaProps = {
   value: string;
   error: string | null;
   onChange: (value: string) => void;
+
+  textareaProps?: React.HTMLProps<HTMLTextAreaElement>;
 };
 
 const TextArea: React.FC<TextAreaProps> = memo((props) => {
-  const { title, value, error, onChange } = props;
+  const { title, value, error, onChange, textareaProps } = props;
 
   const handleChangeValue = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -41,9 +43,11 @@ const TextArea: React.FC<TextAreaProps> = memo((props) => {
         </button>
       </div>
       <textarea
+        {...textareaProps}
         value={value}
         onChange={handleChangeValue}
         className={classNames(
+          textareaProps?.className,
           "flex-grow outline-none resize-none border rounded p-2",
           {
             "border-red-500": !!error,

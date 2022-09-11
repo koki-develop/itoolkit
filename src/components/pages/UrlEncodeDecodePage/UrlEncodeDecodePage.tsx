@@ -20,7 +20,16 @@ const UrlEncodeDecodePage: NextPage = () => {
 
   return (
     <Page title="URL Encode/Decode">
-      <TextAreas leftToRightFunc={leftToRight} rightToLeftFunc={rightToLeft} />
+      <TextAreas
+        left={{
+          title: "Encoded",
+          toRightFunc: leftToRight,
+        }}
+        right={{
+          title: "Decoded",
+          toLeftFunc: rightToLeft,
+        }}
+      />
     </Page>
   );
 };
