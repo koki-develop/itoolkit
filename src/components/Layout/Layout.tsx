@@ -53,6 +53,13 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
             </div>
           </a>
         </Link>
+        <Link href="/tools/html-formatter">
+          <a>
+            <div className="p-4 border-b hover:bg-gray-100 transition">
+              HTML Formatter
+            </div>
+          </a>
+        </Link>
       </Drawer>
 
       <main className="flex justify-center px-4 py-2 flex-grow">
