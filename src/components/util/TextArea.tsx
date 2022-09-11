@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import copy from "copy-to-clipboard";
 import React, { memo, useCallback } from "react";
 import { AiOutlineCopy } from "react-icons/ai";
 
@@ -19,16 +20,23 @@ const TextArea: React.FC<TextAreaProps> = memo((props) => {
     [onChange]
   );
 
+  const handleCopy = useCallback(() => {
+    copy(value);
+  }, [value]);
+
   return (
     <div className="flex flex-col">
       <div className="flex justify-between items-end">
         <div className="flex items-end">
-          <div>{title}</div>
+          <div className="text-lg">{title}</div>
           {error && (
             <div className="ml-2 italic text-red-500 text-sm">{error}</div>
           )}
         </div>
-        <button className="border rounded mb-1 p-2 hover:bg-gray-100 active:bg-gray-200 transition">
+        <button
+          onClick={handleCopy}
+          className="border rounded mb-1 p-2 hover:bg-gray-100 active:bg-gray-200 transition"
+        >
           <AiOutlineCopy />
         </button>
       </div>
