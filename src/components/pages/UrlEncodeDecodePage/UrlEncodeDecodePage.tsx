@@ -1,7 +1,5 @@
-import classNames from "classnames";
 import { NextPage } from "next";
 import React, { useCallback, useState } from "react";
-import { AiOutlineCopy } from "react-icons/ai";
 import Layout from "../../Layout";
 import TextArea from "../../util/TextArea";
 
