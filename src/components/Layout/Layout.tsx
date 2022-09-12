@@ -68,7 +68,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         </div>
       </header>
 
-      <main className="flex flex-grow justify-center px-4 py-2">
+      <main className="flex grow justify-center px-4 py-2">
         <div className="container flex flex-col">{children}</div>
       </main>
     </div>

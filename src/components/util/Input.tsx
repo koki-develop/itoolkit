@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = memo(props => {
           {...inputProps}
           className={classNames(
             inputProps?.className,
-            "flex-grow rounded rounded-r-none border p-2 outline-none",
+            "grow rounded rounded-r-none border p-2 outline-none",
           )}
         />
         <button

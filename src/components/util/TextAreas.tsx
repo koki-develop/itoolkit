@@ -59,7 +59,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   );
 
   return (
-    <div className="flex grid flex-grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
+    <div className="flex grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
         value={left}
