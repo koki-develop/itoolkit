@@ -4,7 +4,7 @@ import Page from "../../util/Page";
 import TextAreas from "../../util/TextAreas";
 
 const UrlEncodeDecodePage: NextPage = () => {
-  const leftToRight = useCallback(async (left: string): Promise<string> => {
+  const decode = useCallback(async (left: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       try {
         resolve(decodeURIComponent(left));
@@ -14,7 +14,7 @@ const UrlEncodeDecodePage: NextPage = () => {
     });
   }, []);
 
-  const rightToLeft = useCallback(async (right: string): Promise<string> => {
+  const encode = useCallback(async (right: string): Promise<string> => {
     return encodeURIComponent(right);
   }, []);
 
@@ -23,11 +23,11 @@ const UrlEncodeDecodePage: NextPage = () => {
       <TextAreas
         left={{
           title: "Encoded",
-          toRightFunc: leftToRight,
+          toRightFunc: decode,
         }}
         right={{
           title: "Decoded",
-          toLeftFunc: rightToLeft,
+          toLeftFunc: encode,
         }}
       />
     </Page>
