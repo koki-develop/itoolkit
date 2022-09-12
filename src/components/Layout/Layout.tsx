@@ -60,6 +60,13 @@ const Layout: React.FC<LayoutProps> = memo(props => {
             </div>
           </a>
         </Link>
+        <Link href="/tools/hash">
+          <a>
+            <div className="border-b p-4 transition hover:bg-gray-100">
+              Hash
+            </div>
+          </a>
+        </Link>
       </Drawer>
 
       <main className="flex flex-grow justify-center px-4 py-2">
