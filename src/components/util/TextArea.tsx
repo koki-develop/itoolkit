@@ -12,14 +12,14 @@ export type TextAreaProps = {
   textareaProps?: React.HTMLProps<HTMLTextAreaElement>;
 };
 
-const TextArea: React.FC<TextAreaProps> = memo((props) => {
+const TextArea: React.FC<TextAreaProps> = memo(props => {
   const { title, value, error, onChange, textareaProps } = props;
 
   const handleChangeValue = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
       onChange(event.currentTarget.value);
     },
-    [onChange]
+    [onChange],
   );
 
   const handleCopy = useCallback(() => {
@@ -28,16 +28,16 @@ const TextArea: React.FC<TextAreaProps> = memo((props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-between items-end">
+      <div className="flex items-end justify-between">
         <div className="flex items-center">
           <div>{title}</div>
           {error && (
-            <div className="ml-2 italic text-red-500 text-sm">{error}</div>
+            <div className="ml-2 text-sm italic text-red-500">{error}</div>
           )}
         </div>
         <button
           onClick={handleCopy}
-          className="border rounded mb-1 p-2 hover:bg-gray-100 active:bg-gray-200 transition"
+          className="mb-1 rounded border p-2 transition hover:bg-gray-100 active:bg-gray-200"
         >
           <AiOutlineCopy />
         </button>
@@ -48,10 +48,10 @@ const TextArea: React.FC<TextAreaProps> = memo((props) => {
         onChange={handleChangeValue}
         className={classNames(
           textareaProps?.className,
-          "flex-grow outline-none resize-none border rounded p-2",
+          "flex-grow resize-none rounded border p-2 outline-none",
           {
             "border-red-500": !!error,
-          }
+          },
         )}
       />
     </div>

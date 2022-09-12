@@ -8,7 +8,7 @@ export type InputProps = React.HTMLProps<HTMLDivElement> & {
   buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 };
 
-const Input: React.FC<InputProps> = memo((props) => {
+const Input: React.FC<InputProps> = memo(props => {
   const { title, inputProps, buttonProps, ...divProps } = props;
 
   return (
@@ -22,14 +22,14 @@ const Input: React.FC<InputProps> = memo((props) => {
           {...inputProps}
           className={classNames(
             inputProps?.className,
-            "border rounded flex-grow p-2 rounded-r-none outline-none"
+            "flex-grow rounded rounded-r-none border p-2 outline-none",
           )}
         />
         <button
           {...buttonProps}
           className={classNames(
             buttonProps?.className,
-            "border px-3 border-l-0 rounded rounded-l-none outline-none hover:bg-gray-100 active:bg-gray-200"
+            "rounded rounded-l-none border border-l-0 px-3 outline-none hover:bg-gray-100 active:bg-gray-200",
           )}
         >
           <AiOutlineCopy />

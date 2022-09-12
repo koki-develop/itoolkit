@@ -9,7 +9,7 @@ export type LayoutProps = {
   title?: string;
 };
 
-const Layout: React.FC<LayoutProps> = memo((props) => {
+const Layout: React.FC<LayoutProps> = memo(props => {
   const { children, title } = props;
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -23,17 +23,17 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
     return `${title} | ${appName}`;
   }, [title]);
 
-  const handleOpenMenu = useCallback(() => setOpenMenu((prev) => !prev), []);
+  const handleOpenMenu = useCallback(() => setOpenMenu(prev => !prev), []);
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <Head>
         <title>{pageTitle}</title>
       </Head>
 
-      <header className="flex justify-center items-center bg-teal-500 p-4 py-4">
-        <div className="flex text-white font-semibold text-xl container">
+      <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
+        <div className="container flex text-xl font-semibold text-white">
           <button className="mr-4" onClick={handleOpenMenu}>
             <AiOutlineMenu />
           </button>
@@ -48,21 +48,21 @@ const Layout: React.FC<LayoutProps> = memo((props) => {
       <Drawer open={openMenu} onClose={handleCloseMenu}>
         <Link href="/tools/url-encode-decode">
           <a>
-            <div className="p-4 border-b hover:bg-gray-100 transition">
+            <div className="border-b p-4 transition hover:bg-gray-100">
               URL Encode/Decode
             </div>
           </a>
         </Link>
         <Link href="/tools/html-formatter">
           <a>
-            <div className="p-4 border-b hover:bg-gray-100 transition">
+            <div className="border-b p-4 transition hover:bg-gray-100">
               HTML Formatter
             </div>
           </a>
         </Link>
       </Drawer>
 
-      <main className="flex justify-center px-4 py-2 flex-grow">
+      <main className="flex flex-grow justify-center px-4 py-2">
         <div className="container flex flex-col">{children}</div>
       </main>
     </div>

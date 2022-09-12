@@ -6,12 +6,12 @@ export type PageProps = {
   title: string;
 };
 
-const Page: React.FC<PageProps> = memo((props) => {
+const Page: React.FC<PageProps> = memo(props => {
   const { children, title } = props;
 
   return (
     <Layout title={title}>
-      <h2 className="text-2xl mb-2">{title}</h2>
+      <h2 className="mb-2 text-2xl">{title}</h2>
       {children}
     </Layout>
   );

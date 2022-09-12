@@ -15,7 +15,7 @@ export type TextAreasProps = {
   };
 };
 
-const TextAreas: React.FC<TextAreasProps> = memo((props) => {
+const TextAreas: React.FC<TextAreasProps> = memo(props => {
   const { left: leftProps, right: rightProps } = props;
 
   const { toRightFunc } = leftProps;
@@ -30,36 +30,36 @@ const TextAreas: React.FC<TextAreasProps> = memo((props) => {
     (value: string) => {
       setLeft(value);
       toRightFunc?.(value)
-        .then((right) => {
+        .then(right => {
           setRight(right);
           setRightError(null);
           setLeftError(null);
         })
-        .catch((error) => {
+        .catch(error => {
           setLeftError(error.message);
         });
     },
-    [toRightFunc]
+    [toRightFunc],
   );
 
   const handleChangeRight = useCallback(
     (value: string) => {
       setRight(value);
       toLeftFunc?.(value)
-        .then((right) => {
+        .then(right => {
           setLeft(right);
           setLeftError(null);
           setRightError(null);
         })
-        .catch((error) => {
+        .catch(error => {
           setRightError(error.message);
         });
     },
-    [toLeftFunc]
+    [toLeftFunc],
   );
 
   return (
-    <div className="flex flex-grow grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
+    <div className="flex grid flex-grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
         value={left}
