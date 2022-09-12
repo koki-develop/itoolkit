@@ -30,7 +30,7 @@ const TextArea: React.FC<TextAreaProps> = memo((props) => {
     <div className="flex flex-col">
       <div className="flex justify-between items-end">
         <div className="flex items-center">
-          <div className="text-lg">{title}</div>
+          <div>{title}</div>
           {error && (
             <div className="ml-2 italic text-red-500 text-sm">{error}</div>
           )}
