@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Head from "next/head";
 import Link from "next/link";
 import React, { memo, useCallback, useMemo, useState } from "react";
@@ -27,16 +28,25 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div
+      className={classNames(
+        "flex min-h-screen flex-col transition-all duration-300 ease-in-out",
+        {
+          "sm:ml-[max(24vw,240px)]": openMenu,
+        },
+      )}
+    >
       <Head>
         <title>{pageTitle}</title>
       </Head>
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
         <div className="container flex text-xl font-semibold text-white">
-          <button className="mr-4" onClick={handleOpenMenu}>
-            <AiOutlineMenu />
-          </button>
+          {!openMenu && (
+            <button className="mr-4" onClick={handleOpenMenu}>
+              <AiOutlineMenu />
+            </button>
+          )}
           <h1>
             <Link href="/">
               <a>iToolkit</a>
