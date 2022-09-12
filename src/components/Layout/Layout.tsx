@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React, { memo, useCallback, useMemo, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import Menu from "./Menu";
+import Menu, { MenuItem } from "./Menu";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -27,12 +27,20 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   const handleOpenMenu = useCallback(() => setOpenMenu(prev => !prev), []);
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
+  const menuItems: MenuItem[] = useMemo(() => {
+    return [
+      { text: "URL Encode/Decode", href: "/tools/url-encode-decode" },
+      { text: "HTML Formatter", href: "/tools/html-formatter" },
+      { text: "Hash", href: "/tools/hash" },
+    ];
+  }, []);
+
   return (
     <div
       className={classNames(
         "flex min-h-screen flex-col transition-all duration-300 ease-in-out",
         {
-          "sm:ml-[max(24vw,240px)]": openMenu,
+          "sm:ml-[220px]": openMenu,
         },
       )}
     >
@@ -40,29 +48,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         <title>{pageTitle}</title>
       </Head>
 
-      <Menu open={openMenu} onClose={handleCloseMenu}>
-        <Link href="/tools/url-encode-decode">
-          <a>
-            <div className="border-b p-4 transition hover:bg-gray-100">
-              URL Encode/Decode
-            </div>
-          </a>
-        </Link>
-        <Link href="/tools/html-formatter">
-          <a>
-            <div className="border-b p-4 transition hover:bg-gray-100">
-              HTML Formatter
-            </div>
-          </a>
-        </Link>
-        <Link href="/tools/hash">
-          <a>
-            <div className="border-b p-4 transition hover:bg-gray-100">
-              Hash
-            </div>
-          </a>
-        </Link>
-      </Menu>
+      <Menu items={menuItems} open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
         <div className="container flex text-xl font-semibold text-white">

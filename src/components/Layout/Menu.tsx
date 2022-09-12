@@ -1,16 +1,25 @@
 import classNames from "classnames";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { memo } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineLeft, AiOutlineClose } from "react-icons/ai";
+
+export type MenuItem = {
+  text: string;
+  href: string;
+};
 
 export type MenuProps = {
-  children: React.ReactNode;
-
+  items: MenuItem[];
   open: boolean;
   onClose: () => void;
 };
 
 const Menu: React.FC<MenuProps> = memo(props => {
-  const { children, open, onClose } = props;
+  const { items, open, onClose } = props;
+
+  const router = useRouter();
+  console.log(router.pathname);
 
   return (
     <>
@@ -26,19 +35,30 @@ const Menu: React.FC<MenuProps> = memo(props => {
       />
       <div
         className={classNames(
-          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[24vw] sm:min-w-[240px]",
+          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[220px]",
           {
             "-translate-x-0": open,
             "-translate-x-full": !open,
           },
         )}
       >
-        <div className="flex items-center border-b p-3">
+        <div className="flex items-center border-b p-3 sm:justify-end">
           <button className="mr-1 p-1" onClick={onClose}>
-            <AiOutlineClose />
+            <AiOutlineLeft className="hidden sm:block" />
+            <AiOutlineClose className="block sm:hidden" />
           </button>
         </div>
-        <div>{children}</div>
+        <div>
+          {items.map(item => (
+            <Link key={item.href} href={item.href}>
+              <a>
+                <div className="border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
+                  {item.text}
+                </div>
+              </a>
+            </Link>
+          ))}
+        </div>
       </div>
     </>
   );
