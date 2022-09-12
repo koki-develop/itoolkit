@@ -2,14 +2,14 @@ import classNames from "classnames";
 import React, { memo } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 
-export type DrawerProps = {
+export type MenuProps = {
   children: React.ReactNode;
 
   open: boolean;
   onClose: () => void;
 };
 
-const Drawer: React.FC<DrawerProps> = memo(props => {
+const Menu: React.FC<MenuProps> = memo(props => {
   const { children, open, onClose } = props;
 
   return (
@@ -26,7 +26,7 @@ const Drawer: React.FC<DrawerProps> = memo(props => {
       />
       <div
         className={classNames(
-          "fixed top-0 left-0 z-50 h-full w-1/2 border-r bg-white duration-300 ease-in-out sm:w-[24vw] sm:min-w-[240px]",
+          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[24vw] sm:min-w-[240px]",
           {
             "-translate-x-0": open,
             "-translate-x-full": !open,
@@ -44,6 +44,6 @@ const Drawer: React.FC<DrawerProps> = memo(props => {
   );
 });
 
-Drawer.displayName = "Drawer";
+Menu.displayName = "Menu";
 
-export default Drawer;
+export default Menu;
