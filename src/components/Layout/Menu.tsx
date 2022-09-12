@@ -42,7 +42,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
           },
         )}
       >
-        <div className="flex items-center border-b p-3 sm:justify-end">
+        <div className="flex h-[60px] items-center border-b p-3 sm:justify-end">
           <button className="mr-1 p-1" onClick={onClose}>
             <AiOutlineLeft className="hidden sm:block" />
             <AiOutlineClose className="block sm:hidden" />
