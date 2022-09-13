@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import Layout from "../Layout";
+import Head from "next/head";
+import React, { memo, useMemo } from "react";
 
 export type PageProps = {
   children: React.ReactNode;
@@ -9,11 +9,23 @@ export type PageProps = {
 const Page: React.FC<PageProps> = memo(props => {
   const { children, title } = props;
 
+  const pageTitle = useMemo(() => {
+    const appName = "iToolkit";
+    if (!title) {
+      return `${appName} - Awesome tools for development`;
+    }
+
+    return `${title} | ${appName}`;
+  }, [title]);
+
   return (
-    <Layout title={title}>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
       <h2 className="mb-2 text-2xl">{title}</h2>
       {children}
-    </Layout>
+    </>
   );
 });
 
