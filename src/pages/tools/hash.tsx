@@ -1,3 +1,3 @@
-import HashPage from "../../components/pages/HashPage";
+import HashPage from "@/components/pages/HashPage";
 
 export default HashPage;

@@ -1,3 +1,3 @@
-import UrlEncodeDecodePage from "../../components/pages/UrlEncodeDecodePage";
+import UrlEncodeDecodePage from "@/components/pages/UrlEncodeDecodePage";
 
 export default UrlEncodeDecodePage;

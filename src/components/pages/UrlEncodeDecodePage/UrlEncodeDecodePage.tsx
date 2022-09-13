@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useCallback } from "react";
-import Page from "../../util/Page";
-import TextAreas from "../../util/TextAreas";
+import Page from "@/components//util/Page";
+import TextAreas from "@/components/util/TextAreas";
 
 const UrlEncodeDecodePage: NextPage = () => {
   const decode = useCallback(async (left: string): Promise<string> => {

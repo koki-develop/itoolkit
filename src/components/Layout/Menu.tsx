@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import React, { memo } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { tools } from "../../tools";
+import { tools } from "@/tools";
 
 export type MenuProps = {
   open: boolean;

@@ -1,10 +1,9 @@
 import crypto from "crypto";
 import { NextPage } from "next";
 import React, { useCallback, useEffect, useState } from "react";
-import { AiOutlineCopy } from "react-icons/ai";
-import Input from "../../util/Input";
-import Page from "../../util/Page";
-import TextArea from "../../util/TextArea";
+import Input from "@/components/util/Input";
+import Page from "@/components/util/Page";
+import TextArea from "@/components/util/TextArea";
 
 const HashPage: NextPage = () => {
   const [text, setText] = useState<string>("");

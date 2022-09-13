@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import React from "react";
-import { tools } from "../../../tools";
+import { tools } from "@/tools";
 
 const HomePage: NextPage = () => {
   return (
