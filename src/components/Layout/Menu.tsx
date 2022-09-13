@@ -42,7 +42,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
           {tools.map(tool => (
             <Link key={tool.href} href={tool.href}>
               <a>
-                <div className="flex items-center border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
+                <div className="flex items-center border-b p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
                   <span className="mr-1">{React.createElement(tool.icon)}</span>
                   {tool.title}
                 </div>
