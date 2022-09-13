@@ -1,11 +1,11 @@
 import classNames from "classnames";
 import React, { memo } from "react";
-import { AiOutlineCopy } from "react-icons/ai";
+import CopyButton, { CopyButtonProps } from "./CopyButton";
 
 export type InputProps = React.HTMLProps<HTMLDivElement> & {
   title: string;
   inputProps?: React.HTMLProps<HTMLInputElement>;
-  buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  buttonProps?: CopyButtonProps;
 };
 
 const Input: React.FC<InputProps> = memo(props => {
@@ -25,15 +25,14 @@ const Input: React.FC<InputProps> = memo(props => {
             "grow rounded rounded-r-none border p-2 outline-none",
           )}
         />
-        <button
+        <CopyButton
           {...buttonProps}
+          copyText={inputProps?.value?.toString() ?? ""}
           className={classNames(
             buttonProps?.className,
-            "rounded rounded-l-none border border-l-0 px-3 outline-none hover:bg-gray-100 active:bg-gray-200",
+            "rounded-l-none border-l-0 px-3",
           )}
-        >
-          <AiOutlineCopy />
-        </button>
+        />
       </div>
     </div>
   );
