@@ -1,6 +1,6 @@
+import { html } from "js-beautify";
 import { NextPage } from "next";
 import React, { useCallback } from "react";
-import { html } from "js-beautify";
 import Page from "@/components/util/Page";
 import TextAreas from "@/components/util/TextAreas";
 
