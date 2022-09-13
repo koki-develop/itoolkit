@@ -1,21 +1,42 @@
 import classNames from "classnames";
 import Link from "next/link";
-import React, { memo } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { memo, useMemo } from "react";
+import { AiOutlineClose, AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
+import { BsHash } from "react-icons/bs";
 
 export type MenuItem = {
   text: string;
   href: string;
+  icon: React.ReactNode;
 };
 
 export type MenuProps = {
-  items: MenuItem[];
   open: boolean;
   onClose: () => void;
 };
 
 const Menu: React.FC<MenuProps> = memo(props => {
-  const { items, open, onClose } = props;
+  const { open, onClose } = props;
+
+  const items: MenuItem[] = useMemo(() => {
+    return [
+      {
+        text: "URL Encode/Decode",
+        href: "/tools/url-encode-decode",
+        icon: <AiOutlineLink />,
+      },
+      {
+        text: "HTML Formatter",
+        href: "/tools/html-formatter",
+        icon: <AiOutlineHtml5 />,
+      },
+      {
+        text: "Hash",
+        href: "/tools/hash",
+        icon: <BsHash />,
+      },
+    ];
+  }, []);
 
   return (
     <>
@@ -47,7 +68,8 @@ const Menu: React.FC<MenuProps> = memo(props => {
           {items.map(item => (
             <Link key={item.href} href={item.href}>
               <a>
-                <div className="border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
+                <div className="flex items-center border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
+                  <span className="mr-1">{item.icon}</span>
                   {item.text}
                 </div>
               </a>

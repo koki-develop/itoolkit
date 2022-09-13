@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import Menu, { MenuItem } from "./Menu";
+import Menu from "./Menu";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -30,14 +30,6 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   const handleOpenMenu = useCallback(() => setOpenMenu(prev => !prev), []);
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
-  const menuItems: MenuItem[] = useMemo(() => {
-    return [
-      { text: "URL Encode/Decode", href: "/tools/url-encode-decode" },
-      { text: "HTML Formatter", href: "/tools/html-formatter" },
-      { text: "Hash", href: "/tools/hash" },
-    ];
-  }, []);
-
   useEffect(() => {
     setOpenMenu(false);
   }, [router.pathname]);
@@ -52,7 +44,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         <title>{pageTitle}</title>
       </Head>
 
-      <Menu items={menuItems} open={openMenu} onClose={handleCloseMenu} />
+      <Menu open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
         <div className="container flex text-xl font-semibold text-white">
