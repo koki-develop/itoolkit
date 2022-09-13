@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[220px]",
+        "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[200px]",
       )}
     >
       <Head>

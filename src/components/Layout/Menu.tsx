@@ -4,12 +4,6 @@ import React, { memo } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { tools } from "../../tools";
 
-export type MenuItem = {
-  text: string;
-  href: string;
-  icon: React.ReactNode;
-};
-
 export type MenuProps = {
   open: boolean;
   onClose: () => void;
@@ -32,7 +26,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
       />
       <div
         className={classNames(
-          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[220px] sm:-translate-x-0",
+          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[200px] sm:-translate-x-0",
           {
             "-translate-x-0": open,
             "-translate-x-full": !open,
@@ -49,7 +43,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
             <Link key={tool.href} href={tool.href}>
               <a>
                 <div className="flex items-center border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
-                  <span className="mr-1">{tool.icon}</span>
+                  <span className="mr-1">{React.createElement(tool.icon)}</span>
                   {tool.title}
                 </div>
               </a>
