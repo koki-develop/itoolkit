@@ -1,7 +1,8 @@
 import classNames from "classnames";
 import Head from "next/head";
 import Link from "next/link";
-import React, { memo, useCallback, useMemo, useState } from "react";
+import { useRouter } from "next/router";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Menu, { MenuItem } from "./Menu";
 
@@ -12,6 +13,8 @@ export type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = memo(props => {
   const { children, title } = props;
+
+  const router = useRouter();
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
@@ -34,6 +37,10 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       { text: "Hash", href: "/tools/hash" },
     ];
   }, []);
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [router.pathname]);
 
   return (
     <div

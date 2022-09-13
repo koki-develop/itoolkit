@@ -1,8 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { memo } from "react";
-import { AiOutlineLeft, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 export type MenuItem = {
   text: string;
@@ -17,9 +16,6 @@ export type MenuProps = {
 
 const Menu: React.FC<MenuProps> = memo(props => {
   const { items, open, onClose } = props;
-
-  const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <>
