@@ -1,7 +1,8 @@
 import classNames from "classnames";
+import Fuse from "fuse.js";
 import Link from "next/link";
-import React, { memo } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { memo, useCallback, useMemo, useRef, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 import { tools } from "@/tools";
 
 export type MenuProps = {
@@ -11,6 +12,34 @@ export type MenuProps = {
 
 const Menu: React.FC<MenuProps> = memo(props => {
   const { open, onClose } = props;
+
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+  const [searchText, setSearchText] = useState<string>("");
+
+  const handleClickSearchInput = useCallback(() => {
+    searchInputRef.current?.focus();
+  }, []);
+
+  const handleChangeSearchText = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(event.currentTarget.value);
+    },
+    [],
+  );
+
+  const filteredTools = useMemo(() => {
+    const trimmedSearchText = searchText.trim();
+    if (trimmedSearchText === "") {
+      return tools;
+    }
+
+    const fuse = new Fuse(tools, {
+      keys: ["title"],
+    });
+
+    return fuse.search(trimmedSearchText).map(result => result.item);
+  }, [searchText]);
 
   return (
     <>
@@ -33,13 +62,23 @@ const Menu: React.FC<MenuProps> = memo(props => {
           },
         )}
       >
-        <div className="flex h-[60px] items-center border-b p-3 sm:justify-end">
-          <button className="mr-1 p-1" onClick={onClose}>
-            <AiOutlineClose className="sm:hidden" />
-          </button>
+        <div className="flex h-[60px] items-center border-b p-3">
+          <div
+            className="flex w-full cursor-text items-center overflow-hidden rounded border pl-2"
+            onClick={handleClickSearchInput}
+          >
+            <AiOutlineSearch className="mr-1" />
+            <input
+              ref={searchInputRef}
+              className="w-0 grow py-1 pr-2 outline-none"
+              type="text"
+              value={searchText}
+              onChange={handleChangeSearchText}
+            />
+          </div>
         </div>
         <div>
-          {tools.map(tool => (
+          {filteredTools.map(tool => (
             <Link key={tool.href} href={tool.href}>
               <a>
                 <div className="flex items-center border-b p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
