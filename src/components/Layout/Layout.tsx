@@ -38,10 +38,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "flex min-h-screen flex-col transition-all duration-300 ease-in-out",
-        {
-          "sm:ml-[220px]": openMenu,
-        },
+        "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[220px]",
       )}
     >
       <Head>
@@ -53,9 +50,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
         <div className="container flex text-xl font-semibold text-white">
           <button
-            className={classNames("mr-4", {
-              "sm:hidden": openMenu,
-            })}
+            className={classNames("mr-4 sm:hidden")}
             onClick={handleOpenMenu}
           >
             <AiOutlineMenu />

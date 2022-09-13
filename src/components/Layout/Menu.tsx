@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
       />
       <div
         className={classNames(
-          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[220px]",
+          "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[220px] sm:-translate-x-0",
           {
             "-translate-x-0": open,
             "-translate-x-full": !open,
@@ -44,8 +44,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
       >
         <div className="flex h-[60px] items-center border-b p-3 sm:justify-end">
           <button className="mr-1 p-1" onClick={onClose}>
-            <AiOutlineLeft className="hidden sm:block" />
-            <AiOutlineClose className="block sm:hidden" />
+            <AiOutlineClose className="sm:hidden" />
           </button>
         </div>
         <div>
