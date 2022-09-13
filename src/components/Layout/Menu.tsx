@@ -1,8 +1,8 @@
 import classNames from "classnames";
 import Link from "next/link";
-import React, { memo, useMemo } from "react";
-import { AiOutlineClose, AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
-import { BsHash } from "react-icons/bs";
+import React, { memo } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { tools } from "../../tools";
 
 export type MenuItem = {
   text: string;
@@ -17,26 +17,6 @@ export type MenuProps = {
 
 const Menu: React.FC<MenuProps> = memo(props => {
   const { open, onClose } = props;
-
-  const items: MenuItem[] = useMemo(() => {
-    return [
-      {
-        text: "URL Encode/Decode",
-        href: "/tools/url-encode-decode",
-        icon: <AiOutlineLink />,
-      },
-      {
-        text: "HTML Formatter",
-        href: "/tools/html-formatter",
-        icon: <AiOutlineHtml5 />,
-      },
-      {
-        text: "Hash",
-        href: "/tools/hash",
-        icon: <BsHash />,
-      },
-    ];
-  }, []);
 
   return (
     <>
@@ -65,12 +45,12 @@ const Menu: React.FC<MenuProps> = memo(props => {
           </button>
         </div>
         <div>
-          {items.map(item => (
-            <Link key={item.href} href={item.href}>
+          {tools.map(tool => (
+            <Link key={tool.href} href={tool.href}>
               <a>
                 <div className="flex items-center border-b p-4 transition hover:bg-gray-100 sm:py-3 sm:text-sm">
-                  <span className="mr-1">{item.icon}</span>
-                  {item.text}
+                  <span className="mr-1">{tool.icon}</span>
+                  {tool.title}
                 </div>
               </a>
             </Link>
