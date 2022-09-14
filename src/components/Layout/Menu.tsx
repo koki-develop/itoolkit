@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import Link from "next/link";
 import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { tools } from "@/tools";
+import { Tool, tools } from "@/tools";
 
 export type MenuProps = {
   open: boolean;
@@ -40,6 +40,21 @@ const Menu: React.FC<MenuProps> = memo(props => {
 
     return fuse.search(trimmedSearchText).map(result => result.item);
   }, [searchText]);
+
+  const groups: { name: string; tools: Tool[] }[] = useMemo(() => {
+    const groups = filteredTools.reduce<Record<string, Tool[]>>(
+      (result, current) => {
+        if (!result[current.group]) {
+          result[current.group] = [];
+        }
+        result[current.group].push(current);
+        return result;
+      },
+      {},
+    );
+
+    return Object.entries(groups).map(([key, tools]) => ({ name: key, tools }));
+  }, [filteredTools]);
 
   return (
     <>
@@ -78,15 +93,24 @@ const Menu: React.FC<MenuProps> = memo(props => {
           </div>
         </div>
         <div>
-          {filteredTools.map(tool => (
-            <Link key={tool.href} href={tool.href}>
-              <a>
-                <div className="flex items-center border-b p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
-                  <span className="mr-1">{React.createElement(tool.icon)}</span>
-                  {tool.title}
-                </div>
-              </a>
-            </Link>
+          {groups.map(group => (
+            <div key={group.name} className="border-b">
+              <div className="border-b p-4 text-sm text-gray-500 sm:py-1">
+                {group.name}
+              </div>
+              {group.tools.map(tool => (
+                <Link key={tool.href} href={tool.href}>
+                  <a>
+                    <div className="flex items-center p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
+                      <span className="mr-1">
+                        {React.createElement(tool.icon)}
+                      </span>
+                      {tool.title}
+                    </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
           ))}
         </div>
       </div>
