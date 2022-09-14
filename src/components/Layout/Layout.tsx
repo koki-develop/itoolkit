@@ -1,31 +1,20 @@
 import classNames from "classnames";
-import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Menu from "./Menu";
 
 export type LayoutProps = {
   children: React.ReactNode;
-  title?: string;
 };
 
 const Layout: React.FC<LayoutProps> = memo(props => {
-  const { children, title } = props;
+  const { children } = props;
 
   const router = useRouter();
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-
-  const pageTitle = useMemo(() => {
-    const appName = "iToolkit";
-    if (!title) {
-      return `${appName} - Awesome tools for development`;
-    }
-
-    return `${title} | ${appName}`;
-  }, [title]);
 
   const handleOpenMenu = useCallback(() => setOpenMenu(prev => !prev), []);
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
@@ -40,10 +29,6 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[200px]",
       )}
     >
-      <Head>
-        <title>{pageTitle}</title>
-      </Head>
-
       <Menu open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
