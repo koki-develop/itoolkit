@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [handleRouteDone, handleRouteStart, router.events]);
 
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="system">
       <Layout>
         <Component {...pageProps} />
       </Layout>
