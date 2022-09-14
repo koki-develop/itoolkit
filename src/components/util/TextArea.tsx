@@ -40,6 +40,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
           textareaProps?.className,
           "grow resize-none rounded border p-2 outline-none",
           {
+            "bg-gray-50": textareaProps?.disabled,
             "border-red-500": !!error,
           },
         )}

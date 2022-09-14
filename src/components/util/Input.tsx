@@ -23,6 +23,9 @@ const Input: React.FC<InputProps> = memo(props => {
           className={classNames(
             inputProps?.className,
             "grow rounded rounded-r-none border p-2 outline-none",
+            {
+              "bg-gray-50": inputProps?.disabled,
+            },
           )}
         />
         <CopyButton
