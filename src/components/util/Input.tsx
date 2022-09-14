@@ -36,7 +36,7 @@ const Input: React.FC<InputProps> = memo(props => {
           onChange={handleChange}
           className={classNames(
             inputProps?.className,
-            "grow rounded rounded-r-none border p-2 text-black outline-none",
+            "grow rounded rounded-r-none border p-2 outline-none",
             {
               "bg-gray-50": inputProps?.disabled,
             },
