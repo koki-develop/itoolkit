@@ -92,7 +92,10 @@ const Menu: React.FC<MenuProps> = memo(props => {
               </div>
               {group.tools.map(tool =>
                 router.pathname === tool.href ? (
-                  <div className="flex items-center bg-gray-100 p-4 sm:py-3 sm:text-sm">
+                  <div
+                    key={tool.href}
+                    className="flex items-center bg-gray-100 p-4 sm:py-3 sm:text-sm"
+                  >
                     <span className="mr-1">
                       {React.createElement(tool.icon)}
                     </span>
