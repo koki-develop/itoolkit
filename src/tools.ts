@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
-import { BsHash } from "react-icons/bs";
+import { BsHash, BsSnow } from "react-icons/bs";
+import { DiCss3 } from "react-icons/di";
 
 const groups = {
   encodeOrDecode: "Encode/Decode",
@@ -16,12 +17,14 @@ export type Tool = {
 };
 
 export const tools: Tool[] = [
+  // Encode/Decode
   {
     title: "URL Encode/Decode",
     group: groups.encodeOrDecode,
     href: "/tools/url-encode-decode",
     icon: AiOutlineLink,
   },
+  // Formatter
   {
     title: "HTML Formatter",
     group: groups.formatter,
@@ -29,9 +32,22 @@ export const tools: Tool[] = [
     icon: AiOutlineHtml5,
   },
   {
+    title: "CSS Formatter",
+    group: groups.formatter,
+    href: "/tools/css-formatter",
+    icon: DiCss3,
+  },
+  // Hash
+  {
     title: "Hash",
     group: groups.generator,
     href: "/tools/hash",
     icon: BsHash,
+  },
+  {
+    title: "UUID",
+    group: groups.generator,
+    href: "/tools/uuid",
+    icon: BsSnow,
   },
 ];
