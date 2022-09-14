@@ -1,10 +1,8 @@
 import classNames from "classnames";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+import LayoutHeader from "./LayoutHeader";
 import LayoutMenu from "./LayoutMenu";
-import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -31,27 +29,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       )}
     >
       <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
-
-      <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
-        <div className="container flex items-center justify-between text-white">
-          <div className="flex items-center text-xl">
-            <button
-              className={classNames("mr-4 sm:hidden")}
-              onClick={handleOpenMenu}
-            >
-              <AiOutlineMenu />
-            </button>
-            <h1>
-              <Link href="/">
-                <a>iToolkit</a>
-              </Link>
-            </h1>
-          </div>
-          <div>
-            <LayoutThemeSwitch />
-          </div>
-        </div>
-      </header>
+      <LayoutHeader onOpenMenu={handleOpenMenu} />
 
       <main className="flex grow justify-center px-4 py-2">
         <div className="container flex flex-col">{children}</div>
