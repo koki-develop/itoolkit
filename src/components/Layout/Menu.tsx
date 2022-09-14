@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import Link from "next/link";
 import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { Tool, tools } from "@/tools";
+import { groupTools, Tool, tools } from "@/tools";
 
 export type MenuProps = {
   open: boolean;
@@ -42,18 +42,7 @@ const Menu: React.FC<MenuProps> = memo(props => {
   }, [searchText]);
 
   const groups: { name: string; tools: Tool[] }[] = useMemo(() => {
-    const groups = filteredTools.reduce<Record<string, Tool[]>>(
-      (result, current) => {
-        if (!result[current.group]) {
-          result[current.group] = [];
-        }
-        result[current.group].push(current);
-        return result;
-      },
-      {},
-    );
-
-    return Object.entries(groups).map(([key, tools]) => ({ name: key, tools }));
+    return groupTools(filteredTools);
   }, [filteredTools]);
 
   return (

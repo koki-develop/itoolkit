@@ -51,3 +51,17 @@ export const tools: Tool[] = [
     icon: BsSnow,
   },
 ];
+
+export const groupTools = (
+  tools: Tool[],
+): { name: string; tools: Tool[] }[] => {
+  const groups = tools.reduce<Record<string, Tool[]>>((result, current) => {
+    if (!result[current.group]) {
+      result[current.group] = [];
+    }
+    result[current.group].push(current);
+    return result;
+  }, {});
+
+  return Object.entries(groups).map(([key, tools]) => ({ name: key, tools }));
+};
