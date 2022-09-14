@@ -6,12 +6,12 @@ import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { groupTools, Tool, tools } from "@/tools";
 
-export type MenuProps = {
+export type LayoutMenuProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const Menu: React.FC<MenuProps> = memo(props => {
+const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
   const { open, onClose } = props;
 
   const router = useRouter();
@@ -122,6 +122,6 @@ const Menu: React.FC<MenuProps> = memo(props => {
   );
 });
 
-Menu.displayName = "Menu";
+LayoutMenu.displayName = "LayoutMenu";
 
-export default Menu;
+export default LayoutMenu;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import Menu from "./Menu";
+import LayoutMenu from "./LayoutMenu";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[200px]",
       )}
     >
-      <Menu open={openMenu} onClose={handleCloseMenu} />
+      <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
         <div className="container flex text-xl font-semibold text-white">
