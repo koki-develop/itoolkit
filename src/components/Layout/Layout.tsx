@@ -33,8 +33,8 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
-        <div className="container flex justify-between text-white">
-          <div className="flex text-xl font-semibold">
+        <div className="container flex items-center justify-between text-white">
+          <div className="flex items-center text-xl">
             <button
               className={classNames("mr-4 sm:hidden")}
               onClick={handleOpenMenu}

@@ -10,6 +10,19 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   const [mounted, setMounted] = useState<boolean>(false);
   const [openList, setOpenList] = useState<boolean>(false);
 
+  const selectIcon = useCallback((theme?: string) => {
+    switch (theme) {
+      case "light":
+        return MdLightMode;
+      case "dark":
+        return MdDarkMode;
+      case "system":
+        return MdComputer;
+      default:
+        return MdDarkMode;
+    }
+  }, []);
+
   const handleOpenList = useCallback(() => {
     setOpenList(true);
   }, []);
@@ -51,22 +64,35 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   }
 
   return (
-    <div className="relative">
-      <button onClick={handleOpenList}>theme</button>
+    <div className="relative flex items-center justify-center">
+      <button onClick={handleOpenList}>
+        {React.createElement(selectIcon(resolvedTheme), {
+          className: "text-2xl",
+        })}
+      </button>
       {openList && (
         <div
           ref={panelRef}
-          className="absolute right-0 rounded border bg-white p-1 px-2 text-lg text-black"
+          className="absolute top-8 right-0 rounded border bg-white text-black"
         >
-          <button className="flex items-center" onClick={handleSelectLight}>
+          <button
+            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
+            onClick={handleSelectLight}
+          >
             <MdLightMode className="mr-2" />
             Light
           </button>
-          <button className="flex items-center" onClick={handleSelectDark}>
+          <button
+            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
+            onClick={handleSelectDark}
+          >
             <MdDarkMode className="mr-2" />
             Dark
           </button>
-          <button className="flex items-center" onClick={handleSelectSystem}>
+          <button
+            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
+            onClick={handleSelectSystem}
+          >
             <MdComputer className="mr-2" />
             System
           </button>
