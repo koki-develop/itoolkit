@@ -1,3 +1,4 @@
+import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
 import nProgress from "nprogress";
 import React, { useCallback, useEffect } from "react";
@@ -28,9 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [handleRouteDone, handleRouteStart, router.events]);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
