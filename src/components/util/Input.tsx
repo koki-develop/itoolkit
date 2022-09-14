@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import CopyButton, { CopyButtonProps } from "./CopyButton";
 
 export type InputProps = React.HTMLProps<HTMLDivElement> & {
@@ -10,6 +10,18 @@ export type InputProps = React.HTMLProps<HTMLDivElement> & {
 
 const Input: React.FC<InputProps> = memo(props => {
   const { title, inputProps, buttonProps, ...divProps } = props;
+  const { disabled, onChange } = inputProps ?? {};
+
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (disabled) {
+        event.preventDefault();
+        return;
+      }
+      onChange?.(event);
+    },
+    [disabled, onChange],
+  );
 
   return (
     <div
@@ -20,6 +32,8 @@ const Input: React.FC<InputProps> = memo(props => {
       <div className="flex items-stretch">
         <input
           {...inputProps}
+          disabled={false}
+          onChange={handleChange}
           className={classNames(
             inputProps?.className,
             "grow rounded rounded-r-none border p-2 text-black outline-none",

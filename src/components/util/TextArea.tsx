@@ -13,12 +13,17 @@ export type TextAreaProps = {
 
 const TextArea: React.FC<TextAreaProps> = memo(props => {
   const { title, value, error, onChange, textareaProps } = props;
+  const { disabled } = textareaProps ?? {};
 
   const handleChangeValue = useCallback(
     (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      if (disabled) {
+        event.preventDefault();
+        return;
+      }
       onChange(event.currentTarget.value);
     },
-    [onChange],
+    [disabled, onChange],
   );
 
   return (
@@ -34,6 +39,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
       </div>
       <textarea
         {...textareaProps}
+        disabled={false}
         value={value}
         onChange={handleChangeValue}
         className={classNames(
