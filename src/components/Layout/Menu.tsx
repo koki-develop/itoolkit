@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import Fuse from "fuse.js";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { groupTools, Tool, tools } from "@/tools";
@@ -12,6 +13,8 @@ export type MenuProps = {
 
 const Menu: React.FC<MenuProps> = memo(props => {
   const { open, onClose } = props;
+
+  const router = useRouter();
 
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -87,18 +90,27 @@ const Menu: React.FC<MenuProps> = memo(props => {
               <div className="border-b p-4 text-sm text-gray-500 sm:py-1">
                 {group.name}
               </div>
-              {group.tools.map(tool => (
-                <Link key={tool.href} href={tool.href}>
-                  <a>
-                    <div className="flex items-center p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
-                      <span className="mr-1">
-                        {React.createElement(tool.icon)}
-                      </span>
-                      {tool.title}
-                    </div>
-                  </a>
-                </Link>
-              ))}
+              {group.tools.map(tool =>
+                router.pathname === tool.href ? (
+                  <div className="flex items-center bg-gray-100 p-4 sm:py-3 sm:text-sm">
+                    <span className="mr-1">
+                      {React.createElement(tool.icon)}
+                    </span>
+                    {tool.title}
+                  </div>
+                ) : (
+                  <Link key={tool.href} href={tool.href}>
+                    <a>
+                      <div className="flex items-center p-4 hover:bg-gray-100 active:bg-gray-200 sm:py-3 sm:text-sm">
+                        <span className="mr-1">
+                          {React.createElement(tool.icon)}
+                        </span>
+                        {tool.title}
+                      </div>
+                    </a>
+                  </Link>
+                ),
+              )}
             </div>
           ))}
         </div>
