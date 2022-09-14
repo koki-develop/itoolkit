@@ -1,9 +1,8 @@
 import classNames from "classnames";
 import Fuse from "fuse.js";
-import { useRouter } from "next/router";
-import React, { memo, useCallback, useMemo, useRef, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import React, { memo, useCallback, useMemo, useState } from "react";
 import { groupTools, Tool, tools } from "@/tools";
+import LayoutMenuHeader from "./LayoutMenuHeader";
 import LayoutMenuItem from "./LayoutMenuItem";
 import LayoutMenuOverlay from "./LayoutMenuOverlay";
 
@@ -15,22 +14,11 @@ export type LayoutMenuProps = {
 const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
   const { open, onClose } = props;
 
-  const router = useRouter();
-
-  const searchInputRef = useRef<HTMLInputElement | null>(null);
-
   const [searchText, setSearchText] = useState<string>("");
 
-  const handleClickSearchInput = useCallback(() => {
-    searchInputRef.current?.focus();
+  const handleChangeSearchText = useCallback((searchText: string) => {
+    setSearchText(searchText);
   }, []);
-
-  const handleChangeSearchText = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchText(event.currentTarget.value);
-    },
-    [],
-  );
 
   const filteredTools = useMemo(() => {
     const trimmedSearchText = searchText.trim();
@@ -62,21 +50,10 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
           },
         )}
       >
-        <div className="flex h-[60px] items-center border-b p-3">
-          <div
-            className="flex w-full cursor-text items-center overflow-hidden rounded border pl-2"
-            onClick={handleClickSearchInput}
-          >
-            <AiOutlineSearch className="mr-1" />
-            <input
-              ref={searchInputRef}
-              className="w-0 grow py-1 pr-2 outline-none"
-              type="text"
-              value={searchText}
-              onChange={handleChangeSearchText}
-            />
-          </div>
-        </div>
+        <LayoutMenuHeader
+          searchText={searchText}
+          onChangeSearchText={handleChangeSearchText}
+        />
         <div>
           {groups.map(group => (
             <div key={group.name} className="border-b">
