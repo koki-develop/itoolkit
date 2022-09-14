@@ -5,6 +5,7 @@ import React, { memo, useCallback, useMemo, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { groupTools, Tool, tools } from "@/tools";
 import LayoutMenuItem from "./LayoutMenuItem";
+import LayoutMenuOverlay from "./LayoutMenuOverlay";
 
 export type LayoutMenuProps = {
   open: boolean;
@@ -50,16 +51,8 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
 
   return (
     <>
-      <div
-        className={classNames(
-          "fixed top-0 left-0 z-50 h-full w-full bg-black duration-300 ease-in-out sm:hidden",
-          {
-            "opacity-30": open,
-            "pointer-events-none opacity-0": !open,
-          },
-        )}
-        onClick={onClose}
-      />
+      <LayoutMenuOverlay className="sm:hidden" show={open} onClick={onClose} />
+
       <div
         className={classNames(
           "fixed top-0 left-0 z-50 h-full w-2/3 border-r bg-white duration-300 ease-in-out sm:w-[200px] sm:-translate-x-0",
