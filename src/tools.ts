@@ -16,6 +16,11 @@ export type Tool = {
   icon: IconType;
 };
 
+export type ToolGroup = {
+  name: string;
+  tools: Tool[];
+};
+
 export const tools: Tool[] = [
   // Encode/Decode
   {
@@ -52,9 +57,7 @@ export const tools: Tool[] = [
   },
 ];
 
-export const groupTools = (
-  tools: Tool[],
-): { name: string; tools: Tool[] }[] => {
+export const groupTools = (tools: Tool[]): ToolGroup[] => {
   const groups = tools.reduce<Record<string, Tool[]>>((result, current) => {
     if (!result[current.group]) {
       result[current.group] = [];
