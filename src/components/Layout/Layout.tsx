@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import LayoutMenu from "./LayoutMenu";
+import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -32,18 +33,23 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
 
       <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
-        <div className="container flex text-xl font-semibold text-white">
-          <button
-            className={classNames("mr-4 sm:hidden")}
-            onClick={handleOpenMenu}
-          >
-            <AiOutlineMenu />
-          </button>
-          <h1>
-            <Link href="/">
-              <a>iToolkit</a>
-            </Link>
-          </h1>
+        <div className="container flex justify-between text-white">
+          <div className="flex text-xl font-semibold">
+            <button
+              className={classNames("mr-4 sm:hidden")}
+              onClick={handleOpenMenu}
+            >
+              <AiOutlineMenu />
+            </button>
+            <h1>
+              <Link href="/">
+                <a>iToolkit</a>
+              </Link>
+            </h1>
+          </div>
+          <div>
+            <LayoutThemeSwitch />
+          </div>
         </div>
       </header>
 
