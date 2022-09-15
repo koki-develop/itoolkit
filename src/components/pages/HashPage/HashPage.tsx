@@ -5,26 +5,38 @@ import Input from "@/components/util/Input";
 import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
 
+const algorithms = [
+  { displayName: "MD5", name: "md5" },
+  { displayName: "RMD160", name: "rmd160" },
+  { displayName: "SHA1", name: "sha1" },
+  { displayName: "SHA256", name: "sha256" },
+  { displayName: "SHA384", name: "sha384" },
+  { displayName: "SHA512", name: "sha512" },
+];
+
+type Hash = {
+  displayName: string;
+  value: string;
+};
+
+const toHash = (text: string, algorithm: string): string =>
+  crypto.createHash(algorithm).update(text).digest("hex");
+
 const HashPage: NextPage = () => {
   const [text, setText] = useState<string>("");
-  const [md5, setMd5] = useState<string>("");
-  const [rmd160, setRmd160] = useState<string>("");
-  const [sha1, setSha1] = useState<string>("");
-  const [sha256, setSha256] = useState<string>("");
-  const [sha384, setSha384] = useState<string>("");
-  const [sha512, setSha512] = useState<string>("");
+  const [hashes, setHashes] = useState<Hash[]>([]);
 
   const handleChangeText = useCallback((value: string) => {
     setText(value);
   }, []);
 
   useEffect(() => {
-    setMd5(crypto.createHash("md5").update(text).digest("hex"));
-    setRmd160(crypto.createHash("rmd160").update(text).digest("hex"));
-    setSha1(crypto.createHash("sha1").update(text).digest("hex"));
-    setSha256(crypto.createHash("sha256").update(text).digest("hex"));
-    setSha384(crypto.createHash("sha384").update(text).digest("hex"));
-    setSha512(crypto.createHash("sha512").update(text).digest("hex"));
+    setHashes(
+      algorithms.map(algorithm => ({
+        displayName: algorithm.displayName,
+        value: toHash(text, algorithm.name),
+      })),
+    );
   }, [text]);
 
   return (
@@ -40,71 +52,18 @@ const HashPage: NextPage = () => {
         }}
       />
 
-      <div className="mb-2">
-        <Input
-          title="MD5"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: md5,
-          }}
-        />
-      </div>
-
-      <div className="mb-2">
-        <Input
-          title="RMD160"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: rmd160,
-          }}
-        />
-      </div>
-
-      <div className="mb-2">
-        <Input
-          title="SHA1"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: sha1,
-          }}
-        />
-      </div>
-
-      <div className="mb-2">
-        <Input
-          title="SHA256"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: sha256,
-          }}
-        />
-      </div>
-
-      <div className="mb-2">
-        <Input
-          title="SHA384"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: sha384,
-          }}
-        />
-      </div>
-
-      <div className="mb-2">
-        <Input
-          title="SHA512"
-          inputProps={{
-            disabled: true,
-            type: "text",
-            value: sha512,
-          }}
-        />
-      </div>
+      {hashes.map(hash => (
+        <div key={hash.displayName} className="mb-2">
+          <Input
+            title={hash.displayName}
+            inputProps={{
+              disabled: true,
+              type: "text",
+              value: hash.value,
+            }}
+          />
+        </div>
+      ))}
     </Page>
   );
 };
