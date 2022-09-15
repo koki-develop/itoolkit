@@ -56,8 +56,8 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
         />
         <div>
           {groups.map(group => (
-            <div key={group.name} className="border-b dark:border-b-stone-500">
-              <div className="border-b px-4 py-2 text-sm text-gray-500 dark:border-b-stone-500 dark:text-gray-400 sm:py-1">
+            <div key={group.name} className="border-b dark:border-b-stone-600">
+              <div className="border-b px-4 py-2 text-sm text-gray-500 dark:border-b-stone-600 dark:text-gray-400 sm:py-1">
                 {group.name}
               </div>
               {group.tools.map(tool => (
