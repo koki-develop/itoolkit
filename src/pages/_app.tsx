@@ -6,6 +6,10 @@ import Layout from "@/components/Layout";
 import type { AppProps } from "next/app";
 import "@/styles/global.scss";
 
+nProgress.configure({
+  showSpinner: false,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
