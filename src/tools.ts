@@ -49,12 +49,6 @@ export const tools: Tool[] = [
     href: "/tools/hash",
     icon: BsHash,
   },
-  {
-    title: "UUID",
-    group: groups.generator,
-    href: "/tools/uuid",
-    icon: BsSnow,
-  },
 ];
 
 export const groupTools = (tools: Tool[]): ToolGroup[] => {
