@@ -23,9 +23,9 @@ const LayoutMenuHeader: React.FC<LayoutMenuHeaderProps> = memo(props => {
   );
 
   return (
-    <div className="flex h-[60px] items-center border-b p-3 dark:border-b-stone-700">
+    <div className="flex h-[60px] items-center border-b p-3 dark:border-b-stone-600">
       <div
-        className="flex w-full cursor-text items-center overflow-hidden rounded border pl-2"
+        className="flex w-full cursor-text items-center overflow-hidden rounded border pl-2 dark:border-stone-600"
         onClick={handleClickSearchInput}
       >
         <AiOutlineSearch className="mr-1" />
