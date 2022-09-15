@@ -37,7 +37,7 @@ const CopyButton: React.FC<CopyButtonProps> = memo(props => {
       {...buttonProps}
       className={classNames(
         buttonProps.className,
-        "rounded border p-2 outline-none hover:bg-gray-100 active:bg-gray-200",
+        "rounded border p-2 outline-none hover:bg-gray-100 active:bg-gray-200 dark:border-stone-700",
       )}
       onClick={handleCopy}
     >
