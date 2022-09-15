@@ -12,7 +12,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
   const { onOpenMenu } = props;
 
   return (
-    <header className="flex items-center justify-center bg-teal-500 p-4 py-4">
+    <header className="flex items-center justify-center bg-teal-500 p-4 py-4 dark:bg-stone-800">
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center text-xl">
           <button className={classNames("mr-4 sm:hidden")} onClick={onOpenMenu}>
