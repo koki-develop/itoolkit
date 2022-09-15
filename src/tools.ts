@@ -1,7 +1,8 @@
 import { IconType } from "react-icons";
 import { AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
-import { BsHash, BsSnow } from "react-icons/bs";
+import { BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
+import { SiJavascript } from "react-icons/si";
 
 const groups = {
   encodeOrDecode: "Encode/Decode",
@@ -41,6 +42,12 @@ export const tools: Tool[] = [
     group: groups.formatter,
     href: "/tools/css-formatter",
     icon: DiCss3,
+  },
+  {
+    title: "JavaScript Formatter",
+    group: groups.formatter,
+    href: "/tools/js-formatter",
+    icon: SiJavascript,
   },
   // Hash
   {
