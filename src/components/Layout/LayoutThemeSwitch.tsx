@@ -10,7 +10,7 @@ import React, {
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 
 const LayoutThemeSwitch: React.FC = memo(() => {
-  const { theme, setTheme, resolvedTheme, systemTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   const panelRef = useRef<HTMLDivElement | null>(null);
 
@@ -79,7 +79,7 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   }
 
   return (
-    <div className="relative flex items-center justify-center">
+    <div className="relative mr-4 flex items-center justify-center">
       <button onClick={handleOpenList}>
         {React.createElement(selectIcon(resolvedTheme), {
           className: "text-2xl",

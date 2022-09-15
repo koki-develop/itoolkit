@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React, { memo } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutHeaderProps = {
@@ -24,8 +24,16 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
             </Link>
           </h1>
         </div>
-        <div>
+        <div className="flex">
           <LayoutThemeSwitch />
+
+          <a
+            href="https://github.com/koki-develop/itoolkit"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <AiOutlineGithub className="text-2xl" />
+          </a>
         </div>
       </div>
     </header>
