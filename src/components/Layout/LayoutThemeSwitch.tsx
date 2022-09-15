@@ -1,5 +1,12 @@
 import { useTheme } from "next-themes";
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 
 const LayoutThemeSwitch: React.FC = memo(() => {
@@ -48,6 +55,14 @@ const LayoutThemeSwitch: React.FC = memo(() => {
     setOpenList(false);
   }, [setTheme]);
 
+  const items = useMemo(() => {
+    return [
+      { text: "Light", icon: MdLightMode, onClick: handleSelectLight },
+      { text: "Dark", icon: MdDarkMode, onClick: handleSelectDark },
+      { text: "System", icon: MdComputer, onClick: handleSelectSystem },
+    ];
+  }, [handleSelectDark, handleSelectLight, handleSelectSystem]);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -73,29 +88,18 @@ const LayoutThemeSwitch: React.FC = memo(() => {
       {openList && (
         <div
           ref={panelRef}
-          className="absolute top-8 right-0 rounded border bg-white text-black"
+          className="absolute top-8 right-0 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white"
         >
-          <button
-            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
-            onClick={handleSelectLight}
-          >
-            <MdLightMode className="mr-2" />
-            Light
-          </button>
-          <button
-            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
-            onClick={handleSelectDark}
-          >
-            <MdDarkMode className="mr-2" />
-            Dark
-          </button>
-          <button
-            className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200"
-            onClick={handleSelectSystem}
-          >
-            <MdComputer className="mr-2" />
-            System
-          </button>
+          {items.map(item => (
+            <button
+              key={item.text}
+              className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600"
+              onClick={item.onClick}
+            >
+              {React.createElement(item.icon, { className: "mr-2" })}
+              {item.text}
+            </button>
+          ))}
         </div>
       )}
     </div>
