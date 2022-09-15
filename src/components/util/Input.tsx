@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = memo(props => {
           onChange={handleChange}
           className={classNames(
             inputProps?.className,
-            "grow rounded rounded-r-none border p-2 outline-none disabled:text-black dark:border-stone-700 dark:disabled:text-white",
+            "grow rounded rounded-r-none border p-2 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
           )}
         />
         <CopyButton
