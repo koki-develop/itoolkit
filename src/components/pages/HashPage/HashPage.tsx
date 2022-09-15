@@ -55,6 +55,7 @@ const HashPage: NextPage = () => {
       {hashes.map(hash => (
         <div key={hash.displayName} className="mb-2">
           <Input
+            className="text-sm"
             title={hash.displayName}
             inputProps={{
               disabled: true,
