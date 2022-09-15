@@ -38,7 +38,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         onChange={handleChangeValue}
         className={classNames(
           textareaProps?.className,
-          "grow resize-none rounded border p-2 outline-none dark:border-stone-700 dark:bg-stone-800",
+          "grow resize-none rounded border p-2 outline-none disabled:text-white dark:border-stone-700 dark:bg-stone-800",
           {
             "border-red-500 dark:border-red-500": !!error,
           },
