@@ -20,7 +20,7 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
   const body = (
     <div
       className={classNames("flex items-center p-4 sm:py-3 sm:text-sm", {
-        "bg-gray-200 dark:bg-stone-600": active,
+        "bg-gray-200 dark:bg-stone-700": active,
         "hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600":
           !active,
       })}
