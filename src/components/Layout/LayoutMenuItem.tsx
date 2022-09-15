@@ -20,8 +20,9 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
   const body = (
     <div
       className={classNames("flex items-center p-4 sm:py-3 sm:text-sm", {
-        "bg-gray-200": active,
-        "hover:bg-gray-100 active:bg-gray-200": !active,
+        "bg-gray-200 dark:bg-stone-600": active,
+        "hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600":
+          !active,
       })}
     >
       <span className="mr-1">{React.createElement(tool.icon)}</span>
