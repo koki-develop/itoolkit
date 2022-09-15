@@ -23,7 +23,7 @@ const LayoutMenuHeader: React.FC<LayoutMenuHeaderProps> = memo(props => {
   );
 
   return (
-    <div className="flex h-[60px] items-center border-b p-3">
+    <div className="flex h-[60px] items-center border-b p-3 dark:border-b-stone-500">
       <div
         className="flex w-full cursor-text items-center overflow-hidden rounded border pl-2"
         onClick={handleClickSearchInput}
