@@ -30,6 +30,7 @@
     "@types/js-beautify": "^1.13.3",
     "@types/node": "18.7.16",
     "@types/nprogress": "^0.2.0",
+    "@types/qrcode": "^1.5.0",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",
