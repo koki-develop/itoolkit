@@ -3,7 +3,7 @@ import { AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
 import { BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
-import { Base64 } from "@/components/util/icons";
+import { Base64, Icon } from "@/components/util/icons";
 
 const groups = {
   encodeOrDecode: "Encode/Decode",
@@ -15,7 +15,7 @@ export type Tool = {
   title: string;
   group: string;
   href: string;
-  icon: IconType;
+  icon: IconType | Icon;
 };
 
 export type ToolGroup = {

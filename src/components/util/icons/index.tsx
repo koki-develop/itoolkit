@@ -3,6 +3,8 @@ import Base64Icon from "./base64.svg";
 
 type IconProps = React.SVGProps<SVGElement>;
 
-export const Base64: React.FC<IconProps> = props => {
+export type Icon = React.FC<IconProps>;
+
+export const Base64: Icon = props => {
   return <Base64Icon {...props} />;
 };
