@@ -1,8 +1,7 @@
 import { html } from "js-beautify";
 import { NextPage } from "next";
 import React, { useCallback } from "react";
-import Page from "@/components/util/Page";
-import TextAreas from "@/components/util/TextAreas";
+import FormatterPage from "@/components/util/FormatterPage";
 
 const HtmlFormatterPage: NextPage = () => {
   const formatHtml = useCallback(async (plain: string): Promise<string> => {
@@ -12,18 +11,11 @@ const HtmlFormatterPage: NextPage = () => {
   }, []);
 
   return (
-    <Page title="HTML Formatter">
-      <TextAreas
-        left={{
-          title: "HTML",
-          toRightFunc: formatHtml,
-        }}
-        right={{
-          title: "Formatted",
-          disabled: true,
-        }}
-      />
-    </Page>
+    <FormatterPage
+      title="HTML Formatter"
+      left={{ title: "HTML" }}
+      format={formatHtml}
+    />
   );
 };
 
