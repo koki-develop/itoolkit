@@ -3,6 +3,7 @@ import { AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
 import { BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
+import { Base64 } from "@/components/util/icons";
 
 const groups = {
   encodeOrDecode: "Encode/Decode",
@@ -29,6 +30,12 @@ export const tools: Tool[] = [
     group: groups.encodeOrDecode,
     href: "/tools/url-encode-decode",
     icon: AiOutlineLink,
+  },
+  {
+    title: "Base64 Encode/Decode",
+    group: groups.encodeOrDecode,
+    href: "/tools/base64-encode-decode",
+    icon: Base64,
   },
   // Formatter
   {
