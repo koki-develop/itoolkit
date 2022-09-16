@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import { AiOutlineHtml5, AiOutlineLink } from "react-icons/ai";
+import { AiOutlineHtml5, AiOutlineLink, AiOutlineQrcode } from "react-icons/ai";
 import { BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
@@ -56,12 +56,18 @@ export const tools: Tool[] = [
     href: "/tools/js-formatter",
     icon: SiJavascript,
   },
-  // Hash
+  // Generator
   {
     title: "Hash",
     group: groups.generator,
     href: "/tools/hash",
     icon: BsHash,
+  },
+  {
+    title: "QR Code",
+    group: groups.generator,
+    href: "/tools/qrcode",
+    icon: AiOutlineQrcode,
   },
 ];
 
