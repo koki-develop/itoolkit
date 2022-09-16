@@ -3,7 +3,7 @@ import React, { memo, useMemo } from "react";
 
 export type PageProps = {
   children: React.ReactNode;
-  title: string;
+  title?: string;
 };
 
 const Page: React.FC<PageProps> = memo(props => {
@@ -23,7 +23,7 @@ const Page: React.FC<PageProps> = memo(props => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
-      <h2 className="mb-2 text-2xl">{title}</h2>
+      {title && <h2 className="mb-2 text-2xl">{title}</h2>}
       {children}
     </>
   );
