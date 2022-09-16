@@ -18,7 +18,7 @@ const QrcodePage: NextPage = () => {
       setError(null);
     } else {
       qrcode
-        .toDataURL(value)
+        .toDataURL(value, { width: 350 })
         .then(src => {
           setQrcodeSrc(src);
           setError(null);
