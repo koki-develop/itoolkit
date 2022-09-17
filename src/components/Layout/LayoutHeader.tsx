@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import React, { memo } from "react";
 import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
+import Logo from "@/../public/logo.svg";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutHeaderProps = {
@@ -20,7 +21,9 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           </button>
           <h1>
             <Link href="/">
-              <a>iToolkit</a>
+              <a>
+                <Logo />
+              </a>
             </Link>
           </h1>
         </div>
