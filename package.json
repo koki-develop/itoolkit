@@ -11,7 +11,6 @@
     "fmt": "prettier --write . && yarn lint --fix"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.1",
     "classnames": "2.3.1",
     "copy-to-clipboard": "3.3.2",
     "fuse.js": "6.6.2",
