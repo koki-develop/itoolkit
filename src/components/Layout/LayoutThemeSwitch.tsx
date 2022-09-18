@@ -1,4 +1,4 @@
-import { useTheme } from "next-themes";
+import classNames from "classnames";
 import React, {
   memo,
   useCallback,
@@ -7,28 +7,25 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { IconType } from "react-icons";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
+import { useTheme, Theme } from "@/hooks/themeHooks";
+
+const selectIcon = (theme: Theme): IconType => {
+  return {
+    light: MdLightMode,
+    dark: MdDarkMode,
+    system: MdComputer,
+  }[theme];
+};
 
 const LayoutThemeSwitch: React.FC = memo(() => {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const panelRef = useRef<HTMLDivElement | null>(null);
 
   const [mounted, setMounted] = useState<boolean>(false);
   const [openList, setOpenList] = useState<boolean>(false);
-
-  const selectIcon = useCallback((theme?: string) => {
-    switch (theme) {
-      case "light":
-        return MdLightMode;
-      case "dark":
-        return MdDarkMode;
-      case "system":
-        return MdComputer;
-      default:
-        return MdDarkMode;
-    }
-  }, []);
 
   const handleOpenList = useCallback(() => {
     setOpenList(true);
@@ -57,9 +54,24 @@ const LayoutThemeSwitch: React.FC = memo(() => {
 
   const items = useMemo(() => {
     return [
-      { text: "Light", icon: MdLightMode, onClick: handleSelectLight },
-      { text: "Dark", icon: MdDarkMode, onClick: handleSelectDark },
-      { text: "System", icon: MdComputer, onClick: handleSelectSystem },
+      {
+        text: "Light",
+        theme: "light",
+        icon: MdLightMode,
+        onClick: handleSelectLight,
+      },
+      {
+        text: "Dark",
+        theme: "dark",
+        icon: MdDarkMode,
+        onClick: handleSelectDark,
+      },
+      {
+        text: "System",
+        theme: "system",
+        icon: MdComputer,
+        onClick: handleSelectSystem,
+      },
     ];
   }, [handleSelectDark, handleSelectLight, handleSelectSystem]);
 
@@ -85,23 +97,29 @@ const LayoutThemeSwitch: React.FC = memo(() => {
           className: "text-2xl",
         })}
       </button>
-      {openList && (
-        <div
-          ref={panelRef}
-          className="absolute top-8 right-0 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white"
-        >
-          {items.map(item => (
-            <button
-              key={item.text}
-              className="flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600"
-              onClick={item.onClick}
-            >
-              {React.createElement(item.icon, { className: "mr-2" })}
-              {item.text}
-            </button>
-          ))}
-        </div>
-      )}
+      <div
+        ref={panelRef}
+        className={classNames(
+          "absolute top-8 right-0 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white",
+          { hidden: !openList },
+        )}
+      >
+        {items.map(item => (
+          <button
+            key={item.text}
+            className={classNames(
+              "flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
+              {
+                "bg-gray-200 dark:bg-stone-700": item.theme === theme,
+              },
+            )}
+            onClick={item.onClick}
+          >
+            {React.createElement(item.icon, { className: "mr-2" })}
+            {item.text}
+          </button>
+        ))}
+      </div>
     </div>
   );
 });

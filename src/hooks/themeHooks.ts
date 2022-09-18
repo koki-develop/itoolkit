@@ -5,7 +5,7 @@ export type ResolvedTheme = "light" | "dark";
 export type Theme = ResolvedTheme | "system";
 
 export const useTheme = () => {
-  const { resolvedTheme, setTheme: setNextTheme } = useNextTheme();
+  const { theme, resolvedTheme, setTheme: setNextTheme } = useNextTheme();
 
   const setTheme = useCallback(
     (theme: Theme) => {
@@ -15,6 +15,7 @@ export const useTheme = () => {
   );
 
   return {
+    theme: theme as Theme,
     resolvedTheme: resolvedTheme as ResolvedTheme,
     setTheme,
   };
