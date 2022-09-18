@@ -69,7 +69,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
         </div>
 
         <div className="-mt-[1px] flex flex-col items-center justify-center border-t py-2 text-sm dark:border-t-stone-600">
-          <div className="mb-1">&copy;2022 Koki Sato</div>
+          <div className="mb-1">&copy;2022</div>
           <div>
             <Link href="/privacy">
               <a>Privacy Policy</a>
