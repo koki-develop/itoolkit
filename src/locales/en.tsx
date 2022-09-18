@@ -6,6 +6,12 @@ export const en: T = {
     description: "Awesome tools for development.",
   },
 
+  errors: {
+    invalidText: "Invalid text",
+    invalidBase64Data: "Invalid Base64 data",
+    tooLongText: "Text is too long",
+  },
+
   toolGroups: {
     encodeDecode: { name: "Encode/Decode" },
     formatter: { name: "Formatter" },

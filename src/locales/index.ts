@@ -13,6 +13,12 @@ export type T = {
     description: string;
   };
 
+  errors: {
+    invalidText: string;
+    invalidBase64Data: string;
+    tooLongText: string;
+  };
+
   toolGroups: {
     encodeDecode: {
       name: string;

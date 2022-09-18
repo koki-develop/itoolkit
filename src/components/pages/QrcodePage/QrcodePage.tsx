@@ -13,22 +13,25 @@ const QrcodePage: NextPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [qrcodeSrc, setQrcodeSrc] = useState<string | null>(null);
 
-  const handleChangeText = useCallback((value: string) => {
-    setText(value);
+  const handleChangeText = useCallback(
+    (value: string) => {
+      setText(value);
 
-    if (value == "") {
-      setQrcodeSrc(null);
-      setError(null);
-    } else {
-      qrcode
-        .toDataURL(value, { width: 350 })
-        .then(src => {
-          setQrcodeSrc(src);
-          setError(null);
-        })
-        .catch(err => setError(err.message));
-    }
-  }, []);
+      if (value == "") {
+        setQrcodeSrc(null);
+        setError(null);
+      } else {
+        qrcode
+          .toDataURL(value, { width: 350 })
+          .then(src => {
+            setQrcodeSrc(src);
+            setError(null);
+          })
+          .catch(err => setError(t.errors.tooLongText));
+      }
+    },
+    [t.errors.tooLongText],
+  );
 
   return (
     <Page title={t.tools.qrCode.name}>
