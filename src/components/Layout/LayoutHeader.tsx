@@ -22,7 +22,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           <h1>
             <Link href="/">
               <a>
-                <Logo />
+                <Logo aria-label="iToolkit - Awesome tools for development" />
               </a>
             </Link>
           </h1>
