@@ -34,7 +34,7 @@ const QrcodePage: NextPage = () => {
   );
 
   return (
-    <Page title={t.tools.qrCode.name}>
+    <Page title={t.tools.qrCode.name} description={t.tools.qrCode.description}>
       <TextArea
         title={t.words.text}
         error={error}

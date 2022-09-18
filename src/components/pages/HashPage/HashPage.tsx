@@ -43,7 +43,7 @@ const HashPage: NextPage = () => {
   }, [text]);
 
   return (
-    <Page title={t.tools.hash.name}>
+    <Page title={t.tools.hash.name} description={t.tools.hash.description}>
       <TextArea
         title={t.words.text}
         error={null}

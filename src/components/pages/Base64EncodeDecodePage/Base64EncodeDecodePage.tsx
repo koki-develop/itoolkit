@@ -27,7 +27,10 @@ const Base64EncodeDecodePage: NextPage = () => {
   }, []);
 
   return (
-    <Page title={t.tools.base64EncodeDecode.name}>
+    <Page
+      title={t.tools.base64EncodeDecode.name}
+      description={t.tools.base64EncodeDecode.description}
+    >
       <TextAreas
         left={{
           title: t.words.encodedText,

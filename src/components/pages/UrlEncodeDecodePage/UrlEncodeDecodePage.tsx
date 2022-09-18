@@ -25,7 +25,10 @@ const UrlEncodeDecodePage: NextPage = () => {
   }, []);
 
   return (
-    <Page title={t.tools.urlEncodeDecode.name}>
+    <Page
+      title={t.tools.urlEncodeDecode.name}
+      description={t.tools.urlEncodeDecode.description}
+    >
       <TextAreas
         left={{
           title: t.words.encodedText,
