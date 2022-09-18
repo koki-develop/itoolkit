@@ -1,14 +1,8 @@
 import classNames from "classnames";
-import React, {
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { IconType } from "react-icons";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
+import Popper from "@/components/util/Popper";
 import { useTheme, Theme } from "@/hooks/themeHooks";
 
 const selectIcon = (theme: Theme): IconType => {
@@ -22,35 +16,32 @@ const selectIcon = (theme: Theme): IconType => {
 const LayoutThemeSwitch: React.FC = memo(() => {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
-  const panelRef = useRef<HTMLDivElement | null>(null);
-
   const [mounted, setMounted] = useState<boolean>(false);
   const [openList, setOpenList] = useState<boolean>(false);
 
-  const handleOpenList = useCallback(() => {
-    setOpenList(true);
-  }, []);
+  const handleOpenList = useCallback(() => setOpenList(true), []);
+  const handleCloseList = useCallback(() => setOpenList(false), []);
 
-  const handleCloseList = useCallback((e: MouseEvent) => {
-    if (!panelRef.current?.contains(e.target as Node)) {
+  const handleSelectTheme = useCallback(
+    (theme: Theme) => {
+      setTheme(theme);
       setOpenList(false);
-    }
-  }, []);
+    },
+    [setTheme],
+  );
 
-  const handleSelectSystem = useCallback(() => {
-    setTheme("system");
-    setOpenList(false);
-  }, [setTheme]);
-
-  const handleSelectDark = useCallback(() => {
-    setTheme("dark");
-    setOpenList(false);
-  }, [setTheme]);
-
-  const handleSelectLight = useCallback(() => {
-    setTheme("light");
-    setOpenList(false);
-  }, [setTheme]);
+  const handleSelectSystem = useCallback(
+    () => handleSelectTheme("system"),
+    [handleSelectTheme],
+  );
+  const handleSelectDark = useCallback(
+    () => handleSelectTheme("dark"),
+    [handleSelectTheme],
+  );
+  const handleSelectLight = useCallback(
+    () => handleSelectTheme("light"),
+    [handleSelectTheme],
+  );
 
   const items = useMemo(() => {
     return [
@@ -79,13 +70,6 @@ const LayoutThemeSwitch: React.FC = memo(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleCloseList);
-    return () => {
-      document.removeEventListener("mousedown", handleCloseList);
-    };
-  }, [handleCloseList]);
-
   if (!mounted) {
     return null;
   }
@@ -97,13 +81,7 @@ const LayoutThemeSwitch: React.FC = memo(() => {
           className: "text-2xl",
         })}
       </button>
-      <div
-        ref={panelRef}
-        className={classNames(
-          "absolute top-8 right-0 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white",
-          { hidden: !openList },
-        )}
-      >
+      <Popper open={openList} onClose={handleCloseList}>
         {items.map(item => (
           <button
             key={item.text}
@@ -119,7 +97,7 @@ const LayoutThemeSwitch: React.FC = memo(() => {
             {item.text}
           </button>
         ))}
-      </div>
+      </Popper>
     </div>
   );
 });
