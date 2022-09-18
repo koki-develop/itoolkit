@@ -1,6 +1,6 @@
 module.exports = {
   extends: ["next/core-web-vitals", "prettier"],
-  plugins: ["unused-imports"],
+  plugins: ["unused-imports", "@typescript-eslint"],
   rules: {
     "unused-imports/no-unused-imports": "error",
     "import/order": [
