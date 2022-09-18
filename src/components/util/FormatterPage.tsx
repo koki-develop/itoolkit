@@ -3,7 +3,7 @@ import Page, { PageProps } from "@/components/util/Page";
 import TextAreas, { TextAreasProps } from "@/components/util/TextAreas";
 
 export type FormatterPageProps = Omit<PageProps, "children"> & {
-  format: (plain: string) => Promise<string>;
+  format: (plain: string) => Promise<string> | string;
   left: Omit<TextAreasProps["left"], "disabled" | "toRightFunc">;
   right: Omit<TextAreasProps["left"], "disabled" | "toRightFunc">;
 };

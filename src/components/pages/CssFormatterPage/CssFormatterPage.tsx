@@ -1,15 +1,13 @@
-import { css } from "js-beautify";
 import { NextPage } from "next";
-import React, { useCallback } from "react";
+import React from "react";
 import FormatterPage from "@/components/util/FormatterPage";
 import { useI18n } from "@/hooks/i18nHooks";
+import { useFormat } from "@/hooks/libHooks";
 
 const CssFormatterPage: NextPage = () => {
   const { t } = useI18n();
 
-  const formatCss = useCallback(async (plain: string): Promise<string> => {
-    return css(plain);
-  }, []);
+  const { formatCss } = useFormat();
 
   return (
     <FormatterPage

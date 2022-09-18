@@ -1,3 +1,4 @@
+import { css } from "js-beautify";
 import { useCallback } from "react";
 import { useI18n } from "./i18nHooks";
 
@@ -23,5 +24,13 @@ export const useBase64 = () => {
   return {
     base64Encode,
     base64Decode,
+  };
+};
+
+export const useFormat = () => {
+  const formatCss = useCallback((cssText: string) => css(cssText), []);
+
+  return {
+    formatCss,
   };
 };
