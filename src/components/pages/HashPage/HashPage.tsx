@@ -1,12 +1,12 @@
-import crypto from "crypto";
 import { NextPage } from "next";
 import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/util/Input";
 import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
 import { useI18n } from "@/hooks/i18nHooks";
+import { HashAlgorithm, useHash } from "@/hooks/libHooks";
 
-const algorithms = [
+const algorithms: { displayName: string; name: HashAlgorithm }[] = [
   { displayName: "MD5", name: "md5" },
   { displayName: "RMD160", name: "rmd160" },
   { displayName: "SHA1", name: "sha1" },
@@ -20,11 +20,10 @@ type Hash = {
   value: string;
 };
 
-const toHash = (text: string, algorithm: string): string =>
-  crypto.createHash(algorithm).update(text).digest("hex");
-
 const HashPage: NextPage = () => {
   const { t } = useI18n();
+
+  const toHash = useHash();
 
   const [text, setText] = useState<string>("");
   const [hashes, setHashes] = useState<Hash[]>([]);
@@ -40,7 +39,7 @@ const HashPage: NextPage = () => {
         value: toHash(text, algorithm.name),
       })),
     );
-  }, [text]);
+  }, [toHash, text]);
 
   return (
     <Page title={t.tools.hash.name} description={t.tools.hash.description}>

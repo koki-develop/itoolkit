@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { css } from "js-beautify";
 import { useCallback } from "react";
 import { useI18n } from "./i18nHooks";
@@ -33,4 +34,22 @@ export const useFormat = () => {
   return {
     formatCss,
   };
+};
+
+export type HashAlgorithm =
+  | "md5"
+  | "rmd160"
+  | "sha1"
+  | "sha256"
+  | "sha384"
+  | "sha512";
+
+export const useHash = () => {
+  const toHash = useCallback(
+    (str: string, algorithm: HashAlgorithm): string =>
+      crypto.createHash(algorithm).update(str).digest("hex"),
+    [],
+  );
+
+  return toHash;
 };
