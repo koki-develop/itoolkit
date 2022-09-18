@@ -27,7 +27,7 @@ const QrcodePage: NextPage = () => {
             setQrcodeSrc(src);
             setError(null);
           })
-          .catch(err => setError(t.errors.tooLongText));
+          .catch(() => setError(t.errors.tooLongText));
       }
     },
     [t.errors.tooLongText],
