@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import LayoutHeader from "./LayoutHeader";
 import LayoutMenu from "./LayoutMenu";
+import LayoutMenuOverlay from "./LayoutMenuOverlay";
 
 export type LayoutProps = {
   children: React.ReactNode;
@@ -28,7 +29,12 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[220px]",
       )}
     >
-      <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
+      <LayoutMenuOverlay
+        className="sm:hidden"
+        show={openMenu}
+        onClick={handleCloseMenu}
+      />
+      <LayoutMenu open={openMenu} />
       <LayoutHeader onOpenMenu={handleOpenMenu} />
 
       <main className="flex grow justify-center px-4 py-2">
