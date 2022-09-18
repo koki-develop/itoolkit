@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Input from "@/components/util/Input";
 import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
+import { useI18n } from "@/hooks/i18nHooks";
 
 const algorithms = [
   { displayName: "MD5", name: "md5" },
@@ -23,6 +24,8 @@ const toHash = (text: string, algorithm: string): string =>
   crypto.createHash(algorithm).update(text).digest("hex");
 
 const HashPage: NextPage = () => {
+  const { t } = useI18n();
+
   const [text, setText] = useState<string>("");
   const [hashes, setHashes] = useState<Hash[]>([]);
 
@@ -40,9 +43,9 @@ const HashPage: NextPage = () => {
   }, [text]);
 
   return (
-    <Page title="Hash">
+    <Page title={t.tools.hash.name}>
       <TextArea
-        title="Text"
+        title={t.words.text}
         error={null}
         value={text}
         onChange={handleChangeText}

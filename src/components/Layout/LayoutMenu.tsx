@@ -1,8 +1,7 @@
 import classNames from "classnames";
-import Fuse from "fuse.js";
 import Link from "next/link";
-import React, { memo, useCallback, useMemo, useState } from "react";
-import { groupTools, Tool, tools } from "@/tools";
+import React, { memo, useCallback, useState } from "react";
+import { useToolGroups, useTools } from "@/hooks/toolHooks";
 import LayoutMenuHeader from "./LayoutMenuHeader";
 import LayoutMenuItem from "./LayoutMenuItem";
 import LayoutMenuOverlay from "./LayoutMenuOverlay";
@@ -17,26 +16,12 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
 
   const [searchText, setSearchText] = useState<string>("");
 
+  const tools = useTools(searchText);
+  const groups = useToolGroups(tools);
+
   const handleChangeSearchText = useCallback((searchText: string) => {
     setSearchText(searchText);
   }, []);
-
-  const filteredTools = useMemo(() => {
-    const trimmedSearchText = searchText.trim();
-    if (trimmedSearchText === "") {
-      return tools;
-    }
-
-    const fuse = new Fuse(tools, {
-      keys: ["title"],
-    });
-
-    return fuse.search(trimmedSearchText).map(result => result.item);
-  }, [searchText]);
-
-  const groups: { name: string; tools: Tool[] }[] = useMemo(() => {
-    return groupTools(filteredTools);
-  }, [filteredTools]);
 
   return (
     <>

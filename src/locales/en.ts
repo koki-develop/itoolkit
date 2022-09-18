@@ -46,11 +46,14 @@ export const en: T = {
   },
 
   words: {
-    encoded: "Encoded",
-    decoded: "Decoded",
+    encodedText: "Encoded",
+    decodedText: "Decoded",
     html: "HTML",
+    formattedHtml: "Formatted HTML",
     css: "CSS",
+    formattedCss: "Formatted CSS",
     javascript: "JavaScript",
+    formattedJavaScript: "Formatted JavaScript",
     text: "Text",
   },
 } as const;

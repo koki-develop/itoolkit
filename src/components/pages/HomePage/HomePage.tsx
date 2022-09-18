@@ -1,13 +1,12 @@
 import { NextPage } from "next";
-import React, { useMemo } from "react";
+import React from "react";
 import Page from "@/components/util/Page";
-import { groupTools, tools } from "@/tools";
+import { useToolGroups, useTools } from "@/hooks/toolHooks";
 import HomeToolCard from "./HomeToolCard";
 
 const HomePage: NextPage = () => {
-  const groups = useMemo(() => {
-    return groupTools(tools);
-  }, []);
+  const tools = useTools("");
+  const groups = useToolGroups(tools);
 
   return (
     <Page>

@@ -37,11 +37,16 @@ export type T = {
   };
 
   words: {
-    encoded: string;
-    decoded: string;
+    encodedText: string;
+    decodedText: string;
+
     html: string;
+    formattedHtml: string;
     css: string;
+    formattedCss: string;
     javascript: string;
+    formattedJavaScript: string;
+
     text: string;
   };
 };

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useMemo } from "react";
-import { Tool } from "@/tools";
+import { Tool } from "@/types/tool";
 
 export type LayoutMenuItemProps = {
   tool: Tool;
@@ -19,14 +19,14 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
 
   const body = (
     <div
-      className={classNames("flex items-center p-4 sm:py-3 sm:text-sm", {
+      className={classNames("flex items-center p-4 pr-0 sm:py-3 sm:text-sm", {
         "bg-gray-200 dark:bg-stone-700": active,
         "hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600":
           !active,
       })}
     >
       <span className="mr-1">{React.createElement(tool.icon)}</span>
-      {tool.title}
+      {tool.name}
     </div>
   );
 

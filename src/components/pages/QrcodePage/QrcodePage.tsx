@@ -4,8 +4,11 @@ import qrcode from "qrcode";
 import React, { useCallback, useState } from "react";
 import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
+import { useI18n } from "@/hooks/i18nHooks";
 
 const QrcodePage: NextPage = () => {
+  const { t } = useI18n();
+
   const [text, setText] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [qrcodeSrc, setQrcodeSrc] = useState<string | null>(null);
@@ -28,9 +31,9 @@ const QrcodePage: NextPage = () => {
   }, []);
 
   return (
-    <Page title="QR Code">
+    <Page title={t.tools.qrCode.name}>
       <TextArea
-        title="Text"
+        title={t.words.text}
         error={error}
         value={text}
         onChange={handleChangeText}

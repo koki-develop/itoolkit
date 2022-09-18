@@ -2,12 +2,11 @@ import { NextPage } from "next";
 import React, { useCallback } from "react";
 import Page from "@/components//util/Page";
 import TextAreas from "@/components/util/TextAreas";
-
-const validateBase64 = (base64: string): boolean => {
-  return Buffer.from(base64, "base64").toString("base64") === base64;
-};
+import { useI18n } from "@/hooks/i18nHooks";
 
 const Base64EncodeDecodePage: NextPage = () => {
+  const { t } = useI18n();
+
   const decode = useCallback(async (left: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       const trimmedLeft = left.trim();
@@ -25,14 +24,14 @@ const Base64EncodeDecodePage: NextPage = () => {
   }, []);
 
   return (
-    <Page title="Base64 Encode/Decode">
+    <Page title={t.tools.base64EncodeDecode.name}>
       <TextAreas
         left={{
-          title: "Encoded",
+          title: t.words.encodedText,
           toRightFunc: decode,
         }}
         right={{
-          title: "Decoded",
+          title: t.words.decodedText,
           toLeftFunc: encode,
         }}
       />

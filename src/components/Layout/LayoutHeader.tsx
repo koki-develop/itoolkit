@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { memo } from "react";
 import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import Logo from "@/../public/logo.svg";
+import { useI18n } from "@/hooks/i18nHooks";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutHeaderProps = {
@@ -11,6 +12,8 @@ export type LayoutHeaderProps = {
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
   const { onOpenMenu } = props;
+
+  const { t } = useI18n();
 
   return (
     <header className="sticky top-0 flex items-center justify-center bg-teal-500 p-4 py-4 dark:bg-stone-800 sm:relative">
@@ -22,7 +25,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           <h1>
             <Link href="/">
               <a>
-                <Logo aria-label="iToolkit - Awesome tools for development" />
+                <Logo aria-label={t.app.name} />
               </a>
             </Link>
           </h1>

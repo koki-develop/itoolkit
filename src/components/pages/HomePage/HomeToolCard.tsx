@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { memo } from "react";
-import { Tool } from "@/tools";
+import { Tool } from "@/types/tool";
 
 export type HomeToolCardProps = {
   tool: Tool;
@@ -15,7 +15,7 @@ const HomeToolCard: React.FC<HomeToolCardProps> = memo(props => {
         <div className="mb-2">
           {React.createElement(tool.icon, { className: "text-3xl" })}
         </div>
-        <div className="px-2 text-center">{tool.title}</div>
+        <div className="px-2 text-center">{tool.name}</div>
       </a>
     </Link>
   );

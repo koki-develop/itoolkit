@@ -46,11 +46,14 @@ export const ja: T = {
   },
 
   words: {
-    encoded: "エンコード済",
-    decoded: "デコード済",
+    encodedText: "エンコードされたテキスト",
+    decodedText: "デコードされたテキスト",
     html: "HTML",
+    formattedHtml: "整形されたHTML",
     css: "CSS",
+    formattedCss: "整形されたCSS",
     javascript: "JavaScript",
+    formattedJavaScript: "整形されたJavaScript",
     text: "テキスト",
   },
 } as const;

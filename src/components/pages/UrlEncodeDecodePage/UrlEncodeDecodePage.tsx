@@ -2,8 +2,11 @@ import { NextPage } from "next";
 import React, { useCallback } from "react";
 import Page from "@/components//util/Page";
 import TextAreas from "@/components/util/TextAreas";
+import { useI18n } from "@/hooks/i18nHooks";
 
 const UrlEncodeDecodePage: NextPage = () => {
+  const { t } = useI18n();
+
   const decode = useCallback(async (left: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       try {
@@ -19,14 +22,14 @@ const UrlEncodeDecodePage: NextPage = () => {
   }, []);
 
   return (
-    <Page title="URL Encode/Decode">
+    <Page title={t.tools.urlEncodeDecode.name}>
       <TextAreas
         left={{
-          title: "Encoded",
+          title: t.words.encodedText,
           toRightFunc: decode,
         }}
         right={{
-          title: "Decoded",
+          title: t.words.decodedText,
           toLeftFunc: encode,
         }}
       />
