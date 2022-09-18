@@ -3,28 +3,22 @@ import React, { useCallback } from "react";
 import Page from "@/components//util/Page";
 import TextAreas from "@/components/util/TextAreas";
 import { useI18n } from "@/hooks/i18nHooks";
+import { useBase64 } from "@/hooks/libHooks";
 
 const Base64EncodeDecodePage: NextPage = () => {
   const { t } = useI18n();
 
+  const { base64Decode, base64Encode } = useBase64();
+
   const decode = useCallback(
-    async (left: string): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        const trimmedLeft = left.trim();
-        const buf = Buffer.from(trimmedLeft, "base64");
-        if (buf.toString("base64") !== trimmedLeft) {
-          reject(new Error(t.errors.invalidBase64Data));
-        } else {
-          resolve(buf.toString("utf-8"));
-        }
-      });
-    },
-    [t.errors.invalidBase64Data],
+    async (left: string): Promise<string> => base64Decode(left),
+    [base64Decode],
   );
 
-  const encode = useCallback(async (right: string): Promise<string> => {
-    return Buffer.from(right, "utf-8").toString("base64");
-  }, []);
+  const encode = useCallback(
+    async (right: string): Promise<string> => base64Encode(right),
+    [base64Encode],
+  );
 
   return (
     <Page
