@@ -56,4 +56,41 @@ export const en: T = {
     formattedJavaScript: "Formatted JavaScript",
     text: "Text",
   },
+
+  privacy: {
+    title: "Privacy Policy",
+    useOfAnalysisTools: {
+      title: "Use of Access Analysis Tools",
+      content: (
+        <>
+          This website uses Google Analytics, an access analysis tool provided
+          by Google. Google Analytics uses cookies to collect traffic data. This
+          traffic data is collected anonymously and is not personally
+          identifiable. You can opt out of this feature by disabling cookies, so
+          please check your browser settings. For more information about these
+          terms, please see the{" "}
+          <a
+            className="text-blue-500"
+            href="https://marketingplatform.google.com/about/analytics/terms/us/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Google Analytics Terms of Service
+          </a>
+          .
+        </>
+      ),
+    },
+    updatingPrivacyPolicy: {
+      title: "Updating Privacy Policy",
+      content: (
+        <>
+          In addition to complying with the Japanese laws and regulations
+          applicable to personal information, this website will review and
+          improve the contents of this policy from time to time. The revised and
+          updated privacy policy will always be disclosed on this page.
+        </>
+      ),
+    },
+  },
 } as const;

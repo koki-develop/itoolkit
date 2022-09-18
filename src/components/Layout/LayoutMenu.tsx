@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React, { memo, useCallback, useState } from "react";
+import { useI18n } from "@/hooks/i18nHooks";
 import { useToolGroups, useTools } from "@/hooks/toolHooks";
 import LayoutMenuHeader from "./LayoutMenuHeader";
 import LayoutMenuItem from "./LayoutMenuItem";
@@ -13,6 +14,8 @@ export type LayoutMenuProps = {
 
 const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
   const { open, onClose } = props;
+
+  const { t } = useI18n();
 
   const [searchText, setSearchText] = useState<string>("");
 
@@ -57,7 +60,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
           <div className="mb-1">&copy;2022</div>
           <div>
             <Link href="/privacy">
-              <a>Privacy Policy</a>
+              <a>{t.privacy.title}</a>
             </Link>
           </div>
         </div>

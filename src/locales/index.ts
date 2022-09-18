@@ -50,4 +50,16 @@ export type T = {
 
     text: string;
   };
+
+  privacy: {
+    title: string;
+    useOfAnalysisTools: {
+      title: string;
+      content: React.ReactNode;
+    };
+    updatingPrivacyPolicy: {
+      title: string;
+      content: React.ReactNode;
+    };
+  };
 };
