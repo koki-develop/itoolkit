@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { memo, useMemo } from "react";
+import { useI18n } from "@/hooks/i18nHooks";
 
 export type PageProps = {
   children?: React.ReactNode;
@@ -9,14 +10,15 @@ export type PageProps = {
 const Page: React.FC<PageProps> = memo(props => {
   const { children, title } = props;
 
+  const { t } = useI18n();
+
   const pageTitle = useMemo(() => {
-    const appName = "iToolkit";
     if (!title) {
-      return `${appName} - Awesome tools for development`;
+      return `${t.app.name} - ${t.app.description}`;
     }
 
-    return `${title} | ${appName}`;
-  }, [title]);
+    return `${title} | ${t.app.name}`;
+  }, [t.app.description, t.app.name, title]);
 
   return (
     <>
