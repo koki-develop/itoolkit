@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import nProgress from "nprogress";
 import React, { useCallback, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { useMounted } from "@/hooks/utilHooks";
 import type { AppProps } from "next/app";
 import "@/styles/global.scss";
 
@@ -11,6 +12,7 @@ nProgress.configure({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const mounted = useMounted();
   const router = useRouter();
 
   const handleRouteStart = useCallback(() => {
@@ -20,6 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const handleRouteDone = useCallback(() => {
     nProgress.done();
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
+  }, [mounted, router.pathname]);
 
   useEffect(() => {
     router.events.on("routeChangeStart", handleRouteStart);
