@@ -73,7 +73,7 @@ export const useTools = (searchText: string): Tool[] => {
     }
 
     const fuse = new Fuse(tools, {
-      keys: ["title"],
+      keys: ["name"],
     });
 
     return fuse.search(trimmedSearchText).map(result => result.item);
