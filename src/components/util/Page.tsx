@@ -15,11 +15,11 @@ const Page: React.FC<PageProps> = memo(props => {
 
   const pageTitle = useMemo(() => {
     if (!title) {
-      return `${t.app.name} - ${t.app.description}`;
+      return `${t.app.name} - ${t.app.subtitle}`;
     }
 
     return `${title} | ${t.app.name}`;
-  }, [t.app.description, t.app.name, title]);
+  }, [t.app.name, t.app.subtitle, title]);
 
   const pageDescription = useMemo(() => {
     return description ?? t.app.description;

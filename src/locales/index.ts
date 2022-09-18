@@ -10,6 +10,7 @@ type Tool = {
 export type T = {
   app: {
     name: string;
+    subtitle: string;
     description: string;
   };
 

@@ -3,7 +3,8 @@ import { T } from ".";
 export const en: T = {
   app: {
     name: "iToolkit",
-    description: "Awesome tools for development.",
+    subtitle: "Awesome tools for development",
+    description: "iToolkit is the collection of various tools for development.",
   },
 
   errors: {
