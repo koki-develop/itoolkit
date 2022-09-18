@@ -5,10 +5,11 @@ import { useI18n } from "@/hooks/i18nHooks";
 export type PageProps = {
   children?: React.ReactNode;
   title?: string;
+  description?: string;
 };
 
 const Page: React.FC<PageProps> = memo(props => {
-  const { children, title } = props;
+  const { children, title, description } = props;
 
   const { t } = useI18n();
 
@@ -24,6 +25,13 @@ const Page: React.FC<PageProps> = memo(props => {
     <>
       <Head>
         <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} />
+        {description && (
+          <>
+            <meta name="description" content={description} />
+            <meta property="og:description" content={description} />
+          </>
+        )}
       </Head>
       {title && <h2 className="mb-2 text-2xl">{title}</h2>}
       {children}

@@ -1,8 +1,11 @@
+import path from "path";
 import { ThemeProvider } from "next-themes";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import nProgress from "nprogress";
 import React, { useCallback, useEffect } from "react";
 import Layout from "@/components/Layout";
+import { useI18n } from "@/hooks/i18nHooks";
 import { useMounted } from "@/hooks/utilHooks";
 import type { AppProps } from "next/app";
 import "@/styles/global.scss";
@@ -11,9 +14,17 @@ nProgress.configure({
   showSpinner: false,
 });
 
+const urlJoin = (base: string, ...paths: string[]): string => {
+  const url = new URL(base);
+  url.pathname = path.join(url.pathname, ...paths);
+  return url.href;
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
   const mounted = useMounted();
   const router = useRouter();
+
+  const { t } = useI18n();
 
   const handleRouteStart = useCallback(() => {
     nProgress.start();
@@ -44,6 +55,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
+      <Head>
+        <meta property="og:site_name" content={t.app.name} />
+        <meta
+          property="og:url"
+          content={urlJoin(`https://itoolkit.dev`, router.asPath)}
+        />
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
