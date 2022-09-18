@@ -21,17 +21,17 @@ const Page: React.FC<PageProps> = memo(props => {
     return `${title} | ${t.app.name}`;
   }, [t.app.description, t.app.name, title]);
 
+  const pageDescription = useMemo(() => {
+    return description ?? t.app.description;
+  }, [description, t.app.description]);
+
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} />
-        {description && (
-          <>
-            <meta name="description" content={description} />
-            <meta property="og:description" content={description} />
-          </>
-        )}
+        <meta name="description" content={pageDescription} />
+        <meta property="og:description" content={pageDescription} />
       </Head>
       {title && <h2 className="mb-2 text-2xl">{title}</h2>}
       {children}
