@@ -3,11 +3,7 @@ import React from "react";
 import Page from "@/components/util/Page";
 
 const NotFoundPage: NextPage = () => {
-  return (
-    <Page title="Page Not Found">
-      <></>
-    </Page>
-  );
+  return <Page title="Page Not Found" />;
 };
 
 export default NotFoundPage;
