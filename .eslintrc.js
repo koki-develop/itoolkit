@@ -3,6 +3,7 @@ module.exports = {
   plugins: ["unused-imports", "@typescript-eslint"],
   rules: {
     "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-unused-vars": "error",
     "import/order": [
       "error",
       {
