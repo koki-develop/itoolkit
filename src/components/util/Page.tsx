@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { memo, useMemo } from "react";
 
 export type PageProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title?: string;
 };
 
