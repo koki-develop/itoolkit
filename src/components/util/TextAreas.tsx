@@ -8,10 +8,10 @@ type BaseProps = {
 
 export type TextAreasProps = {
   left: BaseProps & {
-    toRightFunc?: (left: string) => Promise<string>;
+    toRightFunc?: (left: string) => Promise<string> | string;
   };
   right: BaseProps & {
-    toLeftFunc?: (right: string) => Promise<string>;
+    toLeftFunc?: (right: string) => Promise<string> | string;
   };
 };
 
@@ -27,33 +27,35 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   const [rightError, setRightError] = useState<string | null>(null);
 
   const handleChangeLeft = useCallback(
-    (value: string) => {
+    async (value: string) => {
       setLeft(value);
-      toRightFunc?.(value)
-        .then(right => {
-          setRight(right);
-          setRightError(null);
-          setLeftError(null);
-        })
-        .catch(error => {
-          setLeftError(error.message);
-        });
+      if (!toRightFunc) return;
+
+      try {
+        const result = await toRightFunc(value);
+        setRight(result);
+        setRightError(null);
+        setLeftError(null);
+      } catch (error: any) {
+        setLeftError(error.message);
+      }
     },
     [toRightFunc],
   );
 
   const handleChangeRight = useCallback(
-    (value: string) => {
+    async (value: string) => {
       setRight(value);
-      toLeftFunc?.(value)
-        .then(right => {
-          setLeft(right);
-          setLeftError(null);
-          setRightError(null);
-        })
-        .catch(error => {
-          setRightError(error.message);
-        });
+      if (!toLeftFunc) return;
+
+      try {
+        const result = await toLeftFunc(value);
+        setLeft(result);
+        setLeftError(null);
+        setRightError(null);
+      } catch (error: any) {
+        setRightError(error.message);
+      }
     },
     [toLeftFunc],
   );
