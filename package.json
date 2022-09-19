@@ -11,6 +11,7 @@
     "fmt": "prettier --write . && yarn lint --fix"
   },
   "dependencies": {
+    "@sqltools/formatter": "^1.2.3",
     "classnames": "2.3.2",
     "copy-to-clipboard": "3.3.2",
     "fuse.js": "6.6.2",
