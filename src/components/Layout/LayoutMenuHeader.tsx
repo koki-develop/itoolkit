@@ -31,7 +31,8 @@ const LayoutMenuHeader: React.FC<LayoutMenuHeaderProps> = memo(props => {
         <AiOutlineSearch className="mr-1" />
         <input
           ref={searchInputRef}
-          className="w-0 grow bg-transparent py-1 pr-2 outline-none"
+          placeholder="Search Tools"
+          className="w-0 grow bg-transparent py-1 pr-2 outline-none sm:text-sm"
           type="text"
           value={searchText}
           onChange={handleChangeSearchText}
