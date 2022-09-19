@@ -8,6 +8,16 @@
 
 [itoolkit.dev](https://itoolkit.dev) - iToolkit is the collection of various tools for development.
 
+# Development
+
+```sh
+# install dependencies
+$ yarn
+
+# start server
+$ yarn dev
+```
+
 # LICENSE
 
 [MIT](./LICENSE)
