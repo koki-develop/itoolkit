@@ -11,6 +11,7 @@ export const en: T = {
     invalidText: "Invalid text",
     invalidBase64Data: "Invalid Base64 data",
     tooLongText: "Text is too long",
+    failedToParseXml: "Failed to parse XML",
   },
 
   toolGroups: {

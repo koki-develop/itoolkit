@@ -18,6 +18,7 @@ export type T = {
     invalidText: string;
     invalidBase64Data: string;
     tooLongText: string;
+    failedToParseXml: string;
   };
 
   toolGroups: {
