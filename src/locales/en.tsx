@@ -45,6 +45,10 @@ export const en: T = {
       name: "SQL Formatter",
       description: "Format SQL.",
     },
+    xmlFormatter: {
+      name: "XML Formatter",
+      description: "Format XML.",
+    },
     // Generator
     hash: {
       name: "Hash",
@@ -57,6 +61,7 @@ export const en: T = {
   },
 
   words: {
+    text: "Text",
     encodedText: "Encoded",
     decodedText: "Decoded",
     html: "HTML",
@@ -67,7 +72,8 @@ export const en: T = {
     formattedJavaScript: "Formatted JavaScript",
     sql: "SQL",
     formattedSql: "Formatted SQL",
-    text: "Text",
+    xml: "XML",
+    formattedXml: "Formatted XML",
   },
 
   privacy: {

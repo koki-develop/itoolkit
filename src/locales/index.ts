@@ -40,6 +40,7 @@ export type T = {
     cssFormatter: Tool;
     javascriptFormatter: Tool;
     sqlFormatter: Tool;
+    xmlFormatter: Tool;
     // Generator
     hash: Tool;
     qrCode: Tool;
@@ -57,6 +58,8 @@ export type T = {
     formattedJavaScript: string;
     sql: string;
     formattedSql: string;
+    xml: string;
+    formattedXml: string;
 
     text: string;
   };
