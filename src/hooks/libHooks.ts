@@ -69,11 +69,14 @@ export const useFormat = () => {
 
   const formatSql = useCallback((sqlText: string): string => sql(sqlText), []);
 
+  const formatXml = useCallback((xmlText: string): string => xmlText, []);
+
   return {
     formatCss,
     formatHtml,
     formatJs,
     formatSql,
+    formatXml,
   };
 };
 
