@@ -1,13 +1,15 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import qrcode from "qrcode";
 import React, { useCallback, useState } from "react";
 import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
 import { useI18n } from "@/hooks/i18nHooks";
+import { useQrcode } from "@/hooks/libHooks";
 
 const QrcodePage: NextPage = () => {
   const { t } = useI18n();
+
+  const { toDataUrl } = useQrcode();
 
   const [text, setText] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
@@ -16,21 +18,20 @@ const QrcodePage: NextPage = () => {
   const handleChangeText = useCallback(
     (value: string) => {
       setText(value);
-
       if (value == "") {
         setQrcodeSrc(null);
         setError(null);
-      } else {
-        qrcode
-          .toDataURL(value, { width: 350 })
-          .then(src => {
-            setQrcodeSrc(src);
-            setError(null);
-          })
-          .catch(() => setError(t.errors.tooLongText));
+        return;
       }
+
+      toDataUrl(value)
+        .then(src => {
+          setQrcodeSrc(src);
+          setError(null);
+        })
+        .catch(error => setError(error.message));
     },
-    [t.errors.tooLongText],
+    [toDataUrl],
   );
 
   return (

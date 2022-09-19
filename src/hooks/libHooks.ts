@@ -1,7 +1,8 @@
 import crypto from "crypto";
 import { css, html, js } from "js-beautify";
+import qrcode from "qrcode";
 import { useCallback } from "react";
-import { useI18n } from "./i18nHooks";
+import { useI18n } from "@/hooks/i18nHooks";
 
 export const useBase64 = () => {
   const { t } = useI18n();
@@ -64,4 +65,23 @@ export const useHash = () => {
   );
 
   return toHash;
+};
+
+export const useQrcode = () => {
+  const { t } = useI18n();
+
+  const toDataUrl = useCallback(
+    async (text: string): Promise<string> => {
+      try {
+        return await qrcode.toDataURL(text, { width: 350 });
+      } catch {
+        throw new Error(t.errors.tooLongText);
+      }
+    },
+    [t.errors.tooLongText],
+  );
+
+  return {
+    toDataUrl,
+  };
 };
