@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { css, html } from "js-beautify";
+import { css, html, js } from "js-beautify";
 import { useCallback } from "react";
 import { useI18n } from "./i18nHooks";
 
@@ -31,15 +31,20 @@ export const useBase64 = () => {
 export const useFormat = () => {
   const formatCss = useCallback((cssText: string) => css(cssText), []);
 
-  const formatHtml = useCallback((htmlText: string): string => {
-    return html(htmlText, {
-      indent_inner_html: true,
-    });
-  }, []);
+  const formatHtml = useCallback(
+    (htmlText: string): string =>
+      html(htmlText, {
+        indent_inner_html: true,
+      }),
+    [],
+  );
+
+  const formatJs = useCallback((jsText: string): string => js(jsText), []);
 
   return {
     formatCss,
     formatHtml,
+    formatJs,
   };
 };
 
