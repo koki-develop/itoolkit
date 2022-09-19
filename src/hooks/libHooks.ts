@@ -4,6 +4,30 @@ import qrcode from "qrcode";
 import { useCallback } from "react";
 import { useI18n } from "@/hooks/i18nHooks";
 
+export const useUrl = () => {
+  const { t } = useI18n();
+
+  const urlDecode = useCallback(
+    (left: string): string => {
+      try {
+        return decodeURIComponent(left);
+      } catch {
+        throw new Error(t.errors.invalidText);
+      }
+    },
+    [t.errors.invalidText],
+  );
+
+  const urlEncode = useCallback(async (right: string): Promise<string> => {
+    return encodeURIComponent(right);
+  }, []);
+
+  return {
+    urlDecode,
+    urlEncode,
+  };
+};
+
 export const useBase64 = () => {
   const { t } = useI18n();
 

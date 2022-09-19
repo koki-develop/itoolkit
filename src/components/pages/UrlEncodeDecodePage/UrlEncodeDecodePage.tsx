@@ -1,28 +1,14 @@
 import { NextPage } from "next";
-import React, { useCallback } from "react";
+import React from "react";
 import Page from "@/components//util/Page";
 import TextAreas from "@/components/util/TextAreas";
 import { useI18n } from "@/hooks/i18nHooks";
+import { useUrl } from "@/hooks/libHooks";
 
 const UrlEncodeDecodePage: NextPage = () => {
   const { t } = useI18n();
 
-  const decode = useCallback(
-    async (left: string): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        try {
-          resolve(decodeURIComponent(left));
-        } catch {
-          reject(new Error(t.errors.invalidText));
-        }
-      });
-    },
-    [t.errors.invalidText],
-  );
-
-  const encode = useCallback(async (right: string): Promise<string> => {
-    return encodeURIComponent(right);
-  }, []);
+  const { urlDecode, urlEncode } = useUrl();
 
   return (
     <Page
@@ -32,11 +18,11 @@ const UrlEncodeDecodePage: NextPage = () => {
       <TextAreas
         left={{
           title: t.words.encodedText,
-          toRightFunc: decode,
+          toRightFunc: urlDecode,
         }}
         right={{
           title: t.words.decodedText,
-          toLeftFunc: encode,
+          toLeftFunc: urlEncode,
         }}
       />
     </Page>
