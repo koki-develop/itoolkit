@@ -3,6 +3,7 @@ import { format as sql } from "@sqltools/formatter";
 import { css, html, js } from "js-beautify";
 import qrcode from "qrcode";
 import { useCallback } from "react";
+import xml from "xml-formatter";
 import { useI18n } from "@/hooks/i18nHooks";
 
 export const useUrl = () => {
@@ -55,6 +56,8 @@ export const useBase64 = () => {
 };
 
 export const useFormat = () => {
+  const { t } = useI18n();
+
   const formatCss = useCallback((cssText: string) => css(cssText), []);
 
   const formatHtml = useCallback(
@@ -69,11 +72,23 @@ export const useFormat = () => {
 
   const formatSql = useCallback((sqlText: string): string => sql(sqlText), []);
 
+  const formatXml = useCallback(
+    (xmlText: string): string => {
+      try {
+        return xml(xmlText);
+      } catch {
+        throw new Error(t.errors.failedToParseXml);
+      }
+    },
+    [t.errors.failedToParseXml],
+  );
+
   return {
     formatCss,
     formatHtml,
     formatJs,
     formatSql,
+    formatXml,
   };
 };
 

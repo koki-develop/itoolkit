@@ -6,7 +6,7 @@ import {
   AiOutlineLink,
   AiOutlineQrcode,
 } from "react-icons/ai";
-import { BsHash } from "react-icons/bs";
+import { BsCodeSlash, BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
 import { Base64 } from "@/components/util/icons";
@@ -60,6 +60,12 @@ export const useTools = (searchText: string): Tool[] => {
         group: t.toolGroups.formatter.name,
         href: "/tools/sql-formatter",
         icon: AiOutlineConsoleSql,
+      },
+      {
+        name: t.tools.xmlFormatter.name,
+        group: t.toolGroups.formatter.name,
+        href: "/tools/xml-formatter",
+        icon: BsCodeSlash,
       },
       // Generator
       {

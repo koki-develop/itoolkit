@@ -11,6 +11,7 @@ export const en: T = {
     invalidText: "Invalid text",
     invalidBase64Data: "Invalid Base64 data",
     tooLongText: "Text is too long",
+    failedToParseXml: "Failed to parse XML",
   },
 
   toolGroups: {
@@ -45,6 +46,10 @@ export const en: T = {
       name: "SQL Formatter",
       description: "Format SQL.",
     },
+    xmlFormatter: {
+      name: "XML Formatter",
+      description: "Format XML.",
+    },
     // Generator
     hash: {
       name: "Hash",
@@ -57,6 +62,7 @@ export const en: T = {
   },
 
   words: {
+    text: "Text",
     encodedText: "Encoded",
     decodedText: "Decoded",
     html: "HTML",
@@ -67,7 +73,8 @@ export const en: T = {
     formattedJavaScript: "Formatted JavaScript",
     sql: "SQL",
     formattedSql: "Formatted SQL",
-    text: "Text",
+    xml: "XML",
+    formattedXml: "Formatted XML",
   },
 
   privacy: {
