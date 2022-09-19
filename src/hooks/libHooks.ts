@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { format as sql } from "@sqltools/formatter";
 import { css, html, js } from "js-beautify";
 import qrcode from "qrcode";
 import { useCallback } from "react";
@@ -66,10 +67,13 @@ export const useFormat = () => {
 
   const formatJs = useCallback((jsText: string): string => js(jsText), []);
 
+  const formatSql = useCallback((sqlText: string): string => sql(sqlText), []);
+
   return {
     formatCss,
     formatHtml,
     formatJs,
+    formatSql,
   };
 };
 

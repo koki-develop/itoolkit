@@ -41,6 +41,10 @@ export const en: T = {
       name: "JavaScript Formatter",
       description: "Format JavaScript.",
     },
+    sqlFormatter: {
+      name: "SQL Formatter",
+      description: "Format SQL.",
+    },
     // Generator
     hash: {
       name: "Hash",
@@ -61,6 +65,8 @@ export const en: T = {
     formattedCss: "Formatted CSS",
     javascript: "JavaScript",
     formattedJavaScript: "Formatted JavaScript",
+    sql: "SQL",
+    formattedSql: "Formatted SQL",
     text: "Text",
   },
 

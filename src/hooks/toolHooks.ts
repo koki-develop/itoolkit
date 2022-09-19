@@ -1,6 +1,11 @@
 import Fuse from "fuse.js";
 import { useMemo } from "react";
-import { AiOutlineHtml5, AiOutlineLink, AiOutlineQrcode } from "react-icons/ai";
+import {
+  AiOutlineConsoleSql,
+  AiOutlineHtml5,
+  AiOutlineLink,
+  AiOutlineQrcode,
+} from "react-icons/ai";
 import { BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
@@ -49,6 +54,12 @@ export const useTools = (searchText: string): Tool[] => {
         group: t.toolGroups.formatter.name,
         href: "/tools/js-formatter",
         icon: SiJavascript,
+      },
+      {
+        name: t.tools.sqlFormatter.name,
+        group: t.toolGroups.formatter.name,
+        href: "/tools/sql-formatter",
+        icon: AiOutlineConsoleSql,
       },
       // Generator
       {
