@@ -1,10 +1,10 @@
 import classNames from "classnames";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useMemo, useState } from "react";
 import { HiOutlineTranslate } from "react-icons/hi";
 import Popper from "@/components/util/Popper";
 import { Locale, useI18n } from "@/hooks/i18nHooks";
-import Link from "next/link";
 
 const LayoutLocaleSwitch: React.FC = memo(() => {
   const router = useRouter();
