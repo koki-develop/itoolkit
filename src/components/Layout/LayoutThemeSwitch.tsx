@@ -3,6 +3,7 @@ import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { IconType } from "react-icons";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 import Popper from "@/components/util/Popper";
+import { useI18n } from "@/hooks/i18nHooks";
 import { useTheme, Theme } from "@/hooks/themeHooks";
 
 const selectIcon = (theme: Theme): IconType => {
@@ -15,6 +16,8 @@ const selectIcon = (theme: Theme): IconType => {
 
 const LayoutThemeSwitch: React.FC = memo(() => {
   const { theme, setTheme, resolvedTheme } = useTheme();
+
+  const { t } = useI18n();
 
   const [mounted, setMounted] = useState<boolean>(false);
   const [openList, setOpenList] = useState<boolean>(false);
@@ -46,25 +49,32 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   const items = useMemo(() => {
     return [
       {
-        text: "Light",
+        text: t.themes.light,
         theme: "light",
         icon: MdLightMode,
         onClick: handleSelectLight,
       },
       {
-        text: "Dark",
+        text: t.themes.dark,
         theme: "dark",
         icon: MdDarkMode,
         onClick: handleSelectDark,
       },
       {
-        text: "System",
+        text: t.themes.system,
         theme: "system",
         icon: MdComputer,
         onClick: handleSelectSystem,
       },
     ];
-  }, [handleSelectDark, handleSelectLight, handleSelectSystem]);
+  }, [
+    handleSelectDark,
+    handleSelectLight,
+    handleSelectSystem,
+    t.themes.dark,
+    t.themes.light,
+    t.themes.system,
+  ]);
 
   useEffect(() => {
     setMounted(true);
@@ -86,7 +96,7 @@ const LayoutThemeSwitch: React.FC = memo(() => {
           <button
             key={item.text}
             className={classNames(
-              "flex w-full items-center px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
+              "flex w-full items-center whitespace-nowrap px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
               {
                 "bg-gray-200 dark:bg-stone-700": item.theme === theme,
               },

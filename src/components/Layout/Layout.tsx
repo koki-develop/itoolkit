@@ -26,11 +26,11 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "flex min-h-screen flex-col transition-all duration-300 ease-in-out sm:ml-[220px]",
+        "flex min-h-screen flex-col transition-all duration-300 ease-in-out md:ml-[240px]",
       )}
     >
       <LayoutMenuOverlay
-        className="sm:hidden"
+        className="md:hidden"
         show={openMenu}
         onClick={handleCloseMenu}
       />

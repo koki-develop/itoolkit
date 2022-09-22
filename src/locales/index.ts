@@ -1,5 +1,6 @@
 import React from "react";
 
+export { ja } from "./ja";
 export { en } from "./en";
 
 type Tool = {
@@ -63,6 +64,12 @@ export type T = {
     formattedXml: string;
 
     text: string;
+  };
+
+  themes: {
+    light: string;
+    dark: string;
+    system: string;
   };
 
   privacy: {
