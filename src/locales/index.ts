@@ -1,5 +1,6 @@
 import React from "react";
 
+export { ja } from "./ja";
 export { en } from "./en";
 
 type Tool = {
