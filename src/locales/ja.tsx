@@ -77,6 +77,12 @@ export const ja: T = {
     formattedXml: "整形された XML",
   },
 
+  themes: {
+    light: "ライト",
+    dark: "ダーク",
+    system: "システム",
+  },
+
   privacy: {
     title: "プライバシーポリシー",
     useOfAnalysisTools: {

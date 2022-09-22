@@ -77,6 +77,12 @@ export const en: T = {
     formattedXml: "Formatted XML",
   },
 
+  themes: {
+    light: "Light",
+    dark: "Dark",
+    system: "System",
+  },
+
   privacy: {
     title: "Privacy Policy",
     useOfAnalysisTools: {

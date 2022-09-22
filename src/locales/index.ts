@@ -66,6 +66,12 @@ export type T = {
     text: string;
   };
 
+  themes: {
+    light: string;
+    dark: string;
+    system: string;
+  };
+
   privacy: {
     title: string;
     useOfAnalysisTools: {
