@@ -32,7 +32,7 @@ const LayoutMenuHeader: React.FC<LayoutMenuHeaderProps> = memo(props => {
         <input
           ref={searchInputRef}
           placeholder="Search Tools"
-          className="w-0 grow bg-transparent py-1 pr-2 outline-none sm:text-sm"
+          className="w-0 grow bg-transparent py-1 pr-2 outline-none md:text-sm"
           type="text"
           value={searchText}
           onChange={handleChangeSearchText}

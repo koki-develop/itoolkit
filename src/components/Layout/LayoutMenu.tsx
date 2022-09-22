@@ -24,7 +24,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "fixed top-0 left-0 z-50 flex h-full w-2/3 flex-col border-r bg-white duration-300 ease-in-out dark:border-r-stone-700 dark:bg-stone-800 sm:w-[240px] sm:-translate-x-0",
+        "fixed top-0 left-0 z-50 flex h-full w-2/3 flex-col border-r bg-white duration-300 ease-in-out dark:border-r-stone-700 dark:bg-stone-800 md:w-[240px] md:-translate-x-0",
         {
           "-translate-x-0": open,
           "-translate-x-full": !open,
@@ -41,7 +41,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
       <div className="grow overflow-y-auto">
         {groups.map(group => (
           <div key={group.name} className="border-b dark:border-b-stone-600">
-            <div className="border-b px-4 py-2 text-sm text-gray-500 dark:border-b-stone-600 dark:text-gray-400 sm:py-1">
+            <div className="border-b px-4 py-2 text-sm text-gray-500 dark:border-b-stone-600 dark:text-gray-400 md:py-1">
               {group.name}
             </div>
             {group.tools.map(tool => (

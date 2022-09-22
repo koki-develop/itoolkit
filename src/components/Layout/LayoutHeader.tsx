@@ -16,10 +16,10 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
   const { t } = useI18n();
 
   return (
-    <header className="sticky top-0 flex items-center justify-center bg-teal-500 p-4 py-4 dark:bg-stone-800 sm:relative">
+    <header className="sticky top-0 flex items-center justify-center bg-teal-500 p-4 py-4 dark:bg-stone-800 md:relative">
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center text-xl">
-          <button className={classNames("mr-4 sm:hidden")} onClick={onOpenMenu}>
+          <button className={classNames("mr-4 md:hidden")} onClick={onOpenMenu}>
             <AiOutlineMenu />
           </button>
           <h1>
