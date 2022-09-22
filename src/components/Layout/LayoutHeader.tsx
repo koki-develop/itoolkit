@@ -4,6 +4,7 @@ import React, { memo } from "react";
 import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import Logo from "@/../public/logo.svg";
 import { useI18n } from "@/hooks/i18nHooks";
+import LayoutLocaleSwitch from "./LayoutLocaleSwitch";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutHeaderProps = {
@@ -31,6 +32,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           </h1>
         </div>
         <div className="flex">
+          <LayoutLocaleSwitch />
           <LayoutThemeSwitch />
 
           <a

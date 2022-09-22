@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { ja, en, T } from "@/locales";
 
+export type Locale = "ja" | "en";
+
 export const useI18n = () => {
   const { locale } = useRouter();
 
@@ -17,7 +19,7 @@ export const useI18n = () => {
   }, [locale]);
 
   return {
-    locale,
+    locale: locale as Locale,
     t,
   };
 };
