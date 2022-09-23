@@ -15,6 +15,7 @@ const CssFormatterPage: NextPage = () => {
       description={t.tools.cssFormatter.description}
       left={{ title: t.words.css }}
       right={{ title: t.words.formattedCss }}
+      syntax="css"
       format={formatCss}
     />
   );

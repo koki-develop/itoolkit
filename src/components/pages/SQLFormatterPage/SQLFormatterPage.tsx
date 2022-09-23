@@ -15,6 +15,7 @@ const SQLFormatterPage: NextPage = () => {
       description={t.tools.sqlFormatter.description}
       left={{ title: t.words.sql }}
       right={{ title: t.words.formattedSql }}
+      syntax="sql"
       format={formatSql}
     />
   );

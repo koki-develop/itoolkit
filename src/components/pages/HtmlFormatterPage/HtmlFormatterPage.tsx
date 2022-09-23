@@ -15,6 +15,7 @@ const HtmlFormatterPage: NextPage = () => {
       description={t.tools.htmlFormatter.description}
       left={{ title: t.words.html }}
       right={{ title: t.words.formattedHtml }}
+      syntax="html"
       format={formatHtml}
     />
   );

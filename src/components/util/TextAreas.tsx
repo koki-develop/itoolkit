@@ -1,5 +1,5 @@
-import React, { memo, useCallback, useState } from "react";
-import TextArea from "./TextArea";
+import React, { memo, useCallback, useEffect, useState } from "react";
+import TextArea, { Syntax } from "@/components/util/TextArea";
 
 type BaseProps = {
   title: string;
@@ -8,9 +8,11 @@ type BaseProps = {
 
 export type TextAreasProps = {
   left: BaseProps & {
+    syntax?: Syntax;
     toRightFunc?: (left: string) => Promise<string> | string;
   };
   right: BaseProps & {
+    syntax?: Syntax;
     toLeftFunc?: (right: string) => Promise<string> | string;
   };
 };
@@ -26,44 +28,53 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   const [right, setRight] = useState<string>("");
   const [rightError, setRightError] = useState<string | null>(null);
 
-  const handleChangeLeft = useCallback(
-    async (value: string) => {
-      setLeft(value);
-      if (!toRightFunc) return;
+  const handleChangeLeft = useCallback(async (value: string) => {
+    setLeft(value);
+  }, []);
 
+  const handleChangeRight = useCallback(async (value: string) => {
+    setRight(value);
+  }, []);
+
+  useEffect(() => {
+    if (!toRightFunc) return;
+    const timeoutId = setTimeout(async () => {
       try {
-        const result = await toRightFunc(value);
+        const result = await toRightFunc(left);
         setRight(result);
         setRightError(null);
         setLeftError(null);
       } catch (error: any) {
         setLeftError(error.message);
       }
-    },
-    [toRightFunc],
-  );
+    }, 250);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [left, toRightFunc]);
 
-  const handleChangeRight = useCallback(
-    async (value: string) => {
-      setRight(value);
-      if (!toLeftFunc) return;
-
+  useEffect(() => {
+    if (!toLeftFunc) return;
+    const timeoutId = setTimeout(async () => {
       try {
-        const result = await toLeftFunc(value);
+        const result = await toLeftFunc(right);
         setLeft(result);
         setLeftError(null);
         setRightError(null);
       } catch (error: any) {
         setRightError(error.message);
       }
-    },
-    [toLeftFunc],
-  );
+    }, 250);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [right, toLeftFunc]);
 
   return (
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
+        syntax={leftProps.syntax}
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
@@ -71,6 +82,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
       />
       <TextArea
         title={rightProps.title}
+        syntax={rightProps.syntax}
         value={right}
         error={rightError}
         onChange={handleChangeRight}

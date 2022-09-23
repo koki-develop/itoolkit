@@ -23,10 +23,12 @@
     "next-sitemap": "3.1.22",
     "next-themes": "0.2.1",
     "nprogress": "0.2.0",
+    "prismjs": "^1.29.0",
     "qrcode": "1.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
+    "react-simple-code-editor": "^0.13.0",
     "xml-formatter": "2.6.1"
   },
   "devDependencies": {
@@ -35,6 +37,7 @@
     "@types/js-beautify": "1.13.3",
     "@types/node": "18.7.16",
     "@types/nprogress": "0.2.0",
+    "@types/prismjs": "^1.26.0",
     "@types/qrcode": "1.5.0",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",

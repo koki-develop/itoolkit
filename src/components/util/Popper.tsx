@@ -33,7 +33,7 @@ const Popper: React.FC<PopperProps> = memo(props => {
       ref={rootRef}
       className={classNames(
         divProps.className,
-        "absolute top-8 right-0 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white",
+        "absolute top-8 right-0 z-50 rounded border bg-white text-black dark:border-stone-700 dark:bg-stone-800 dark:text-white",
         { hidden: !open },
       )}
     />
