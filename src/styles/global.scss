@@ -8,3 +8,11 @@
 @tailwind utilities;
 
 @import "./nprogress.scss";
+
+html.light {
+  @import "~prismjs/themes/prism";
+}
+
+html.dark {
+  @import "~prismjs/themes/prism-dark";
+}
