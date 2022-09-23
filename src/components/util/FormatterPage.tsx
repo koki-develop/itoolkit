@@ -24,13 +24,13 @@ const FormatterPage: React.FC<FormatterPageProps> = memo(props => {
   return (
     <Page {...pageProps}>
       <TextAreas
-        syntax={syntax}
         left={{
           ...left,
           toRightFunc,
         }}
         right={{
           ...right,
+          syntax,
           disabled: true,
         }}
       />

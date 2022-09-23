@@ -7,17 +7,18 @@ type BaseProps = {
 };
 
 export type TextAreasProps = {
-  syntax?: Syntax;
   left: BaseProps & {
+    syntax?: Syntax;
     toRightFunc?: (left: string) => Promise<string> | string;
   };
   right: BaseProps & {
+    syntax?: Syntax;
     toLeftFunc?: (right: string) => Promise<string> | string;
   };
 };
 
 const TextAreas: React.FC<TextAreasProps> = memo(props => {
-  const { syntax, left: leftProps, right: rightProps } = props;
+  const { left: leftProps, right: rightProps } = props;
 
   const { toRightFunc } = leftProps;
   const { toLeftFunc } = rightProps;
@@ -65,7 +66,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
-        syntax={syntax}
+        syntax={leftProps.syntax}
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
@@ -73,7 +74,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
       />
       <TextArea
         title={rightProps.title}
-        syntax={syntax}
+        syntax={rightProps.syntax}
         value={right}
         error={rightError}
         onChange={handleChangeRight}
