@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useState } from "react";
-import TextArea from "./TextArea";
+import TextArea, { Syntax } from "@/components/util/TextArea";
 
 type BaseProps = {
   title: string;
@@ -7,6 +7,7 @@ type BaseProps = {
 };
 
 export type TextAreasProps = {
+  syntax?: Syntax;
   left: BaseProps & {
     toRightFunc?: (left: string) => Promise<string> | string;
   };
@@ -16,7 +17,7 @@ export type TextAreasProps = {
 };
 
 const TextAreas: React.FC<TextAreasProps> = memo(props => {
-  const { left: leftProps, right: rightProps } = props;
+  const { syntax, left: leftProps, right: rightProps } = props;
 
   const { toRightFunc } = leftProps;
   const { toLeftFunc } = rightProps;
@@ -64,6 +65,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
+        syntax={syntax}
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
@@ -71,6 +73,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
       />
       <TextArea
         title={rightProps.title}
+        syntax={syntax}
         value={right}
         error={rightError}
         onChange={handleChangeRight}
