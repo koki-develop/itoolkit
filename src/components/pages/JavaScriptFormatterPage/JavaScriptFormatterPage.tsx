@@ -15,6 +15,7 @@ const JavaScriptFormatterPage: NextPage = () => {
       description={t.tools.javascriptFormatter.description}
       left={{ title: t.words.javascript }}
       right={{ title: t.words.formattedJavaScript }}
+      syntax="js"
       format={formatJs}
     />
   );

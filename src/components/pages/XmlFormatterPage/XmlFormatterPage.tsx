@@ -15,6 +15,7 @@ const XmlFormatterPage: NextPage = () => {
       description={t.tools.xmlFormatter.description}
       left={{ title: t.words.xml }}
       right={{ title: t.words.formattedXml }}
+      syntax="xml"
       format={formatXml}
     />
   );

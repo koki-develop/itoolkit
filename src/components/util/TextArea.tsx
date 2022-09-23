@@ -1,10 +1,14 @@
 import classNames from "classnames";
-import { highlight, languages } from "prismjs";
+import { Grammar, highlight, languages } from "prismjs";
 import React, { memo, useCallback, useMemo } from "react";
 import Editor from "react-simple-code-editor";
+import "prismjs/components/prism-css";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-markup";
+import "prismjs/components/prism-sql";
 import CopyButton from "./CopyButton";
 
-export type Syntax = "js";
+export type Syntax = "html" | "css" | "js" | "sql" | "xml";
 
 type BaseProps = {
   title: string;
@@ -36,13 +40,22 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
     [onChange],
   );
 
-  const grammar = useMemo(() => {
+  const grammar: Grammar | null = useMemo(() => {
     if (!syntax) return null;
     switch (syntax) {
+      case "html":
+        return languages.html;
+      case "css":
+        return languages.css;
       case "js":
         return languages.js;
+      case "sql":
+        return languages.sql;
+      case "xml":
+        return languages.xml;
     }
   }, [syntax]);
+  console.log("grammar:", grammar);
 
   const highlightCode = useCallback(
     (code: string) => {
