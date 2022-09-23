@@ -27,23 +27,23 @@ export default class Document extends NextDocument {
           <meta name="twitter:site" content="@koki_develop" />
 
           {/* Google tag (gtag.js) */}
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script id="google-analytics" strategy="afterInteractive">
-            {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+          {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+            <>
+              <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+                strategy="afterInteractive"
+              />
+              <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
 
-            gtag('config', '${
-              process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
-            }', { debug_mode: ${
-              process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"
-            } });
-            `}
-          </Script>
+                  gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
+                `}
+              </Script>
+            </>
+          )}
         </Head>
         <body>
           <Main />
