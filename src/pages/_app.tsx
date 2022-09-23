@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (!mounted) return;
-    if (process.env.NEXT_PUBLIC_VERCEL_ENV !== "production") return;
+    if (process.env.NEXT_PUBLIC_ENV !== "production") return;
     window.gtag("config", process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID, {
       page_path: router.pathname,
     });

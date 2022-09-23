@@ -4,8 +4,6 @@ import React from "react";
 
 export default class Document extends NextDocument {
   render(): JSX.Element {
-    console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
-
     return (
       <Html>
         <Head>
@@ -29,7 +27,7 @@ export default class Document extends NextDocument {
           <meta name="twitter:site" content="@koki_develop" />
 
           {/* Google tag (gtag.js) */}
-          {process.env.VERCEL_ENV === "production" && (
+          {process.env.NEXT_PUBLIC_ENV === "production" && (
             <>
               <Script
                 src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
