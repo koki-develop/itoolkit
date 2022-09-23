@@ -85,7 +85,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         <CopyButton copyText={value} className="mb-1" />
       </div>
       {syntax ? (
-        <div className="h-[0px] grow overflow-y-scroll">
+        <div className="h-[0px] grow overflow-y-auto">
           <Editor
             {...props.textareaProps}
             value={value}
