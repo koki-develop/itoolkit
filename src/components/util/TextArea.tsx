@@ -55,7 +55,6 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         return languages.xml;
     }
   }, [syntax]);
-  console.log("grammar:", grammar);
 
   const highlightCode = useCallback(
     (code: string) => {
