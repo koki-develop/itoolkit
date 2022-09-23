@@ -85,24 +85,26 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         <CopyButton copyText={value} className="mb-1" />
       </div>
       {syntax ? (
-        <Editor
-          {...props.textareaProps}
-          value={value}
-          onValueChange={handleChangeValue}
-          highlight={highlightCode}
-          padding={8}
-          style={{ fontFamily: '"Roboto Mono"' }}
-          className={classNames(
-            "grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
-            {
-              "border-red-500 dark:border-red-500": !!error,
-            },
-          )}
-          textareaClassName={classNames(
-            props.textareaProps?.className,
-            "outline-none",
-          )}
-        />
+        <div className="h-[0px] grow overflow-y-scroll">
+          <Editor
+            {...props.textareaProps}
+            value={value}
+            onValueChange={handleChangeValue}
+            highlight={highlightCode}
+            padding={8}
+            style={{ fontFamily: '"Roboto Mono"' }}
+            className={classNames(
+              "min-h-full grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
+              {
+                "border-red-500 dark:border-red-500": !!error,
+              },
+            )}
+            textareaClassName={classNames(
+              props.textareaProps?.className,
+              "outline-none",
+            )}
+          />
+        </div>
       ) : (
         <textarea
           {...props.textareaProps}
