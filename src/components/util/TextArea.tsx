@@ -91,6 +91,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
           onValueChange={handleChangeValue}
           highlight={highlightCode}
           padding={8}
+          style={{ fontFamily: '"Roboto Mono"' }}
           className={classNames(
             "grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
             {
