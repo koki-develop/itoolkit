@@ -4,6 +4,8 @@ import React from "react";
 
 export default class Document extends NextDocument {
   render(): JSX.Element {
+    console.log(process.env.NEXT_PUBLIC_VERCEL_ENV);
+
     return (
       <Html>
         <Head>
