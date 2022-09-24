@@ -2,11 +2,9 @@ import classNames from "classnames";
 import copy from "copy-to-clipboard";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { AiOutlineCheck, AiOutlineCopy } from "react-icons/ai";
+import Button, { ButtonProps } from "@/components/util/Button";
 
-export type CopyButtonProps = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  "children"
-> & {
+export type CopyButtonProps = Omit<ButtonProps, "children"> & {
   copyText: string;
 };
 
@@ -33,11 +31,11 @@ const CopyButton: React.FC<CopyButtonProps> = memo(props => {
   }, [copied]);
 
   return (
-    <button
+    <Button
       {...buttonProps}
       className={classNames(
         buttonProps.className,
-        "rounded border p-2 hover:bg-gray-100 active:bg-gray-200 dark:border-stone-700 dark:bg-stone-800 dark:hover:bg-stone-700 dark:active:bg-stone-600",
+        "rounded border p-2 dark:border-stone-700 dark:bg-stone-800",
       )}
       onClick={handleCopy}
     >
@@ -51,7 +49,7 @@ const CopyButton: React.FC<CopyButtonProps> = memo(props => {
           hidden: !copied,
         })}
       />
-    </button>
+    </Button>
   );
 });
 
