@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
-  const handleOpenMenu = useCallback(() => setOpenMenu(prev => !prev), []);
+  const handleOpenMenu = useCallback(() => setOpenMenu(true), []);
   const handleCloseMenu = useCallback(() => setOpenMenu(false), []);
 
   useEffect(() => {
