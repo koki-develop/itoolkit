@@ -18,8 +18,8 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
       className="w-full p-4 md:py-3 md:text-sm"
       href={tool.href}
       active={router.pathname === tool.href}
+      icon={tool.icon}
     >
-      <span className="mr-1">{React.createElement(tool.icon)}</span>
       {tool.name}
     </LinkButton>
   );
