@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { memo, useMemo } from "react";
+import Link from "@/components/util/Link";
 import { Tool } from "@/types/tool";
 
 export type LayoutMenuItemProps = {
@@ -36,7 +36,7 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
 
   return (
     <Link key={tool.href} href={tool.href}>
-      <a>{body}</a>
+      {body}
     </Link>
   );
 });

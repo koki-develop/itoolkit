@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import Link from "next/link";
 import React, { memo } from "react";
 import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import Logo from "@/../public/logo.svg";
+import Link from "@/components/util/Link";
 import { useI18n } from "@/hooks/i18nHooks";
 import LayoutLocaleSwitch from "./LayoutLocaleSwitch";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
@@ -25,9 +25,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           </button>
           <h1>
             <Link href="/">
-              <a>
-                <Logo aria-label={t.app.name} />
-              </a>
+              <Logo aria-label={t.app.name} />
             </Link>
           </h1>
         </div>

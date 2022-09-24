@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React, { memo } from "react";
+import Link from "@/components/util/Link";
 import { useI18n } from "@/hooks/i18nHooks";
 
 const LayoutMenuFooter: React.FC = memo(() => {
@@ -9,9 +9,7 @@ const LayoutMenuFooter: React.FC = memo(() => {
     <div className="-mt-[1px] flex flex-col items-center justify-center border-t py-2 text-sm dark:border-t-stone-600">
       <div className="mb-1">&copy;2022</div>
       <div>
-        <Link href="/privacy">
-          <a>{t.privacy.title}</a>
-        </Link>
+        <Link href="/privacy">{t.privacy.title}</Link>
       </div>
     </div>
   );
