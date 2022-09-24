@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import React from "react";
 
-type LinkProps = Omit<React.HTMLProps<HTMLAnchorElement>, "href"> & {
+export type LinkProps = Omit<React.HTMLProps<HTMLAnchorElement>, "href"> & {
   href: string;
   locale?: string;
   external?: boolean;
