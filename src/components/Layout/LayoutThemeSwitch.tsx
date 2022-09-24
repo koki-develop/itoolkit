@@ -1,13 +1,13 @@
 import classNames from "classnames";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { IconType } from "react-icons";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 import Button from "@/components/util/Button";
+import { Icon } from "@/components/util/icons";
 import Popper from "@/components/util/Popper";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useTheme, Theme } from "@/hooks/themeHooks";
 
-const selectIcon = (theme: Theme): IconType => {
+const selectIcon = (theme: Theme): Icon => {
   return {
     light: MdLightMode,
     dark: MdDarkMode,

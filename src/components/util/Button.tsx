@@ -1,10 +1,9 @@
 import classNames from "classnames";
 import React, { memo } from "react";
-import { IconType } from "react-icons";
 import { Icon } from "@/components/util/icons";
 
 export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
-  icon?: Icon | IconType;
+  icon?: Icon;
   active?: boolean;
 };
 
