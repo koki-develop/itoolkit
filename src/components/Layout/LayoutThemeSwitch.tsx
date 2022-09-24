@@ -2,18 +2,9 @@ import classNames from "classnames";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 import Button from "@/components/util/Button";
-import { Icon } from "@/components/util/icons";
 import Popper from "@/components/util/Popper";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useTheme, Theme } from "@/hooks/themeHooks";
-
-const selectIcon = (theme: Theme): Icon => {
-  return {
-    light: MdLightMode,
-    dark: MdDarkMode,
-    system: MdComputer,
-  }[theme];
-};
 
 const LayoutThemeSwitch: React.FC = memo(() => {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -88,7 +79,8 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   return (
     <div className="relative mr-4 flex items-center justify-center">
       <button onClick={handleOpenList}>
-        {React.createElement(selectIcon(resolvedTheme))}
+        {resolvedTheme === "dark" && <MdDarkMode />}
+        {resolvedTheme === "light" && <MdLightMode />}
       </button>
       <Popper open={openList} onClose={handleCloseList}>
         {items.map(item => (
