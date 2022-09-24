@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = memo(props => {
         },
       )}
     >
-      <span className="mr-2">{icon && React.createElement(icon)}</span>
+      {icon && <span className="mr-2">{React.createElement(icon)}</span>}
       {children}
     </button>
   );
