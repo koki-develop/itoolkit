@@ -97,8 +97,8 @@ const LayoutThemeSwitch: React.FC = memo(() => {
             className={classNames("w-full px-3 py-2 text-base")}
             active={item.theme === theme}
             onClick={item.onClick}
+            icon={item.icon}
           >
-            {React.createElement(item.icon, { className: "mr-2" })}
             {item.text}
           </Button>
         ))}
