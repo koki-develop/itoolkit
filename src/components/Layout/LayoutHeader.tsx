@@ -29,12 +29,12 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
             </Link>
           </h1>
         </div>
-        <div className="flex">
+        <div className="flex text-2xl">
           <LayoutLocaleSwitch />
           <LayoutThemeSwitch />
 
           <Link external href="https://github.com/koki-develop/itoolkit">
-            <AiOutlineGithub className="text-2xl" />
+            <AiOutlineGithub />
           </Link>
         </div>
       </div>

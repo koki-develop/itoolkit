@@ -96,7 +96,7 @@ const LayoutThemeSwitch: React.FC = memo(() => {
           <button
             key={item.text}
             className={classNames(
-              "flex w-full items-center whitespace-nowrap px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
+              "flex w-full items-center whitespace-nowrap px-3 py-2 text-base hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
               {
                 "bg-gray-200 dark:bg-stone-700": item.theme === theme,
               },

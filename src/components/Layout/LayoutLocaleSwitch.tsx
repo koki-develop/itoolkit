@@ -1,10 +1,20 @@
 import classNames from "classnames";
 import { useRouter } from "next/router";
-import React, { memo, useCallback, useMemo, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import { HiOutlineTranslate } from "react-icons/hi";
 import Link from "@/components/util/Link";
 import Popper from "@/components/util/Popper";
 import { Locale, useI18n } from "@/hooks/i18nHooks";
+
+type LocaleItem = {
+  text: string;
+  locale: Locale;
+};
+
+const items: LocaleItem[] = [
+  { text: "English", locale: "en" },
+  { text: "日本語", locale: "ja" },
+];
 
 const LayoutLocaleSwitch: React.FC = memo(() => {
   const router = useRouter();
@@ -12,19 +22,6 @@ const LayoutLocaleSwitch: React.FC = memo(() => {
   const { locale } = useI18n();
 
   const [openList, setOpenList] = useState<boolean>(false);
-
-  const items: { text: string; locale: Locale }[] = useMemo(() => {
-    return [
-      {
-        text: "English",
-        locale: "en",
-      },
-      {
-        text: "日本語",
-        locale: "ja",
-      },
-    ];
-  }, []);
 
   const handleOpenList = useCallback(() => setOpenList(true), []);
   const handleCloseList = useCallback(() => setOpenList(false), []);
@@ -41,7 +38,7 @@ const LayoutLocaleSwitch: React.FC = memo(() => {
             href={router.pathname}
             locale={item.locale}
             className={classNames(
-              "flex w-full items-center whitespace-nowrap px-3 py-2 hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
+              "flex w-full items-center whitespace-nowrap px-3 py-2 text-base hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
               {
                 "bg-gray-200 dark:bg-stone-700": item.locale === locale,
               },
