@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import TextArea, { Syntax } from "@/components/util/TextArea";
 
 type BaseProps = {
@@ -28,47 +28,39 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   const [right, setRight] = useState<string>("");
   const [rightError, setRightError] = useState<string | null>(null);
 
-  const handleChangeLeft = useCallback(async (value: string) => {
-    setLeft(value);
-  }, []);
+  const handleChangeLeft = useCallback(
+    async (value: string) => {
+      setLeft(value);
+      if (!toRightFunc) return;
 
-  const handleChangeRight = useCallback(async (value: string) => {
-    setRight(value);
-  }, []);
-
-  useEffect(() => {
-    if (!toRightFunc) return;
-    const timeoutId = setTimeout(async () => {
       try {
-        const result = await toRightFunc(left);
+        const result = await toRightFunc(value);
         setRight(result);
         setRightError(null);
         setLeftError(null);
       } catch (error: any) {
         setLeftError(error.message);
       }
-    }, 250);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [left, toRightFunc]);
+    },
+    [toRightFunc],
+  );
 
-  useEffect(() => {
-    if (!toLeftFunc) return;
-    const timeoutId = setTimeout(async () => {
+  const handleChangeRight = useCallback(
+    async (value: string) => {
+      setRight(value);
+      if (!toLeftFunc) return;
+
       try {
-        const result = await toLeftFunc(right);
+        const result = await toLeftFunc(value);
         setLeft(result);
         setLeftError(null);
         setRightError(null);
       } catch (error: any) {
         setRightError(error.message);
       }
-    }, 250);
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [right, toLeftFunc]);
+    },
+    [toLeftFunc],
+  );
 
   return (
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
