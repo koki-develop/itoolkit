@@ -1,8 +1,7 @@
-import classNames from "classnames";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useState } from "react";
 import { HiOutlineTranslate } from "react-icons/hi";
-import Link from "@/components/util/Link";
+import LinkButton from "@/components/util/LinkButton";
 import Popper from "@/components/util/Popper";
 import { Locale, useI18n } from "@/hooks/i18nHooks";
 
@@ -29,24 +28,20 @@ const LayoutLocaleSwitch: React.FC = memo(() => {
   return (
     <div className="relative mr-4 flex items-center justify-center">
       <button onClick={handleOpenList}>
-        <HiOutlineTranslate className="text-2xl" />
+        <HiOutlineTranslate />
       </button>
       <Popper open={openList} onClose={handleCloseList}>
         {items.map(item => (
-          <Link
+          <LinkButton
             key={item.locale}
             href={router.pathname}
             locale={item.locale}
-            className={classNames(
-              "flex w-full items-center whitespace-nowrap px-3 py-2 text-base hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
-              {
-                "bg-gray-200 dark:bg-stone-700": item.locale === locale,
-              },
-            )}
+            className="w-full px-3 py-2 text-base"
+            active={item.locale === locale}
             onClick={handleCloseList}
           >
             {item.text}
-          </Link>
+          </LinkButton>
         ))}
       </Popper>
     </div>

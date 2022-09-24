@@ -2,6 +2,7 @@ import classNames from "classnames";
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { IconType } from "react-icons";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
+import Button from "@/components/util/Button";
 import Popper from "@/components/util/Popper";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useTheme, Theme } from "@/hooks/themeHooks";
@@ -87,25 +88,19 @@ const LayoutThemeSwitch: React.FC = memo(() => {
   return (
     <div className="relative mr-4 flex items-center justify-center">
       <button onClick={handleOpenList}>
-        {React.createElement(selectIcon(resolvedTheme), {
-          className: "text-2xl",
-        })}
+        {React.createElement(selectIcon(resolvedTheme))}
       </button>
       <Popper open={openList} onClose={handleCloseList}>
         {items.map(item => (
-          <button
+          <Button
             key={item.text}
-            className={classNames(
-              "flex w-full items-center whitespace-nowrap px-3 py-2 text-base hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
-              {
-                "bg-gray-200 dark:bg-stone-700": item.theme === theme,
-              },
-            )}
+            className={classNames("w-full px-3 py-2 text-base")}
+            active={item.theme === theme}
             onClick={item.onClick}
           >
             {React.createElement(item.icon, { className: "mr-2" })}
             {item.text}
-          </button>
+          </Button>
         ))}
       </Popper>
     </div>
