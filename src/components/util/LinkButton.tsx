@@ -1,25 +1,22 @@
-import classNames from "classnames";
 import React, { memo } from "react";
+import Button from "@/components/util/Button";
 import Link, { LinkProps } from "@/components/util/Link";
 
 export type LinkButtonProps = LinkProps & {
+  buttonClassName?: string;
   active?: boolean;
 };
 
 const LinkButton: React.FC<LinkButtonProps> = memo(props => {
-  const { active, ...linkProps } = props;
+  const { active, className, ...linkProps } = props;
+  const { children, ...otherLinkProps } = linkProps;
 
   return (
-    <Link
-      {...linkProps}
-      className={classNames(
-        linkProps.className,
-        "flex w-full items-center whitespace-nowrap hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600",
-        {
-          "bg-gray-200 dark:bg-stone-700": active,
-        },
-      )}
-    />
+    <Link {...otherLinkProps}>
+      <Button className={className} active={active}>
+        {children}
+      </Button>
+    </Link>
   );
 });
 
