@@ -1,7 +1,6 @@
-import classNames from "classnames";
 import { useRouter } from "next/router";
-import React, { memo, useMemo } from "react";
-import Link from "@/components/util/Link";
+import React, { memo } from "react";
+import LinkButton from "@/components/util/LinkButton";
 import { Tool } from "@/types/tool";
 
 export type LayoutMenuItemProps = {
@@ -13,31 +12,16 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
 
   const router = useRouter();
 
-  const active = useMemo(() => {
-    return router.pathname === tool.href;
-  }, [router.pathname, tool.href]);
-
-  const body = (
-    <div
-      className={classNames("flex items-center p-4 pr-0 md:py-3 md:text-sm", {
-        "bg-gray-200 dark:bg-stone-700": active,
-        "hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-stone-700 dark:active:bg-stone-600":
-          !active,
-      })}
+  return (
+    <LinkButton
+      key={tool.href}
+      className="p-4 md:py-3 md:text-sm"
+      href={tool.href}
+      active={router.pathname === tool.href}
     >
       <span className="mr-1">{React.createElement(tool.icon)}</span>
       {tool.name}
-    </div>
-  );
-
-  if (active) {
-    return body;
-  }
-
-  return (
-    <Link key={tool.href} href={tool.href}>
-      {body}
-    </Link>
+    </LinkButton>
   );
 });
 
