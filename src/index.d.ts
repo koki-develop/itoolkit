@@ -6,6 +6,6 @@ declare module "*.svg" {
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NEXT_PUBLIC_ENV: "production" | "preview" | "development";
-    readonly NEXT_PUBLIC_GA_MEASUREMENT_ID: string;
+    readonly NEXT_PUBLIC_GA_MEASUREMENT_ID?: string;
   }
 }
