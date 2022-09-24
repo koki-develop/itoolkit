@@ -1,19 +1,15 @@
 import React, { memo } from "react";
-import Button from "@/components/util/Button";
+import Button, { ButtonProps } from "@/components/util/Button";
 import Link, { LinkProps } from "@/components/util/Link";
 
-export type LinkButtonProps = LinkProps & {
-  buttonClassName?: string;
-  active?: boolean;
-};
+export type LinkButtonProps = LinkProps & Pick<ButtonProps, "icon" | "active">;
 
 const LinkButton: React.FC<LinkButtonProps> = memo(props => {
-  const { active, className, ...linkProps } = props;
-  const { children, ...otherLinkProps } = linkProps;
+  const { active, icon, className, children, ...linkProps } = props;
 
   return (
-    <Link {...otherLinkProps}>
-      <Button className={className} active={active}>
+    <Link {...linkProps}>
+      <Button className={className} icon={icon} active={active}>
         {children}
       </Button>
     </Link>
