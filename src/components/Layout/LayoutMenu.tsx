@@ -7,11 +7,12 @@ import LayoutMenuItem from "./LayoutMenuItem";
 
 export type LayoutMenuProps = {
   open: boolean;
+  openMobile: boolean;
   onClose: () => void;
 };
 
 const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
-  const { open, onClose } = props;
+  const { open, openMobile, onClose } = props;
 
   const [searchText, setSearchText] = useState<string>("");
 
@@ -27,8 +28,12 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
       className={classNames(
         "fixed top-0 left-0 z-50 flex h-full w-3/4 flex-col border-r bg-white duration-300 ease-in-out dark:border-r-stone-700 dark:bg-stone-800 md:w-[240px]",
         {
-          "-translate-x-0": open,
-          "-translate-x-full": !open,
+          "md:-translate-x-0": open,
+          "md:-translate-x-full": !open,
+        },
+        {
+          "-translate-x-0": openMobile,
+          "-translate-x-full": !openMobile,
         },
       )}
     >
