@@ -15,7 +15,7 @@ const LayoutMenuItem: React.FC<LayoutMenuItemProps> = memo(props => {
   return (
     <LinkButton
       key={tool.href}
-      className="p-4 md:py-3 md:text-sm"
+      className="w-full p-4 md:py-3 md:text-sm"
       href={tool.href}
       active={router.pathname === tool.href}
     >
