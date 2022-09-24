@@ -8,19 +8,23 @@ import LayoutLocaleSwitch from "./LayoutLocaleSwitch";
 import LayoutThemeSwitch from "./LayoutThemeSwitch";
 
 export type LayoutHeaderProps = {
+  openMenu: boolean;
   onOpenMenu: () => void;
 };
 
 const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
-  const { onOpenMenu } = props;
+  const { openMenu, onOpenMenu } = props;
 
   const { t } = useI18n();
 
   return (
-    <header className="sticky top-0 flex items-center justify-center bg-teal-500 p-4 py-4 dark:bg-stone-800 md:relative">
+    <header className="sticky top-0 flex h-[60px] items-center justify-center border-b bg-teal-500 p-4 py-4 dark:border-b-stone-600 dark:bg-stone-800 md:relative">
       <div className="container flex items-center justify-between text-white">
         <div className="flex items-center text-xl">
-          <button className={classNames("mr-4 md:hidden")} onClick={onOpenMenu}>
+          <button
+            className={classNames("mr-4", { "md:hidden": openMenu })}
+            onClick={onOpenMenu}
+          >
             <AiOutlineMenu />
           </button>
           <h1>

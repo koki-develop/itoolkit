@@ -26,7 +26,10 @@ const Layout: React.FC<LayoutProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "flex min-h-screen flex-col transition-all duration-300 ease-in-out md:ml-[240px]",
+        "flex min-h-screen flex-col transition-all duration-300 ease-in-out",
+        {
+          "md:ml-[240px]": openMenu,
+        },
       )}
     >
       <LayoutMenuOverlay
@@ -34,8 +37,8 @@ const Layout: React.FC<LayoutProps> = memo(props => {
         show={openMenu}
         onClick={handleCloseMenu}
       />
-      <LayoutMenu open={openMenu} />
-      <LayoutHeader onOpenMenu={handleOpenMenu} />
+      <LayoutMenu open={openMenu} onClose={handleCloseMenu} />
+      <LayoutHeader openMenu={openMenu} onOpenMenu={handleOpenMenu} />
 
       <main className="flex grow justify-center px-4 py-2">
         <div className="container flex flex-col">{children}</div>

@@ -7,10 +7,11 @@ import LayoutMenuItem from "./LayoutMenuItem";
 
 export type LayoutMenuProps = {
   open: boolean;
+  onClose: () => void;
 };
 
 const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
-  const { open } = props;
+  const { open, onClose } = props;
 
   const [searchText, setSearchText] = useState<string>("");
 
@@ -24,7 +25,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
   return (
     <div
       className={classNames(
-        "fixed top-0 left-0 z-50 flex h-full w-3/4 flex-col border-r bg-white duration-300 ease-in-out dark:border-r-stone-700 dark:bg-stone-800 md:w-[240px] md:-translate-x-0",
+        "fixed top-0 left-0 z-50 flex h-full w-3/4 flex-col border-r bg-white duration-300 ease-in-out dark:border-r-stone-700 dark:bg-stone-800 md:w-[240px]",
         {
           "-translate-x-0": open,
           "-translate-x-full": !open,
@@ -34,6 +35,7 @@ const LayoutMenu: React.FC<LayoutMenuProps> = memo(props => {
       {/* Header */}
       <LayoutMenuHeader
         searchText={searchText}
+        onClose={onClose}
         onChangeSearchText={handleChangeSearchText}
       />
 
