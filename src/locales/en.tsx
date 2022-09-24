@@ -1,3 +1,4 @@
+import Link from "@/components/util/Link";
 import { T } from ".";
 
 export const en: T = {
@@ -95,14 +96,13 @@ export const en: T = {
           identifiable. You can opt out of this feature by disabling cookies, so
           please check your browser settings. For more information about these
           terms, please see the{" "}
-          <a
+          <Link
             className="text-blue-500"
+            external
             href="https://marketingplatform.google.com/about/analytics/terms/us/"
-            target="_blank"
-            rel="noreferrer noopener"
           >
             Google Analytics Terms of Service
-          </a>
+          </Link>
           .
         </>
       ),

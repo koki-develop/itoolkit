@@ -33,13 +33,9 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
           <LayoutLocaleSwitch />
           <LayoutThemeSwitch />
 
-          <a
-            href="https://github.com/koki-develop/itoolkit"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <Link external href="https://github.com/koki-develop/itoolkit">
             <AiOutlineGithub className="text-2xl" />
-          </a>
+          </Link>
         </div>
       </div>
     </header>
