@@ -21,3 +21,9 @@ html.light {
 html.dark {
   @import "~prismjs/themes/prism-dark";
 }
+
+#textarea {
+  * {
+    word-break: break-all !important;
+  }
+}

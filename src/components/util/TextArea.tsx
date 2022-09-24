@@ -73,7 +73,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div id="textarea" className="flex flex-col">
       <div className="flex items-end justify-between">
         <div className="flex items-center">
           <div>{title}</div>
