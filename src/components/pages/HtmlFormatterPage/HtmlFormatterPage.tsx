@@ -13,8 +13,16 @@ const HtmlFormatterPage: NextPage = () => {
     <FormatterPage
       title={t.tools.htmlFormatter.name}
       description={t.tools.htmlFormatter.description}
-      left={{ title: t.words.html }}
-      right={{ title: t.words.formattedHtml }}
+      left={{
+        title: t.words.html,
+        placeholder:
+          "<html><head><title>HTML Formatter</title></head><body><h1>HTML Formatter</h1></body></html>",
+      }}
+      right={{
+        title: t.words.formattedHtml,
+        placeholder:
+          "<html>\n\n    <head>\n        <title>HTML Formatter</title>\n    </head>\n\n    <body>\n        <h1>HTML Formatter</h1>\n    </body>\n\n</html>",
+      }}
       syntax="html"
       format={formatHtml}
     />

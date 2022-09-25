@@ -13,8 +13,22 @@ const XmlFormatterPage: NextPage = () => {
     <FormatterPage
       title={t.tools.xmlFormatter.name}
       description={t.tools.xmlFormatter.description}
-      left={{ title: t.words.xml }}
-      right={{ title: t.words.formattedXml }}
+      left={{
+        title: t.words.xml,
+        placeholder:
+          '<?xml version="1.0" encoding="UTF-8"?><root><tool><title>XML Formatter</title></tool></root>',
+      }}
+      right={{
+        title: t.words.formattedXml,
+        placeholder: `<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <tool>
+        <title>
+            XML Formatter
+        </title>
+    </tool>
+</root>`,
+      }}
       syntax="xml"
       format={formatXml}
     />

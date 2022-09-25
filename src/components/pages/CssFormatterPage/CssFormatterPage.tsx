@@ -13,8 +13,17 @@ const CssFormatterPage: NextPage = () => {
     <FormatterPage
       title={t.tools.cssFormatter.name}
       description={t.tools.cssFormatter.description}
-      left={{ title: t.words.css }}
-      right={{ title: t.words.formattedCss }}
+      left={{
+        title: t.words.css,
+        placeholder: ".css-formatter{color:#ffffff;background-color:#55b5a6;}",
+      }}
+      right={{
+        title: t.words.formattedCss,
+        placeholder: `.css-formatter {
+    color: #ffffff;
+    background-color: #55b5a6;
+}`,
+      }}
       syntax="css"
       format={formatCss}
     />

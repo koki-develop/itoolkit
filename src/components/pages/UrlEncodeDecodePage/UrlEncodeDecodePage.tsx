@@ -19,10 +19,12 @@ const UrlEncodeDecodePage: NextPage = () => {
         left={{
           title: t.words.encodedText,
           toRightFunc: urlDecode,
+          placeholder: "URL%20Encode%2FDecode",
         }}
         right={{
           title: t.words.decodedText,
           toLeftFunc: urlEncode,
+          placeholder: "URL Encode/Decode",
         }}
       />
     </Page>

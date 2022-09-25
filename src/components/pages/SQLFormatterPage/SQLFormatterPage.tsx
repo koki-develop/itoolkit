@@ -13,8 +13,18 @@ const SQLFormatterPage: NextPage = () => {
     <FormatterPage
       title={t.tools.sqlFormatter.name}
       description={t.tools.sqlFormatter.description}
-      left={{ title: t.words.sql }}
-      right={{ title: t.words.formattedSql }}
+      left={{
+        title: t.words.sql,
+        placeholder:
+          "SELECT * FROM tools WHERE title = 'SQL Formatter' LIMIT 1;",
+      }}
+      right={{
+        title: t.words.formattedSql,
+        placeholder: `SELECT *
+FROM tools
+WHERE title = 'SQL Formatter'
+LIMIT 1;`,
+      }}
       syntax="sql"
       format={formatSql}
     />

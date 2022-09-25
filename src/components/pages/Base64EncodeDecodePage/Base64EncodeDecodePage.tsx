@@ -19,10 +19,12 @@ const Base64EncodeDecodePage: NextPage = () => {
         left={{
           title: t.words.encodedText,
           toRightFunc: base64Decode,
+          placeholder: "QmFzZTY0IEVuY29kZS9EZWNvZGU=",
         }}
         right={{
           title: t.words.decodedText,
           toLeftFunc: base64Encode,
+          placeholder: "Base64 Encode/Decode",
         }}
       />
     </Page>

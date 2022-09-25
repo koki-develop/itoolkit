@@ -13,8 +13,18 @@ const JavaScriptFormatterPage: NextPage = () => {
     <FormatterPage
       title={t.tools.javascriptFormatter.name}
       description={t.tools.javascriptFormatter.description}
-      left={{ title: t.words.javascript }}
-      right={{ title: t.words.formattedJavaScript }}
+      left={{
+        title: t.words.javascript,
+        placeholder:
+          '(()=>{const title="JavaScript Formatter";console.log(title);})();',
+      }}
+      right={{
+        title: t.words.formattedJavaScript,
+        placeholder: `(() => {
+    const title = "JavaScript Formatter";
+    console.log(title);
+})();`,
+      }}
       syntax="js"
       format={formatJs}
     />
