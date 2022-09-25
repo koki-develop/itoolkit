@@ -22,26 +22,8 @@ html.dark {
   @import "~prismjs/themes/prism-dark";
 }
 
-// TODO: TextArea と合わせてリファクタする
-
-.textarea {
+#textarea {
   * {
     word-break: break-all !important;
-    font-family: "Roboto Mono";
-  }
-}
-
-.with-placeholder {
-  position: relative;
-  &::before {
-    color: #9ea3ae;
-    content: attr(data-placeholder);
-    height: 0px;
-    left: 0px;
-    padding: 8px;
-    pointer-events: none;
-    position: absolute;
-    top: 0px;
-    white-space: pre-wrap;
   }
 }

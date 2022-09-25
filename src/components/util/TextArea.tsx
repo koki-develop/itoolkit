@@ -31,7 +31,6 @@ type WithoutHighlightProps = {
 export type TextAreaProps = BaseProps &
   (WithHighlightProps | WithoutHighlightProps);
 
-// TODO: リファクタ
 const TextArea: React.FC<TextAreaProps> = memo(props => {
   const { title, placeholder, value, syntax, error, onChange } = props;
 
@@ -75,7 +74,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
   );
 
   return (
-    <div className="textarea flex flex-col">
+    <div id="textarea" className="flex flex-col">
       <div className="flex items-end justify-between">
         <div className="flex items-center">
           <div>{title}</div>
@@ -89,16 +88,16 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         <div className="h-[0px] grow overflow-y-auto">
           <Editor
             {...props.textareaProps}
-            data-placeholder={placeholder}
+            placeholder={placeholder}
             value={value}
             onValueChange={handleChangeValue}
             highlight={highlightCode}
             padding={8}
+            style={{ fontFamily: '"Roboto Mono"' }}
             className={classNames(
               "min-h-full grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
               {
                 "border-red-500 dark:border-red-500": !!error,
-                "with-placeholder": value === "",
               },
             )}
             textareaClassName={classNames(
@@ -108,26 +107,20 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
           />
         </div>
       ) : (
-        <div
-          className={classNames("flex grow", {
-            "with-placeholder before:p-[9px] before:content-[attr(data-placeholder)]":
-              value === "",
-          })}
-          data-placeholder={placeholder}
-        >
-          <textarea
-            {...props.textareaProps}
-            value={value}
-            onChange={handleChangeTextareaValue}
-            className={classNames(
-              props.textareaProps?.className,
-              "grow resize-none rounded border p-2 opacity-100 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
-              {
-                "border-red-500 dark:border-red-500": !!error,
-              },
-            )}
-          />
-        </div>
+        <textarea
+          {...props.textareaProps}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleChangeTextareaValue}
+          style={{ fontFamily: '"Roboto Mono"' }}
+          className={classNames(
+            props.textareaProps?.className,
+            "grow resize-none rounded border p-2 opacity-100 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
+            {
+              "border-red-500 dark:border-red-500": !!error,
+            },
+          )}
+        />
       )}
     </div>
   );
