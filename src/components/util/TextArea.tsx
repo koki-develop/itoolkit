@@ -102,7 +102,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
             )}
             textareaClassName={classNames(
               props.textareaProps?.className,
-              "outline-none",
+              "placeholder:whitespace-pre-wrap outline-none",
             )}
           />
         </div>
@@ -115,7 +115,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
           style={{ fontFamily: '"Roboto Mono"' }}
           className={classNames(
             props.textareaProps?.className,
-            "grow resize-none rounded border p-2 opacity-100 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
+            "grow resize-none rounded border p-2 opacity-100 outline-none placeholder:whitespace-pre-wrap disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
             {
               "border-red-500 dark:border-red-500": !!error,
             },
