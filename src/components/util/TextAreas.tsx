@@ -9,10 +9,12 @@ type BaseProps = {
 export type TextAreasProps = {
   left: BaseProps & {
     syntax?: Syntax;
+    placeholder?: string;
     toRightFunc?: (left: string) => Promise<string> | string;
   };
   right: BaseProps & {
     syntax?: Syntax;
+    placeholder?: string;
     toLeftFunc?: (right: string) => Promise<string> | string;
   };
 };
@@ -66,6 +68,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
         title={leftProps.title}
+        placeholder={leftProps.placeholder}
         syntax={leftProps.syntax}
         value={left}
         error={leftError}
@@ -74,6 +77,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
       />
       <TextArea
         title={rightProps.title}
+        placeholder={rightProps.placeholder}
         syntax={rightProps.syntax}
         value={right}
         error={rightError}

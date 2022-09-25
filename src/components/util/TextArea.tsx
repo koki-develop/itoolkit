@@ -12,6 +12,7 @@ export type Syntax = "html" | "css" | "js" | "sql" | "xml";
 
 type BaseProps = {
   title: string;
+  placeholder?: string;
   value: string;
   error: string | null;
   onChange: (value: string) => void;
@@ -31,7 +32,7 @@ export type TextAreaProps = BaseProps &
   (WithHighlightProps | WithoutHighlightProps);
 
 const TextArea: React.FC<TextAreaProps> = memo(props => {
-  const { title, value, syntax, error, onChange } = props;
+  const { title, placeholder, value, syntax, error, onChange } = props;
 
   const handleChangeValue = useCallback(
     (value: string) => {
@@ -87,6 +88,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         <div className="h-[0px] grow overflow-y-auto">
           <Editor
             {...props.textareaProps}
+            placeholder={placeholder}
             value={value}
             onValueChange={handleChangeValue}
             highlight={highlightCode}
@@ -107,6 +109,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
       ) : (
         <textarea
           {...props.textareaProps}
+          placeholder={placeholder}
           value={value}
           onChange={handleChangeTextareaValue}
           style={{ fontFamily: '"Roboto Mono"' }}
