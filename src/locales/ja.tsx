@@ -19,6 +19,7 @@ export const ja: T = {
     encodeDecode: { name: "エンコード/デコード" },
     formatter: { name: "整形" },
     generator: { name: "生成" },
+    network: { name: "ネットワーク" },
   },
   tools: {
     // Encode/Decode

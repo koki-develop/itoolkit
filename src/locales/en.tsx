@@ -19,6 +19,7 @@ export const en: T = {
     encodeDecode: { name: "Encode/Decode" },
     formatter: { name: "Formatter" },
     generator: { name: "Generator" },
+    network: { name: "Network" },
   },
   tools: {
     // Encode/Decode

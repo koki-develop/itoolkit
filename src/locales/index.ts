@@ -23,15 +23,10 @@ export type T = {
   };
 
   toolGroups: {
-    encodeDecode: {
-      name: string;
-    };
-    formatter: {
-      name: string;
-    };
-    generator: {
-      name: string;
-    };
+    encodeDecode: { name: string };
+    formatter: { name: string };
+    generator: { name: string };
+    network: { name: string };
   };
   tools: {
     // Encode/Decode
