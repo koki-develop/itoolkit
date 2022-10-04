@@ -61,6 +61,10 @@ export const en: T = {
       name: "QR Code",
       description: "Convert text to QR Code.",
     },
+    ip: {
+      name: "IP Address",
+      description: "Displays various information such as IP address.",
+    },
   },
 
   words: {

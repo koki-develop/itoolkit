@@ -61,6 +61,10 @@ export const ja: T = {
       name: "QR コード",
       description: "テキストを QR コードに変換します。",
     },
+    ip: {
+      name: "IP アドレス",
+      description: "IP アドレスなどの情報を表示します。",
+    },
   },
 
   words: {

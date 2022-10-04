@@ -41,6 +41,8 @@ export type T = {
     // Generator
     hash: Tool;
     qrCode: Tool;
+    // Network
+    ip: Tool;
   };
 
   words: {
