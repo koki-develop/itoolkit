@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from "react";
+import { Syntax } from "@/components/util/CodeEditor";
 import Page, { PageProps } from "@/components/util/Page";
-import { Syntax } from "@/components/util/TextArea";
 import TextAreas, { TextAreasProps } from "@/components/util/TextAreas";
 
 export type FormatterPageProps = Omit<PageProps, "children"> & {
