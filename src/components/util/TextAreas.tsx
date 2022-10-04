@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useState } from "react";
-import TextArea, { Syntax } from "@/components/util/TextArea";
+import { Syntax } from "@/components/util/CodeEditor";
+import TextArea from "@/components/util/TextArea";
 
 type BaseProps = {
   title: string;

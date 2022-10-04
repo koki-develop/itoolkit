@@ -1,9 +1,7 @@
 import classNames from "classnames";
 import React, { memo, useCallback } from "react";
-import CodeEditor, { CodeEditorProps } from "@/components/util/CodeEditor";
+import CodeEditor, { Syntax } from "@/components/util/CodeEditor";
 import CopyButton from "@/components/util/CopyButton";
-
-export type Syntax = "html" | "css" | "js" | "sql" | "xml";
 
 type BaseProps = {
   title: string;
@@ -15,7 +13,7 @@ type BaseProps = {
 
 type WithHighlightProps = {
   syntax: Syntax;
-  textareaProps?: CodeEditorProps;
+  textareaProps?: { className?: string; disabled?: boolean };
 };
 
 type WithoutHighlightProps = {
