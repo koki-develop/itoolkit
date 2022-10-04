@@ -5,6 +5,7 @@ import {
   AiOutlineHtml5,
   AiOutlineLink,
   AiOutlineQrcode,
+  AiOutlineUser,
 } from "react-icons/ai";
 import { BsCodeSlash, BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
@@ -79,6 +80,13 @@ export const useTools = (searchText: string): Tool[] => {
         group: t.toolGroups.generator.name,
         href: "/tools/qrcode",
         icon: AiOutlineQrcode,
+      },
+      // Network
+      {
+        name: t.tools.ip.name,
+        group: t.toolGroups.network.name,
+        href: "/tools/ip",
+        icon: AiOutlineUser,
       },
     ];
   }, [t]);
