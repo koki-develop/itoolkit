@@ -1,12 +1,7 @@
 import classNames from "classnames";
-import { Grammar, highlight, languages } from "prismjs";
-import React, { memo, useCallback, useMemo } from "react";
-import Editor from "react-simple-code-editor";
-import "prismjs/components/prism-css";
-import "prismjs/components/prism-javascript";
-import "prismjs/components/prism-markup";
-import "prismjs/components/prism-sql";
-import CopyButton from "./CopyButton";
+import React, { memo, useCallback } from "react";
+import CodeEditor, { CodeEditorProps } from "@/components/util/CodeEditor";
+import CopyButton from "@/components/util/CopyButton";
 
 export type Syntax = "html" | "css" | "js" | "sql" | "xml";
 
@@ -20,7 +15,7 @@ type BaseProps = {
 
 type WithHighlightProps = {
   syntax: Syntax;
-  textareaProps?: { className?: string; disabled?: boolean };
+  textareaProps?: CodeEditorProps;
 };
 
 type WithoutHighlightProps = {
@@ -33,38 +28,14 @@ export type TextAreaProps = BaseProps &
 
 // TODO: リファクタ
 const TextArea: React.FC<TextAreaProps> = memo(props => {
-  const { title, placeholder, value, syntax, error, onChange } = props;
+  const { title, placeholder, value, syntax, error, onChange, textareaProps } =
+    props;
 
   const handleChangeValue = useCallback(
     (value: string) => {
       onChange(value);
     },
     [onChange],
-  );
-
-  const grammar: Grammar | null = useMemo(() => {
-    if (!syntax) return null;
-    switch (syntax) {
-      case "html":
-        return languages.html;
-      case "css":
-        return languages.css;
-      case "js":
-        return languages.js;
-      case "sql":
-        return languages.sql;
-      case "xml":
-        return languages.xml;
-    }
-  }, [syntax]);
-
-  const highlightCode = useCallback(
-    (code: string) => {
-      if (!syntax) return "";
-      if (!grammar) return "";
-      return highlight(code, grammar, syntax);
-    },
-    [grammar, syntax],
   );
 
   const handleChangeTextareaValue = useCallback(
@@ -86,27 +57,16 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
         <CopyButton copyText={value} className="mb-1" />
       </div>
       {syntax ? (
-        <div className="h-[0px] grow overflow-y-auto">
-          <Editor
-            {...props.textareaProps}
-            data-placeholder={placeholder}
-            value={value}
-            onValueChange={handleChangeValue}
-            highlight={highlightCode}
-            padding={8}
-            className={classNames(
-              "min-h-full grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
-              {
-                "border-red-500 dark:border-red-500": !!error,
-                "with-placeholder": value === "",
-              },
-            )}
-            textareaClassName={classNames(
-              props.textareaProps?.className,
-              "outline-none",
-            )}
-          />
-        </div>
+        <CodeEditor
+          {...textareaProps}
+          className="h-[0px] grow overflow-y-auto"
+          textAreaClassName={textareaProps?.className}
+          placeholder={placeholder}
+          value={value}
+          error={error}
+          syntax={syntax}
+          onChange={onChange}
+        />
       ) : (
         <div
           className={classNames("flex grow", {
