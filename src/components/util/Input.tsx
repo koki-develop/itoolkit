@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = memo(props => {
           onChange={handleChange}
           className={classNames(
             inputProps?.className,
-            "grow rounded rounded-l-none border p-2 opacity-100 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
+            "grow rounded rounded-l-none border p-2 opacity-100 outline-none dark:border-stone-700 dark:bg-stone-800",
           )}
         />
       </div>

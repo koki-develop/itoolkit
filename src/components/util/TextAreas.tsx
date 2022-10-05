@@ -4,7 +4,7 @@ import TextArea from "@/components/util/TextArea";
 
 type BaseProps = {
   title: string;
-  disabled?: boolean;
+  readOnly?: boolean;
 };
 
 export type TextAreasProps = {
@@ -74,7 +74,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
-        textareaProps={{ className: "font-mono", disabled: leftProps.disabled }}
+        textareaProps={{ className: "font-mono", readOnly: leftProps.readOnly }}
       />
       <TextArea
         title={rightProps.title}
@@ -85,7 +85,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         onChange={handleChangeRight}
         textareaProps={{
           className: "font-mono",
-          disabled: rightProps.disabled,
+          readOnly: rightProps.readOnly,
         }}
       />
     </div>

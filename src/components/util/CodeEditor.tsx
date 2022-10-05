@@ -16,7 +16,7 @@ export type CodeEditorProps = {
   value: string;
   error?: string | null;
   syntax: Syntax;
-  disabled?: boolean;
+  readOnly?: boolean;
   onChange?: (value: string) => void;
 };
 
@@ -28,7 +28,7 @@ const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
     value,
     error,
     syntax,
-    disabled,
+    readOnly,
     onChange,
   } = props;
 
@@ -53,7 +53,7 @@ const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
     <div className={className}>
       <Editor
         data-placeholder={placeholder}
-        disabled={disabled}
+        readOnly={readOnly}
         value={value}
         onValueChange={onChange ?? (() => null)}
         highlight={highlightCode}

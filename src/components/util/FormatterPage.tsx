@@ -6,8 +6,8 @@ import TextAreas, { TextAreasProps } from "@/components/util/TextAreas";
 export type FormatterPageProps = Omit<PageProps, "children"> & {
   format: (plain: string) => Promise<string> | string;
   syntax?: Syntax;
-  left: Omit<TextAreasProps["left"], "disabled" | "toRightFunc">;
-  right: Omit<TextAreasProps["left"], "disabled" | "toRightFunc">;
+  left: Omit<TextAreasProps["left"], "readOnly" | "toRightFunc">;
+  right: Omit<TextAreasProps["left"], "readOnly" | "toRightFunc">;
 };
 
 const FormatterPage: React.FC<FormatterPageProps> = memo(props => {
@@ -31,7 +31,7 @@ const FormatterPage: React.FC<FormatterPageProps> = memo(props => {
         right={{
           ...right,
           syntax,
-          disabled: true,
+          readOnly: true,
         }}
       />
     </Page>

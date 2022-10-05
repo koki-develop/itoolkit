@@ -103,6 +103,7 @@ const IpPage: NextPage = () => {
             <div className={classNames("flex grow")}>
               <TextareaAutosize
                 value={item.value}
+                readOnly
                 className={classNames(
                   "grow resize-none rounded border p-2 font-mono outline-none dark:border-stone-700 dark:bg-stone-800",
                 )}
