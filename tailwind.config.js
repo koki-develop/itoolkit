@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          '"Raleway"',
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
