@@ -1,10 +1,11 @@
+import classNames from "classnames";
 import { NextPage } from "next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AiOutlineReload } from "react-icons/ai";
+import TextareaAutosize from "react-textarea-autosize";
 import { IResult, UAParser } from "ua-parser-js";
 import Button from "@/components/util/Button";
 import CopyButton from "@/components/util/CopyButton";
-import Input from "@/components/util/Input";
 import Page from "@/components/util/Page";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useIp } from "@/hooks/libHooks";
@@ -92,16 +93,22 @@ const IpPage: NextPage = () => {
 
       <div className="space-y-4">
         {items.map(item => (
-          <Input
-            key={item.name}
-            title={item.name}
-            inputProps={{
-              disabled: true,
-              className: "font-mono",
-              type: "text",
-              value: item.value,
-            }}
-          />
+          <div key={item.name} className="textarea flex flex-col">
+            <div className="flex items-end justify-between">
+              <div className="flex items-center">
+                <div>{item.name}</div>
+              </div>
+              <CopyButton copyText={item.value} className="mb-1" />
+            </div>
+            <div className={classNames("flex grow")}>
+              <TextareaAutosize
+                value={item.value}
+                className={classNames(
+                  "grow resize-none rounded border p-2 outline-none dark:border-stone-700 dark:bg-stone-800",
+                )}
+              />
+            </div>
+          </div>
         ))}
       </div>
     </Page>
