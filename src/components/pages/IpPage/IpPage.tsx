@@ -104,7 +104,7 @@ const IpPage: NextPage = () => {
               <TextareaAutosize
                 value={item.value}
                 className={classNames(
-                  "grow resize-none rounded border p-2 outline-none dark:border-stone-700 dark:bg-stone-800",
+                  "grow resize-none rounded border p-2 font-mono outline-none dark:border-stone-700 dark:bg-stone-800",
                 )}
               />
             </div>
