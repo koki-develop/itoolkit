@@ -59,7 +59,7 @@ const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
         highlight={highlightCode}
         padding={8}
         className={classNames(
-          "min-h-full grow rounded border opacity-100 dark:border-stone-700 dark:bg-stone-800",
+          "min-h-full grow rounded border font-mono opacity-100 dark:border-stone-700 dark:bg-stone-800",
           {
             "border-red-500 dark:border-red-500": !!error,
             "with-placeholder": value === "",

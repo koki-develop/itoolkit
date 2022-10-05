@@ -74,7 +74,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
-        textareaProps={{ disabled: leftProps.disabled }}
+        textareaProps={{ className: "font-mono", disabled: leftProps.disabled }}
       />
       <TextArea
         title={rightProps.title}
@@ -83,7 +83,10 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         value={right}
         error={rightError}
         onChange={handleChangeRight}
-        textareaProps={{ disabled: rightProps.disabled }}
+        textareaProps={{
+          className: "font-mono",
+          disabled: rightProps.disabled,
+        }}
       />
     </div>
   );
