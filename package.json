@@ -30,6 +30,7 @@
     "react-dom": "18.2.0",
     "react-icons": "4.4.0",
     "react-simple-code-editor": "0.13.1",
+    "ua-parser-js": "^1.0.2",
     "xml-formatter": "2.6.1"
   },
   "devDependencies": {
