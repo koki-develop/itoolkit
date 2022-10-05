@@ -4,6 +4,7 @@ import CodeEditor, { Syntax } from "@/components/util/CodeEditor";
 import CopyButton from "@/components/util/CopyButton";
 
 type BaseProps = {
+  className?: string;
   title: string;
   placeholder?: string;
   value: string;
@@ -26,8 +27,16 @@ export type TextAreaProps = BaseProps &
 
 // TODO: リファクタ
 const TextArea: React.FC<TextAreaProps> = memo(props => {
-  const { title, placeholder, value, syntax, error, onChange, textareaProps } =
-    props;
+  const {
+    className,
+    title,
+    placeholder,
+    value,
+    syntax,
+    error,
+    onChange,
+    textareaProps,
+  } = props;
 
   const handleChangeValue = useCallback(
     (value: string) => {
@@ -44,7 +53,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
   );
 
   return (
-    <div className="textarea flex flex-col">
+    <div className={classNames(className, "textarea flex flex-col")}>
       <div className="flex items-end justify-between">
         <div className="flex items-center">
           <div>{title}</div>

@@ -68,15 +68,17 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   return (
     <div className="grid grow grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
       <TextArea
+        className="font-mono"
         title={leftProps.title}
         placeholder={leftProps.placeholder}
         syntax={leftProps.syntax}
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
-        textareaProps={{ className: "font-mono", readOnly: leftProps.readOnly }}
+        textareaProps={{ readOnly: leftProps.readOnly }}
       />
       <TextArea
+        className="font-mono"
         title={rightProps.title}
         placeholder={rightProps.placeholder}
         syntax={rightProps.syntax}
@@ -84,7 +86,6 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         error={rightError}
         onChange={handleChangeRight}
         textareaProps={{
-          className: "font-mono",
           readOnly: rightProps.readOnly,
         }}
       />
