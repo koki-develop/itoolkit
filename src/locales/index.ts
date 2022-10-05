@@ -20,6 +20,7 @@ export type T = {
     invalidBase64Data: string;
     tooLongText: string;
     failedToParseXml: string;
+    failedToGetIp: string;
   };
 
   toolGroups: {
@@ -60,7 +61,10 @@ export type T = {
     xml: string;
     formattedXml: string;
 
+    yourIp: string;
+
     text: string;
+    retry: string;
   };
 
   themes: {

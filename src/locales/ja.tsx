@@ -13,6 +13,7 @@ export const ja: T = {
     invalidBase64Data: "無効な Base64 データです",
     tooLongText: "テキストが長すぎます",
     failedToParseXml: "XML のパースに失敗しました",
+    failedToGetIp: "IP アドレスの取得に失敗しました",
   },
 
   toolGroups: {
@@ -69,6 +70,8 @@ export const ja: T = {
 
   words: {
     text: "テキスト",
+    retry: "再試行",
+    yourIp: "あなたの IP アドレス",
     encodedText: "エンコードされたテキスト",
     decodedText: "デコードされたテキスト",
     html: "HTML",
