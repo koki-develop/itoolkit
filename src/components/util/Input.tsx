@@ -26,20 +26,20 @@ const Input: React.FC<InputProps> = memo(props => {
     >
       <div className="text-sm">{title}</div>
       <div className="flex items-stretch">
-        <input
-          {...inputProps}
-          onChange={handleChange}
-          className={classNames(
-            inputProps?.className,
-            "grow rounded rounded-r-none border p-2 opacity-100 outline-none disabled:text-black dark:border-stone-700 dark:bg-stone-800 dark:disabled:text-white",
-          )}
-        />
         <CopyButton
           {...buttonProps}
           copyText={inputProps?.value?.toString() ?? ""}
           className={classNames(
             buttonProps?.className,
-            "rounded-l-none border-l-0 px-3",
+            "rounded-r-none border-r-0 px-3",
+          )}
+        />
+        <input
+          {...inputProps}
+          onChange={handleChange}
+          className={classNames(
+            inputProps?.className,
+            "grow rounded rounded-l-none border p-2 opacity-100 outline-none dark:border-stone-700 dark:bg-stone-800",
           )}
         />
       </div>

@@ -13,12 +13,14 @@ export const ja: T = {
     invalidBase64Data: "無効な Base64 データです",
     tooLongText: "テキストが長すぎます",
     failedToParseXml: "XML のパースに失敗しました",
+    failedToGetIp: "IP アドレスの取得に失敗しました",
   },
 
   toolGroups: {
     encodeDecode: { name: "エンコード/デコード" },
     formatter: { name: "整形" },
     generator: { name: "生成" },
+    network: { name: "ネットワーク" },
   },
   tools: {
     // Encode/Decode
@@ -60,10 +62,19 @@ export const ja: T = {
       name: "QR コード",
       description: "テキストを QR コードに変換します。",
     },
+    ip: {
+      name: "IP アドレス",
+      description: "IP アドレスなどの情報を表示します。",
+    },
   },
 
   words: {
     text: "テキスト",
+    retry: "再試行",
+    browser: "ブラウザ",
+    userAgent: "User Agent",
+    os: "OS",
+    yourIp: "あなたの IP アドレス",
     encodedText: "エンコードされたテキスト",
     decodedText: "デコードされたテキスト",
     html: "HTML",

@@ -20,18 +20,14 @@ export type T = {
     invalidBase64Data: string;
     tooLongText: string;
     failedToParseXml: string;
+    failedToGetIp: string;
   };
 
   toolGroups: {
-    encodeDecode: {
-      name: string;
-    };
-    formatter: {
-      name: string;
-    };
-    generator: {
-      name: string;
-    };
+    encodeDecode: { name: string };
+    formatter: { name: string };
+    generator: { name: string };
+    network: { name: string };
   };
   tools: {
     // Encode/Decode
@@ -46,6 +42,8 @@ export type T = {
     // Generator
     hash: Tool;
     qrCode: Tool;
+    // Network
+    ip: Tool;
   };
 
   words: {
@@ -63,7 +61,13 @@ export type T = {
     xml: string;
     formattedXml: string;
 
+    yourIp: string;
+
     text: string;
+    retry: string;
+    browser: string;
+    userAgent: string;
+    os: string;
   };
 
   themes: {

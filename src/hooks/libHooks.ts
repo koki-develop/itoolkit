@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import { format as sql } from "@sqltools/formatter";
+import axios from "axios";
 import { css, html, js } from "js-beautify";
 import qrcode from "qrcode";
 import { useCallback } from "react";
@@ -126,5 +127,18 @@ export const useQrcode = () => {
 
   return {
     toDataUrl,
+  };
+};
+
+export const useIp = () => {
+  const fetchIp = useCallback(async (): Promise<string> => {
+    const { data } = await axios.get<{ source_ip: string }>(
+      "https://checkip.dev",
+    );
+    return data.source_ip;
+  }, []);
+
+  return {
+    fetchIp,
   };
 };

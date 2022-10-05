@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          '"Raleway"',
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -20,6 +19,17 @@ module.exports = {
           '"Segoe UI Emoji"',
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"',
+        ],
+        mono: [
+          '"Roboto Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          '"Liberation Mono"',
+          '"Courier New"',
+          "monospace",
         ],
       },
     },

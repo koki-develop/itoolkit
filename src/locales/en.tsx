@@ -13,12 +13,14 @@ export const en: T = {
     invalidBase64Data: "Invalid Base64 data",
     tooLongText: "Text is too long",
     failedToParseXml: "Failed to parse XML",
+    failedToGetIp: "Failed to get IP address",
   },
 
   toolGroups: {
     encodeDecode: { name: "Encode/Decode" },
     formatter: { name: "Formatter" },
     generator: { name: "Generator" },
+    network: { name: "Network" },
   },
   tools: {
     // Encode/Decode
@@ -60,10 +62,19 @@ export const en: T = {
       name: "QR Code",
       description: "Convert text to QR Code.",
     },
+    ip: {
+      name: "IP address",
+      description: "Displays various information such as IP address.",
+    },
   },
 
   words: {
     text: "Text",
+    retry: "Retry",
+    browser: "Browser",
+    userAgent: "User Agent",
+    os: "OS",
+    yourIp: "Your Ip Address",
     encodedText: "Encoded",
     decodedText: "Decoded",
     html: "HTML",

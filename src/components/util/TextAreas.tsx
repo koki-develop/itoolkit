@@ -33,6 +33,8 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
 
   const handleChangeLeft = useCallback(
     async (value: string) => {
+      if (leftProps.disabled) return;
+
       setLeft(value);
       if (!toRightFunc) return;
 
@@ -45,11 +47,13 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         setLeftError(error.message);
       }
     },
-    [toRightFunc],
+    [leftProps.disabled, toRightFunc],
   );
 
   const handleChangeRight = useCallback(
     async (value: string) => {
+      if (rightProps.disabled) return;
+
       setRight(value);
       if (!toLeftFunc) return;
 
@@ -62,7 +66,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         setRightError(error.message);
       }
     },
-    [toLeftFunc],
+    [rightProps.disabled, toLeftFunc],
   );
 
   return (
@@ -74,7 +78,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         value={left}
         error={leftError}
         onChange={handleChangeLeft}
-        textareaProps={{ disabled: leftProps.disabled }}
+        textareaProps={{ className: "font-mono" }}
       />
       <TextArea
         title={rightProps.title}
@@ -83,7 +87,9 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         value={right}
         error={rightError}
         onChange={handleChangeRight}
-        textareaProps={{ disabled: rightProps.disabled }}
+        textareaProps={{
+          className: "font-mono",
+        }}
       />
     </div>
   );
