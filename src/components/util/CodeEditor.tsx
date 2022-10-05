@@ -14,10 +14,10 @@ export type CodeEditorProps = {
   textAreaClassName?: string;
   placeholder?: string;
   value: string;
-  error: string | null;
+  error?: string | null;
   syntax: Syntax;
   disabled?: boolean;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
 };
 
 const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
@@ -55,7 +55,7 @@ const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
         data-placeholder={placeholder}
         disabled={disabled}
         value={value}
-        onValueChange={onChange}
+        onValueChange={onChange ?? (() => null)}
         highlight={highlightCode}
         padding={8}
         className={classNames(

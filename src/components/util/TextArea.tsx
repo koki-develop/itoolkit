@@ -7,8 +7,8 @@ type BaseProps = {
   title: string;
   placeholder?: string;
   value: string;
-  error: string | null;
-  onChange: (value: string) => void;
+  error?: string | null;
+  onChange?: (value: string) => void;
 };
 
 type WithHighlightProps = {
@@ -31,7 +31,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
 
   const handleChangeValue = useCallback(
     (value: string) => {
-      onChange(value);
+      onChange?.(value);
     },
     [onChange],
   );
