@@ -133,7 +133,7 @@ export const useQrcode = () => {
 export const useIp = () => {
   const fetchIp = useCallback(async (): Promise<string> => {
     const { data } = await axios.get<{ source_ip: string }>(
-      "http://checkip.dev",
+      "https://checkip.dev",
     );
     return data.source_ip;
   }, []);
