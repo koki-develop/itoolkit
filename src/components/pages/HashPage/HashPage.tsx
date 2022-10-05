@@ -60,6 +60,7 @@ const HashPage: NextPage = () => {
             className="text-sm"
             title={hash.displayName}
             inputProps={{
+              disabled: true,
               type: "text",
               value: hash.value,
             }}
