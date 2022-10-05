@@ -65,6 +65,9 @@ export type T = {
 
     text: string;
     retry: string;
+    browser: string;
+    userAgent: string;
+    os: string;
   };
 
   themes: {

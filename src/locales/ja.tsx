@@ -71,6 +71,9 @@ export const ja: T = {
   words: {
     text: "テキスト",
     retry: "再試行",
+    browser: "ブラウザ",
+    userAgent: "User Agent",
+    os: "OS",
     yourIp: "あなたの IP アドレス",
     encodedText: "エンコードされたテキスト",
     decodedText: "デコードされたテキスト",

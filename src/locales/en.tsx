@@ -71,6 +71,9 @@ export const en: T = {
   words: {
     text: "Text",
     retry: "Retry",
+    browser: "Browser",
+    userAgent: "User Agent",
+    os: "OS",
     yourIp: "Your Ip Address",
     encodedText: "Encoded",
     decodedText: "Decoded",
