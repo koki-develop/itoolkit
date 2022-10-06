@@ -37,6 +37,13 @@ export const useTools = (searchText: string): Tool[] => {
         href: "/tools/base64-encode-decode",
         icon: Base64,
       },
+      // Converter
+      {
+        name: t.tools.jsonYamlConverter.name,
+        group: t.toolGroups.converter.name,
+        href: "/tools/json-yaml-converter",
+        icon: AiOutlineLink, // TODO: アイコンを用意する
+      },
       // Formatter
       {
         name: t.tools.htmlFormatter.name,

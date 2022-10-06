@@ -25,6 +25,7 @@ export type T = {
 
   toolGroups: {
     encodeDecode: { name: string };
+    converter: { name: string };
     formatter: { name: string };
     generator: { name: string };
     network: { name: string };
@@ -33,6 +34,8 @@ export type T = {
     // Encode/Decode
     urlEncodeDecode: Tool;
     base64EncodeDecode: Tool;
+    // Converter
+    jsonYamlConverter: Tool;
     // Formatter
     htmlFormatter: Tool;
     cssFormatter: Tool;
@@ -47,9 +50,14 @@ export type T = {
   };
 
   words: {
+    text: string;
+    retry: string;
+    browser: string;
+    userAgent: string;
+    os: string;
+    yourIp: string;
     encodedText: string;
     decodedText: string;
-
     html: string;
     formattedHtml: string;
     css: string;
@@ -60,14 +68,6 @@ export type T = {
     formattedSql: string;
     xml: string;
     formattedXml: string;
-
-    yourIp: string;
-
-    text: string;
-    retry: string;
-    browser: string;
-    userAgent: string;
-    os: string;
   };
 
   themes: {

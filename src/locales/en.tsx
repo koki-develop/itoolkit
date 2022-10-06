@@ -18,6 +18,7 @@ export const en: T = {
 
   toolGroups: {
     encodeDecode: { name: "Encode/Decode" },
+    converter: { name: "Converter" },
     formatter: { name: "Formatter" },
     generator: { name: "Generator" },
     network: { name: "Network" },
@@ -31,6 +32,11 @@ export const en: T = {
     base64EncodeDecode: {
       name: "Base64 Encode/Decode",
       description: "Base64 encode or decode text.",
+    },
+    // Converter
+    jsonYamlConverter: {
+      name: "JSON <> YAML Converter",
+      description: "Interconvert between JSON and YAML.",
     },
     // Formatter
     htmlFormatter: {

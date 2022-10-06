@@ -18,6 +18,7 @@ export const ja: T = {
 
   toolGroups: {
     encodeDecode: { name: "エンコード/デコード" },
+    converter: { name: "変換" },
     formatter: { name: "整形" },
     generator: { name: "生成" },
     network: { name: "ネットワーク" },
@@ -31,6 +32,11 @@ export const ja: T = {
     base64EncodeDecode: {
       name: "Base64 エンコード/デコード",
       description: "テキストを Base64 エンコードもしくはデコードします。",
+    },
+    // Converter
+    jsonYamlConverter: {
+      name: "JSON <> YAML 変換",
+      description: "JSON と YAML を相互変換します。",
     },
     // Formatter
     htmlFormatter: {
