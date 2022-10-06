@@ -6,8 +6,10 @@ import "prismjs/components/prism-css";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-markup";
 import "prismjs/components/prism-sql";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-yaml";
 
-export type Syntax = "html" | "css" | "js" | "sql" | "xml";
+export type Syntax = "html" | "css" | "js" | "sql" | "xml" | "json" | "yaml";
 
 export type CodeEditorProps = {
   className?: string;
@@ -39,6 +41,8 @@ const CodeEditor: React.FC<CodeEditorProps> = memo(props => {
       js: languages.js,
       sql: languages.sql,
       xml: languages.xml,
+      json: languages.json,
+      yaml: languages.yaml,
     }[syntax];
   }, [syntax]);
 
