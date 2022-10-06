@@ -56,7 +56,7 @@ const TextArea: React.FC<TextAreaProps> = memo(props => {
     <div className={classNames(className, "textarea flex flex-col")}>
       <div className="flex items-end justify-between">
         <div className="flex items-center">
-          <div>{title}</div>
+          <div className="font-sans">{title}</div>
           {error && (
             <div className="ml-2 text-sm italic text-red-500">{error}</div>
           )}
