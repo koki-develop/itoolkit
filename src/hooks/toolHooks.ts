@@ -10,7 +10,7 @@ import {
 import { BsCodeSlash, BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
-import { Base64 } from "@/components/util/icons";
+import { Base64, JsonYaml } from "@/components/util/icons";
 import { useI18n } from "@/hooks/i18nHooks";
 import { Tool } from "@/types/tool";
 
@@ -42,7 +42,7 @@ export const useTools = (searchText: string): Tool[] => {
         name: t.tools.jsonYamlConverter.name,
         group: t.toolGroups.converter.name,
         href: "/tools/json-yaml-converter",
-        icon: AiOutlineLink, // TODO: アイコンを用意する
+        icon: JsonYaml,
       },
       // Formatter
       {
