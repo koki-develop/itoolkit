@@ -61,6 +61,14 @@ export const en: T = {
       name: "XML Formatter",
       description: "Format XML.",
     },
+    jsonFormatter: {
+      name: "JSON Formatter",
+      description: "Format JSON.",
+    },
+    yamlFormatter: {
+      name: "YAML Formatter",
+      description: "Format YAML.",
+    },
     // Generator
     hash: {
       name: "Hash",

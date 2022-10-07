@@ -61,6 +61,14 @@ export const ja: T = {
       name: "XML 整形",
       description: "XML を整形します。",
     },
+    jsonFormatter: {
+      name: "JSON 整形",
+      description: "JSON を整形します。",
+    },
+    yamlFormatter: {
+      name: "YAML 整形",
+      description: "YAML を整形します。",
+    },
     // Generator
     hash: {
       name: "ハッシュ",

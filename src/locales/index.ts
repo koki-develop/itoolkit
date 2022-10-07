@@ -44,6 +44,8 @@ export type T = {
     javascriptFormatter: Tool;
     sqlFormatter: Tool;
     xmlFormatter: Tool;
+    jsonFormatter: Tool;
+    yamlFormatter: Tool;
     // Generator
     hash: Tool;
     qrCode: Tool;
