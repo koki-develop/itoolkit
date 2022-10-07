@@ -18,6 +18,8 @@ export type T = {
   errors: {
     invalidText: string;
     invalidBase64Data: string;
+    invalidJson: string;
+    invalidYaml: string;
     tooLongText: string;
     failedToParseXml: string;
     failedToGetIp: string;

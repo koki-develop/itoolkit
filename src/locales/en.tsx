@@ -11,6 +11,8 @@ export const en: T = {
   errors: {
     invalidText: "Invalid text",
     invalidBase64Data: "Invalid Base64 data",
+    invalidJson: "Invalid JSON",
+    invalidYaml: "Invalid YAML",
     tooLongText: "Text is too long",
     failedToParseXml: "Failed to parse XML",
     failedToGetIp: "Failed to get IP address",

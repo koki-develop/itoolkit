@@ -11,6 +11,8 @@ export const ja: T = {
   errors: {
     invalidText: "無効なテキストです",
     invalidBase64Data: "無効な Base64 データです",
+    invalidJson: "無効な JSON です",
+    invalidYaml: "無効な YAML です",
     tooLongText: "テキストが長すぎます",
     failedToParseXml: "XML のパースに失敗しました",
     failedToGetIp: "IP アドレスの取得に失敗しました",
