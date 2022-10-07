@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { format as sql } from "@sqltools/formatter";
 import axios from "axios";
 import { css, html, js } from "js-beautify";
+import YAML from "js-yaml";
 import qrcode from "qrcode";
 import { useCallback } from "react";
 import xml from "xml-formatter";
@@ -138,5 +139,40 @@ export const useIp = () => {
 
   return {
     fetchIp,
+  };
+};
+
+export const useJsonYaml = () => {
+  const { t } = useI18n();
+
+  const jsonToYaml = useCallback(
+    (json: string): string => {
+      if (json.trim() === "") return "";
+      try {
+        const parsed = JSON.parse(json);
+        return YAML.dump(parsed);
+      } catch (err) {
+        throw new Error(t.errors.invalidJson);
+      }
+    },
+    [t.errors.invalidJson],
+  );
+
+  const yamlToJson = useCallback(
+    (yaml: string): string => {
+      if (yaml.trim() === "") return "";
+      try {
+        const parsed = YAML.load(yaml);
+        return JSON.stringify(parsed, null, 4);
+      } catch {
+        throw new Error(t.errors.invalidYaml);
+      }
+    },
+    [t.errors.invalidYaml],
+  );
+
+  return {
+    jsonToYaml,
+    yamlToJson,
   };
 };
