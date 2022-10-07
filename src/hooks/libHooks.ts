@@ -85,12 +85,36 @@ export const useFormat = () => {
     [t.errors.failedToParseXml],
   );
 
+  const formatJson = useCallback(
+    (json: string): string => {
+      try {
+        return JSON.stringify(JSON.parse(json), null, 4);
+      } catch {
+        throw new Error(t.errors.invalidJson);
+      }
+    },
+    [t.errors.invalidJson],
+  );
+
+  const formatYaml = useCallback(
+    (yaml: string): string => {
+      try {
+        return YAML.dump(YAML.load(yaml));
+      } catch {
+        throw new Error(t.errors.invalidYaml);
+      }
+    },
+    [t.errors.invalidYaml],
+  );
+
   return {
     formatCss,
     formatHtml,
     formatJs,
     formatSql,
     formatXml,
+    formatJson,
+    formatYaml,
   };
 };
 
