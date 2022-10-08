@@ -7,7 +7,7 @@ import {
   AiOutlineQrcode,
   AiOutlineUser,
 } from "react-icons/ai";
-import { BsCodeSlash, BsHash } from "react-icons/bs";
+import { BsBraces, BsCodeSlash, BsHash } from "react-icons/bs";
 import { DiCss3 } from "react-icons/di";
 import { SiJavascript } from "react-icons/si";
 import { Base64, JsonYaml } from "@/components/util/icons";
@@ -74,6 +74,18 @@ export const useTools = (searchText: string): Tool[] => {
         group: t.toolGroups.formatter.name,
         href: "/tools/xml-formatter",
         icon: BsCodeSlash,
+      },
+      {
+        name: t.tools.jsonFormatter.name,
+        group: t.toolGroups.formatter.name,
+        href: "/tools/json-formatter",
+        icon: BsBraces,
+      },
+      {
+        name: t.tools.yamlFormatter.name,
+        group: t.toolGroups.formatter.name,
+        href: "/tools/yaml-formatter",
+        icon: BsBraces,
       },
       // Generator
       {
