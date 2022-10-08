@@ -103,6 +103,10 @@ export const ja: T = {
     formattedSql: "整形された SQL",
     xml: "XML",
     formattedXml: "整形された XML",
+    json: "JSON",
+    formattedJson: "整形された JSON",
+    yaml: "YAML",
+    formattedYaml: "整形された YAML",
   },
 
   themes: {

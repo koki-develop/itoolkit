@@ -103,6 +103,10 @@ export const en: T = {
     formattedSql: "Formatted SQL",
     xml: "XML",
     formattedXml: "Formatted XML",
+    json: "JSON",
+    formattedJson: "Formatted JSON",
+    yaml: "YAML",
+    formattedYaml: "Formatted YAML",
   },
 
   themes: {

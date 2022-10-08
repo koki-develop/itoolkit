@@ -72,6 +72,10 @@ export type T = {
     formattedSql: string;
     xml: string;
     formattedXml: string;
+    json: string;
+    formattedJson: string;
+    yaml: string;
+    formattedYaml: string;
   };
 
   themes: {
