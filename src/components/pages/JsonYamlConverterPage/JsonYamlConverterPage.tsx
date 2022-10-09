@@ -19,10 +19,17 @@ const JsonYamlConverterPage: NextPage = () => {
         left={{
           title: "JSON",
           toRightFunc: jsonToYaml,
+          placeholder: `{
+    "tool": {
+        "title": "JSON <> YAML Converter"
+    }
+}`,
           syntax: "json",
         }}
         right={{
           title: "YAML",
+          placeholder: `tool:
+  title: JSON <> YAML Converter`,
           toLeftFunc: yamlToJson,
           syntax: "yaml",
         }}
