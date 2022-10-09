@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import nProgress from "nprogress";
 import React, { useCallback, useEffect } from "react";
+import { RecoilRoot } from "recoil";
 import Layout from "@/components/Layout";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useMounted } from "@/hooks/utilHooks";
@@ -56,16 +57,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
-      <Head>
-        <meta property="og:site_name" content={t.app.name} />
-        <meta
-          property="og:url"
-          content={urlJoin(`https://itoolkit.dev`, router.asPath)}
-        />
-      </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <RecoilRoot>
+        <Head>
+          <meta property="og:site_name" content={t.app.name} />
+          <meta
+            property="og:url"
+            content={urlJoin(`https://itoolkit.dev`, router.asPath)}
+          />
+        </Head>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </RecoilRoot>
     </ThemeProvider>
   );
 }
