@@ -14,10 +14,12 @@ const CssFormatterPage: NextPage = () => {
       title={t.tools.cssFormatter.name}
       description={t.tools.cssFormatter.description}
       left={{
+        atomKey: "unformattedCss",
         title: t.words.css,
         placeholder: ".css-formatter{color:#ffffff;background-color:#55b5a6;}",
       }}
       right={{
+        atomKey: "formattedCss",
         title: t.words.formattedCss,
         placeholder: `.css-formatter {
     color: #ffffff;

@@ -5,6 +5,7 @@ import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
 import { useI18n } from "@/hooks/i18nHooks";
 import { HashAlgorithm, useHash } from "@/hooks/libHooks";
+import { useStore } from "@/hooks/storeHooks";
 
 const algorithms: { displayName: string; name: HashAlgorithm }[] = [
   { displayName: "MD5", name: "md5" },
@@ -25,12 +26,15 @@ const HashPage: NextPage = () => {
 
   const toHash = useHash();
 
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useStore("hashText");
   const [hashes, setHashes] = useState<Hash[]>([]);
 
-  const handleChangeText = useCallback((value: string) => {
-    setText(value);
-  }, []);
+  const handleChangeText = useCallback(
+    (value: string) => {
+      setText(value);
+    },
+    [setText],
+  );
 
   useEffect(() => {
     setHashes(

@@ -17,11 +17,13 @@ const Base64EncodeDecodePage: NextPage = () => {
     >
       <TextAreas
         left={{
+          atomKey: "base64EncodedText",
           title: t.words.encodedText,
           toRightFunc: base64Decode,
           placeholder: "QmFzZTY0IEVuY29kZS9EZWNvZGU=",
         }}
         right={{
+          atomKey: "base64DecodedText",
           title: t.words.decodedText,
           toLeftFunc: base64Encode,
           placeholder: "Base64 Encode/Decode",

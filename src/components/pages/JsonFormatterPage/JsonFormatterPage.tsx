@@ -14,10 +14,12 @@ const JsonFormatterPage: NextPage = () => {
       title={t.tools.jsonFormatter.name}
       description={t.tools.jsonFormatter.description}
       left={{
+        atomKey: "unformattedJson",
         title: t.words.json,
         placeholder: '{"tool":{"title":"JSON Formatter"}}',
       }}
       right={{
+        atomKey: "formattedJson",
         title: t.words.formattedJson,
         placeholder: `{
     "tool": {

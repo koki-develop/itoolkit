@@ -14,11 +14,13 @@ const JavaScriptFormatterPage: NextPage = () => {
       title={t.tools.javascriptFormatter.name}
       description={t.tools.javascriptFormatter.description}
       left={{
+        atomKey: "unformattedJavaScript",
         title: t.words.javascript,
         placeholder:
           '(()=>{const title="JavaScript Formatter";console.log(title);})();',
       }}
       right={{
+        atomKey: "formattedJavaScript",
         title: t.words.formattedJavaScript,
         placeholder: `(() => {
     const title = "JavaScript Formatter";

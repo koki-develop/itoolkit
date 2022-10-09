@@ -1,6 +1,7 @@
 import React, { memo, useCallback, useState } from "react";
 import { Syntax } from "@/components/util/CodeEditor";
 import TextArea from "@/components/util/TextArea";
+import { AtomKey, useStore } from "@/hooks/storeHooks";
 
 type BaseProps = {
   title: string;
@@ -9,11 +10,13 @@ type BaseProps = {
 
 export type TextAreasProps = {
   left: BaseProps & {
+    atomKey: AtomKey;
     syntax?: Syntax;
     placeholder?: string;
     toRightFunc?: (left: string) => Promise<string> | string;
   };
   right: BaseProps & {
+    atomKey: AtomKey;
     syntax?: Syntax;
     placeholder?: string;
     toLeftFunc?: (right: string) => Promise<string> | string;
@@ -26,9 +29,9 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
   const { toRightFunc } = leftProps;
   const { toLeftFunc } = rightProps;
 
-  const [left, setLeft] = useState<string>("");
+  const [left, setLeft] = useStore(leftProps.atomKey);
   const [leftError, setLeftError] = useState<string | null>(null);
-  const [right, setRight] = useState<string>("");
+  const [right, setRight] = useStore(rightProps.atomKey);
   const [rightError, setRightError] = useState<string | null>(null);
 
   const handleChangeLeft = useCallback(
@@ -45,7 +48,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         setLeftError(error.message);
       }
     },
-    [toRightFunc],
+    [setLeft, setRight, toRightFunc],
   );
 
   const handleChangeRight = useCallback(
@@ -62,7 +65,7 @@ const TextAreas: React.FC<TextAreasProps> = memo(props => {
         setRightError(error.message);
       }
     },
-    [toLeftFunc],
+    [setLeft, setRight, toLeftFunc],
   );
 
   return (

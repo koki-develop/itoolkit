@@ -14,10 +14,12 @@ const YamlFormatterPage: NextPage = () => {
       title={t.tools.yamlFormatter.name}
       description={t.tools.yamlFormatter.description}
       left={{
+        atomKey: "unformattedYaml",
         title: t.words.yaml,
         placeholder: "{tool: {title: YAML Formatter}}",
       }}
       right={{
+        atomKey: "formattedYaml",
         title: t.words.formattedYaml,
         placeholder: `tool:
   title: YAML Formatter`,

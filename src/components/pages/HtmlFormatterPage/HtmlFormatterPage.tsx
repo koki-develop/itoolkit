@@ -14,11 +14,13 @@ const HtmlFormatterPage: NextPage = () => {
       title={t.tools.htmlFormatter.name}
       description={t.tools.htmlFormatter.description}
       left={{
+        atomKey: "unformattedHtml",
         title: t.words.html,
         placeholder:
           "<html><head><title>HTML Formatter</title></head><body><h1>HTML Formatter</h1></body></html>",
       }}
       right={{
+        atomKey: "formattedHtml",
         title: t.words.formattedHtml,
         placeholder:
           "<html>\n\n    <head>\n        <title>HTML Formatter</title>\n    </head>\n\n    <body>\n        <h1>HTML Formatter</h1>\n    </body>\n\n</html>",

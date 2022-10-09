@@ -17,11 +17,13 @@ const UrlEncodeDecodePage: NextPage = () => {
     >
       <TextAreas
         left={{
+          atomKey: "urlEncodedText",
           title: t.words.encodedText,
           toRightFunc: urlDecode,
           placeholder: "URL%20Encode%2FDecode",
         }}
         right={{
+          atomKey: "urlDecodedText",
           title: t.words.decodedText,
           toLeftFunc: urlEncode,
           placeholder: "URL Encode/Decode",

@@ -17,6 +17,7 @@ const JsonYamlConverterPage: NextPage = () => {
     >
       <TextAreas
         left={{
+          atomKey: "convertedJsonFromYaml",
           title: "JSON",
           toRightFunc: jsonToYaml,
           placeholder: `{
@@ -27,6 +28,7 @@ const JsonYamlConverterPage: NextPage = () => {
           syntax: "json",
         }}
         right={{
+          atomKey: "convertedYamlFromJson",
           title: "YAML",
           placeholder: `tool:
   title: JSON <> YAML Converter`,

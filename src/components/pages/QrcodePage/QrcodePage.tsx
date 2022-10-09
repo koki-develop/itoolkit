@@ -5,13 +5,14 @@ import Page from "@/components/util/Page";
 import TextArea from "@/components/util/TextArea";
 import { useI18n } from "@/hooks/i18nHooks";
 import { useQrcode } from "@/hooks/libHooks";
+import { useStore } from "@/hooks/storeHooks";
 
 const QrcodePage: NextPage = () => {
   const { t } = useI18n();
 
   const { toDataUrl } = useQrcode();
 
-  const [text, setText] = useState<string>("");
+  const [text, setText] = useStore("qrCodeText");
   const [error, setError] = useState<string | null>(null);
   const [qrcodeSrc, setQrcodeSrc] = useState<string | null>(null);
 
@@ -31,7 +32,7 @@ const QrcodePage: NextPage = () => {
         })
         .catch(error => setError(error.message));
     },
-    [toDataUrl],
+    [setText, toDataUrl],
   );
 
   return (

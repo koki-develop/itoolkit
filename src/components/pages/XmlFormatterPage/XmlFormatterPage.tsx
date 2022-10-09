@@ -14,11 +14,13 @@ const XmlFormatterPage: NextPage = () => {
       title={t.tools.xmlFormatter.name}
       description={t.tools.xmlFormatter.description}
       left={{
+        atomKey: "unformattedXml",
         title: t.words.xml,
         placeholder:
           '<?xml version="1.0" encoding="UTF-8"?><root><tool><title>XML Formatter</title></tool></root>',
       }}
       right={{
+        atomKey: "formattedXml",
         title: t.words.formattedXml,
         placeholder: `<?xml version="1.0" encoding="UTF-8"?>
 <root>
