@@ -8,7 +8,7 @@ const LinkButton: React.FC<LinkButtonProps> = memo(props => {
   const { active, icon, className, children, ...linkProps } = props;
 
   return (
-    <Link {...linkProps}>
+    <Link {...linkProps} tabIndex={-1}>
       <Button className={className} icon={icon} active={active}>
         {children}
       </Button>
