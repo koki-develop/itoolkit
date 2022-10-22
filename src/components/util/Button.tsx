@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { memo } from "react";
 import { Icon } from "@/components/util/icons";
 
-export type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: Icon;
   active?: boolean;
 };
