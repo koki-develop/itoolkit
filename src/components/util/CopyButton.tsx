@@ -37,6 +37,7 @@ const CopyButton: React.FC<CopyButtonProps> = memo(props => {
         buttonProps.className,
         "rounded border p-2 dark:border-stone-700 dark:bg-stone-800",
       )}
+      disabled={copyText === ""}
       onClick={handleCopy}
     >
       <AiOutlineCopy
