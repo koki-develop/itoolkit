@@ -16,15 +16,13 @@ const Layout: React.FC<LayoutProps> = memo(props => {
 
   const [openPcMenu, setOpenPcMenu] = useState<boolean>(true);
   const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
+  const setOpenMenu = useCallback((value: boolean) => {
+    setOpenPcMenu(value);
+    setOpenMobileMenu(value);
+  }, []);
 
-  const handleOpenMenu = useCallback(() => {
-    setOpenPcMenu(true);
-    setOpenMobileMenu(true);
-  }, []);
-  const handleCloseMenu = useCallback(() => {
-    setOpenPcMenu(false);
-    setOpenMobileMenu(false);
-  }, []);
+  const handleOpenMenu = useCallback(() => setOpenMenu(true), [setOpenMenu]);
+  const handleCloseMenu = useCallback(() => setOpenMenu(false), [setOpenMenu]);
 
   useEffect(() => {
     setOpenMobileMenu(false);
