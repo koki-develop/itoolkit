@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { useRouter } from "next/router";
 import React, { memo, useCallback, useEffect, useState } from "react";
+import Container from "@/components/util/Container";
 import LayoutHeader from "./LayoutHeader";
 import LayoutMenu from "./LayoutMenu";
 import LayoutMenuOverlay from "./LayoutMenuOverlay";
@@ -50,7 +51,7 @@ const Layout: React.FC<LayoutProps> = memo(props => {
       <LayoutHeader openMenu={openPcMenu} onOpenMenu={handleOpenMenu} />
 
       <main className="flex grow justify-center px-4 py-2">
-        <div className="container flex flex-col">{children}</div>
+        <Container className="container flex flex-col">{children}</Container>
       </main>
     </div>
   );

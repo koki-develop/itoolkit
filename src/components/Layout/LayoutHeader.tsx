@@ -2,6 +2,7 @@ import classNames from "classnames";
 import React, { memo } from "react";
 import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import Logo from "@/../public/logo.svg";
+import Container from "@/components/util/Container";
 import Link from "@/components/util/Link";
 import { useI18n } from "@/hooks/i18nHooks";
 import LayoutLocaleSwitch from "./LayoutLocaleSwitch";
@@ -19,7 +20,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
 
   return (
     <header className="sticky top-0 flex h-[60px] items-center justify-center border-b bg-teal-500 p-4 py-4 dark:border-b-stone-600 dark:bg-stone-800 md:relative">
-      <div className="container flex items-center justify-between text-white">
+      <Container className="flex items-center justify-between text-white">
         <div className="flex items-center text-xl">
           <button
             className={classNames("mr-4", { "md:hidden": openMenu })}
@@ -41,7 +42,7 @@ const LayoutHeader: React.FC<LayoutHeaderProps> = memo(props => {
             <AiOutlineGithub />
           </Link>
         </div>
-      </div>
+      </Container>
     </header>
   );
 });
